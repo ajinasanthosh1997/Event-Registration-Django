@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Event Registration System</title>
+    <link rel="stylesheet" href="{% static 'eventapp/style.css' %}">
+</head>
+<body>
+    <header>
+        <img src="https://efuturex.com/static/assets/img/EFUTUREX-Logo.png" alt="Event Registration System Logo" id="logo">
+        <nav>
+            <a href="./index.html" class="nav-link">Home</a>
+            <!-- <a href="#" class="nav-link">Login</a>
+            <a href="#" class="nav-link">Register</a> -->
+        </nav>
+    </header>
+
+    <section id="event-details">
+        <h2 class="event-title">{{event.title}}</h2>
+        <p class="event-date">Date: {{event.date}}</p>
+        <p class="event-location">Location:{{event.location}}</p>
+        <p class="event-description">Description: {{event.description}}</p>
+
+        <form action="{% url 'eventdetails' event.pk%}" class="apply-form" method="POST">
+            {% csrf_token %}
+            <h3>Apply for this Event</h3>
+            {{form.as_p}}
+            <input type="submit" value="Apply">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Event Registration System</p>
+    </footer>
+</body>
+</html>
