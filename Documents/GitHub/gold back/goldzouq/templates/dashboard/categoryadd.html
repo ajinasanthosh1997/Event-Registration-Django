@@ -1,0 +1,31 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Add/Edit Category{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">{% if form.instance.pk %}Edit{% else %}Add{% endif %} Category</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Category Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ form.name.value|default_if_none:'' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="slug">Slug</label>
+            <input type="text" class="form-control" id="slug" name="slug" value="{{ form.slug.value|default_if_none:'' }}" {% if form.instance.pk %}readonly{% endif %}>
+            {% comment %} <small class="form-text text-muted">The slug is automatically generated if left empty.</small> {% endcomment %}
+        </div>
+        <div class="form-group">
+            <label for="parent">Parent Category</label>
+            <select class="form-control" id="parent" name="parent">
+                <option value="">Select a parent category</option>
+                {% for category in form.fields.parent.queryset %}
+                    <option value="{{ category.pk }}" {% if category.pk == form.instance.parent.pk %}selected{% endif %}>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

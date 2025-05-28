@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    section {
+        /* Add any specific styles */
+    }
+    .pr-bt {
+        display: none;
+    }
+</style>
+<section id="content">
+    <div class="flex1">
+        <div class="accordion" style="border: 1px solid rgb(219, 218, 218); border-radius: .2rem; padding: 1rem 2rem;">
+            <div class="fil1" style="border-bottom: 1px solid rgb(240, 239, 239);">
+                <div>
+                    <h3>Filter</h3>
+                </div>
+                <div><a href="?">Clear Filter</a></div>
+            </div>
+
+            <form method="GET" id="filterForm">
+                <!-- Gender Filter -->
+                <div class="card12 ftrlist">
+                    <div class="card-header" onclick="toggleAccordion(this)">
+                        <p>Gender</p>
+                        <span class="toggle-icon fa fa-plus"></span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            {% for key, value in gender_choices %}
+                                <li>
+                                    <input type="checkbox" name="gender" value="{{ key }}" id="{{ key }}" {% if key in selected_genders %}checked{% endif %}>
+                                    <label for="{{ key }}">{{ value }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <hr style="border: 1px solid rgb(240, 239, 239);">
+
+                {% comment %} <!-- Jeweller Filter -->
+                <div class="card12 ftrlist">
+                    <div class="card-header" onclick="toggleAccordion(this)">
+                        <p>Brand</p>
+                        <span class="toggle-icon fa fa-plus"></span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            {% for key, value in jeweller_choices %}
+                                <li>
+                                    <input type="checkbox" name="jeweller" value="{{ key }}" id="{{ key }}" {% if key in selected_jewellers %}checked{% endif %}>
+                                    <label for="{{ key }}">{{ value }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <hr style="border: 1px solid rgb(240, 239, 239);">
+
+                <!-- Category Filter -->
+                <div class="card12 ftrlist">
+                    <div class="card-header" onclick="toggleAccordion(this)">
+                        <p>Collections</p>
+                        <span class="toggle-icon fa fa-plus"></span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            {% for key, value in category_choices %}
+                                <li>
+                                    <input type="radio" name="category" value="{{ key }}" id="{{ key }}" {% if key == selected_category %}checked{% endif %}>
+                                    <label for="{{ key }}">{{ value }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <hr style="border: 1px solid rgb(240, 239, 239);"> {% endcomment %}
+
+                <!-- Gold Purity Filter -->
+                <div class="card12 ftrlist">
+                    <div class="card-header" onclick="toggleAccordion(this)">
+                        <p>Gold Purity</p>
+                        <span class="toggle-icon fa fa-plus"></span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            {% for key, value in gold_purity_choices %}
+                                <li>
+                                    <input type="checkbox" name="gold_purity" value="{{ key }}" id="{{ key }}" {% if key in selected_gold_purity %}checked{% endif %}>
+                                    <label for="{{ key }}">{{ value }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <hr style="border: 1px solid rgb(240, 239, 239);">
+
+                <!-- Metal Color Filter -->
+                <div class="card12 ftrlist">
+                    <div class="card-header" onclick="toggleAccordion(this)">
+                        <p>Metal Color</p>
+                        <span class="toggle-icon fa fa-plus"></span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            {% for key, value in metal_color_choices %}
+                                <li>
+                                    <input type="checkbox" name="metal_color" value="{{ key }}" id="{{ key }}" {% if key in selected_metal_color %}checked{% endif %}>
+                                    <label for="{{ key }}">{{ value }}</label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <hr style="border: 1px solid rgb(240, 239, 239);">
+                
+                <button type="submit" style="display: none;" id="submitFilters">Apply Filters</button>
+            </form>
+        </div>
+
+        <script>
+            function toggleAccordion(header) {
+                const body = header.nextElementSibling;
+                const icon = header.querySelector('.toggle-icon');
+        
+                if (body.style.display === 'block') {
+                    body.style.display = 'none';
+                    icon.classList.remove('fa-minus');
+                    icon.classList.add('fa-plus');
+                } else {
+                    body.style.display = 'block';
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                }
+            }
+        
+            document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+                input.addEventListener('change', () => {
+                    document.getElementById('submitFilters').click();
+                });
+            });
+        </script>
+
+        <div>
+            <div class="p-bt">
+                <a href="#" class="pr-bt" id="goldFilterBtn" onclick="applyFilter('gold')">GOLD<button class="close-button" onclick="closeFunction('gold')" style="color: white;">x</button></a>
+                <a href="#" class="pr-bt" id="bangleFilterBtn" onclick="applyFilter('bangle')">Bangle<button class="close-button" onclick="closeFunction('bangle')" style="color: white;">x</button></a>
+            </div>
+            <script>
+                function applyFilter(filterType) {
+                    // Add logic to apply the filter based on the filterType
+                    console.log(`Filter Applied: ${filterType}`);
+                    // Add logic to update the filter bar
+                    document.getElementById(`${filterType}FilterBtn`).style.display = 'inline-block';
+                }
+            
+                function closeFunction(filterType) {
+                    // Add logic to close the filter based on the filterType
+                    console.log(`Filter Closed: ${filterType}`);
+                    // Add logic to update the filter bar
+                    document.getElementById(`${filterType}FilterBtn`).style.display = 'none';
+                }
+            </script>
+            
+            <script>
+                function closeFunction() {
+                    // Add your close functionality here
+                    console.log("Close button clicked");
+                }
+            </script>
+            <div class="pr-flex">
+                {% for product in products %}
+                    <div class="product-item">
+                        <div class="card" style="padding: 1rem;">
+                            <a href="{% url 'main:product' product.id %}" style="text-decoration: none;color: #63392C;"><img src="{{ product.image.url }}" style="height: 16rem;width: 14rem;" class="h"></a>
+                            <div>
+                                <img src="{{ product.jeweller.logo.url }}" style="height: 3rem;padding: 1rem 3rem;">
+                            </div>
+                            <p>{{ product.name }}</p>
+                            <h3 style="color: #63392C;">{{ product.weight }} gm</h3>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}

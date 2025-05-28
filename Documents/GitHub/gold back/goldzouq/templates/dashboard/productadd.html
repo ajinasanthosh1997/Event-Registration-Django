@@ -1,0 +1,161 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Add Product - My Website{% endblock %}
+
+{% block header %}Add New Product{% endblock %}
+
+{% block content %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Add Product</h1>
+
+        <!-- Product Form -->
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <form method="post" action="{% url 'dashboard:add_product' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <!-- Product Details Row -->
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h3>Product Details</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="name">Product Name</label>
+                                {{ product_form.name }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                {{ product_form.category }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="gold_purity">Gold Purity</label>
+                                {{ product_form.gold_purity }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="metal_color">Metal Color</label>
+                                {{ product_form.metal_color }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="weight">Weight</label>
+                                {{ product_form.weight }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="price_range">Price Range</label>
+                                {{ product_form.price_range }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="product_video">Product Video URL</label>
+                                {{ product_form.product_video }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="product_code">Product Code</label>
+                                {{ product_form.product_code }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="image">Image</label>
+                                {{ product_form.image }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="jeweller">Jeweller</label>
+                                {{ product_form.jeweller }}
+                            </div>
+                        </div>
+                        <!-- Add Slug Field -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="slug">Slug</label>
+                                {{ product_form.slug }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Specs Row -->
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h3>Product Specifications</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="stone_type">Stone Type</label>
+                                {{ specs_form.stone_type }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="specs_jeweller">Jeweller</label>
+                                {{ specs_form.jeweller }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                {{ specs_form.category }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="metal_purity_details">Metal Purity Details</label>
+                                {{ specs_form.metal_purity_details }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="wearing_style">Wearing Style</label>
+                                {{ specs_form.wearing_style }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="specs_metal_color">Metal Color</label>
+                                {{ specs_form.metal_color }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="occasion">Occasion</label>
+                                {{ specs_form.occasion }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Description Row -->
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h3>Product Description</h3>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="content">Description</label>
+                                {{ description_form.content }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+{% endblock %}

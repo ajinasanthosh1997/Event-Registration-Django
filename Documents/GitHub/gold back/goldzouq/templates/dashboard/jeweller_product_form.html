@@ -1,0 +1,74 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Add/Edit Product{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">{% if form.instance.pk %}Edit{% else %}Add{% endif %} Product</h1>
+    
+    <!-- Display Jeweller Details -->
+    {% if form.instance.jeweller %}
+    <div class="card mb-4">
+        <div class="card-header">
+            Jeweller Details
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ form.instance.jeweller.name }}</h5>
+            <p class="card-text">Location: {{ form.instance.jeweller.location }}</p>
+            <p class="card-text">Phone: {{ form.instance.jeweller.phone }}</p>
+            {% if form.instance.jeweller.image %}
+                <img src="{{ form.instance.jeweller.image.url }}" alt="Jeweller Image" class="img-thumbnail" style="max-width: 150px;">
+            {% else %}
+                <p>No Image</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Product Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ form.name.value|default_if_none:'' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="slug">Product Slug</label>
+            <input type="text" class="form-control" id="slug" name="slug" value="{{ form.slug.value|default_if_none:'' }}" required>
+            {% comment %} <small class="form-text text-muted">Slug is used for SEO and URL generation.</small> {% endcomment %}
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" required>{{ form.description.value|default_if_none:'' }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" name="price" value="{{ form.price.value|default_if_none:'' }}" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-control" id="category" name="category" required>
+                {% for category in form.fields.category.queryset %}
+                    <option value="{{ category.pk }}" {% if category.pk == form.instance.category.pk %}selected{% endif %}>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="jeweller">Jeweller</label>
+            <select class="form-control" id="jeweller" name="jeweller" required>
+                {% for jeweller in form.fields.jeweller.queryset %}
+                    <option value="{{ jeweller.pk }}" {% if jeweller.pk == form.instance.jeweller.pk %}selected{% endif %}>{{ jeweller.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="weight">Weight (grams)</label>
+            <input type="number" class="form-control" id="weight" name="weight" value="{{ form.weight.value|default_if_none:'' }}" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

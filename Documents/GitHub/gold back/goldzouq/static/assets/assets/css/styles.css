@@ -1,0 +1,350 @@
+
+body{
+    font-family: "Gantari", sans-serif;
+    padding:0;
+    margin: 0;
+    color: #151542;
+}
+.sec1{
+    text-align: center;
+    background-color: #e59887;
+    padding: .4rem;
+    
+}
+
+.sec1 a{
+    text-decoration: none;
+    font-size: .9rem;
+    color: #151542;
+}
+.sec1 span{
+   
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap:1rem;
+    
+    
+}
+
+.contact-info1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 14px;
+   
+    
+    
+}
+
+
+.search-box {
+    position: relative;
+}
+
+.search-box input[type="text"] {
+    width: 200px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.search-box button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 10px;
+    
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+
+.sec1-flex{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.navbar {
+    background-color: #f8f9fa;
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    gap: 1rem;
+    align-items: center;
+}
+
+.navbar a {
+    color: #343a40;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar .dropdown {
+    position: relative;
+}
+
+.navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f8f9fa;
+    width: 20rem;
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    padding:.5rem;
+    z-index: 1;
+}
+
+.navbar .dropdown-content a {
+    color: #343a40;
+    display: block;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    
+}
+
+.navbar .dropdown:hover .dropdown-content {
+    display: block;
+    text-decoration: none;
+}
+
+.nav-flex{
+    display: flex;
+    align-items: center;
+}
+nav img{
+    height: 4rem;
+    width: 5rem;
+}
+
+.carousel-item {
+    position: relative;
+}
+.carousel-item .overlay {
+    position: absolute;
+    top: 50%;
+    left: 4rem; /* Adjust the left position as needed */
+    transform: translateY(-50%);
+    text-align: left;
+    padding: 20px;
+    border-radius: 10px;
+}
+.carousel-item .overlay h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.carousel-item .overlay p {
+    margin-bottom: 0;
+    padding-right: 50rem;
+}
+.carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* for iOS momentum scrolling */
+}
+
+/* Individual carousel item */
+.carousel-item {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 100%; /* Adjust the width of the carousel items */
+}
+
+
+/* Category image */
+.category-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sec2-flex{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+    text-align: center;
+}
+
+.sec2-flex img{
+    width: 8rem;
+    
+}
+
+.card {
+    margin-bottom: 20px;
+}
+.card img {
+    height: 25rem;
+    object-fit:fill;
+}
+
+.load{
+    display: flex;
+    justify-content: center;
+    /* width: 5rem; */
+    color: #151542;
+    /* border: 1px solid #151542; */
+    border-radius: .4rem;
+    padding: 1rem;
+}
+
+footer input{
+    border: none;
+    outline: none;
+    
+}
+footer button{
+    border: none;
+    color: #151542;
+    background-color: white;
+}
+footer form{
+    border-bottom: 1px solid #151542;
+}
+footer a{
+    text-decoration: none;
+    color: #151542;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.categories button {
+    padding: 0.5rem 1rem;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Additional styling for product cards */
+.products .card {
+    /* Your styling for product cards */
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.categories button {
+    padding: 0.5rem 1rem;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.products .card {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.products .card:hover {
+    transform: translateY(-5px);
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Adjust the gap between buttons */
+    margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+.categories button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #151542; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.categories button:hover {
+    background-color: #03264d; /* Darker color on hover */
+}
+.products .col-md-3 {
+    flex: 0 0 25%; /* Adjust to your desired width */
+    max-width: 25%; /* Adjust to your desired width */
+    padding: 0 10px; /* Add padding for spacing */
+    margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+.card {
+    width: 100%; /* Ensure cards take full width of column */
+}
+
+.card-img-top {
+    height: 200px; /* Adjust image height as needed */
+    object-fit: cover; /* Ensure image covers entire container */
+}
+
+.ftr-flex{
+    display: flex; justify-content: left; gap: 8rem;
+}
+.ftr1{
+    padding: 4rem 4rem;
+}
+.ftr-ul{
+    list-style: none; padding: 0; margin: 0;display: flex;justify-content: center;gap: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .ftr1{
+        padding: 2rem 2rem;
+    }
+    .ftr-ul{
+        display: block;
+    }
+            
+
+}   
+    /* Adjust the styles for smaller screens */
+@media only screen and (max-width: 500px) {
+       .sec1-flex{
+        display:none;
+       }
+       .ftr-flex{
+        display: block;
+       }
+    
+}

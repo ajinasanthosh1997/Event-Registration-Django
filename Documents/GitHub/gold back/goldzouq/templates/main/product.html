@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .prct-img {
+        height: 30rem;
+        width: 30rem;
+    }
+
+    /* Modal Styles */
+    .modal {
+    
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        animation: fadeIn 0.5s;
+    }
+
+    .modal-content {
+        border-radius: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 2rem;
+        border: 1px solid #888;
+        width: 25%;
+        animation: slideDown 0.5s;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-50%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<section>
+    <div class="prdct">
+        <div>
+            <div>
+                <img src="{{ product.image.url }}" class="prct-img">
+            </div>
+            
+            <div class="prdct-flex">
+                <!-- Download Button -->
+                {% if product.downloadable_photo %}
+                <a href="{{ product.downloadable_photo.url }}" download="{{ product.name }}.jpg" style="text-decoration:none;">
+                    <button class="bt1" style="display: flex; align-items: center;">
+                        <i class="fa-solid fa-download"></i> &nbsp;&nbsp;&nbsp;Download
+                    </button>
+                </a>
+                {% else %}
+                <button class="bt1" style="display: flex; align-items: center;" disabled>
+                    <i class="fa-solid fa-download"></i> &nbsp;&nbsp;&nbsp;No Photo Available
+                </button>
+                {% endif %}
+                <button class="bt2" style="display: flex; align-items: center;" onclick="sharePageLink()">
+                    <i class="fa-solid fa-share-nodes"></i>&nbsp;&nbsp;Share
+                </button>
+            </div>
+            <script>
+                function sharePageLink() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: '{{ product.name }}',
+                            text: 'Check out this product!',
+                            url: window.location.href
+                        }).then(() => {
+                            console.log('Thanks for sharing!');
+                        }).catch((error) => {
+                            console.error('Error sharing:', error);
+                        });
+                    } else {
+                        alert('Web Share API is not supported in this browser.');
+                    }
+                }
+                </script>
+        </div>
+        
+        <div>
+            <img src="{{ product.jeweller.image.url }}" class="pr-img" style="height:4rem;">
+            <p><i class="fa-solid fa-location-dot"></i>
+                {{ product.jeweller.location }}</p>
+            <h4>{{ product.name }}</h4>    
+            <p style="font-size: 14px;">Product Code : {{ product.product_code }}</p>
+            <h1 style="color: #63392C;">{{ product.weight }} gm</h1>
+            <p>{{ description.content }}</p>
+            <button class="bt3" style="display: flex;align-items: center;" onclick="showPriceModal()"><i class="fa-solid fa-indian-rupee-sign"  style="color: rgb(241, 192, 32);"></i>&nbsp;&nbsp;Check Price</button>
+        </div>
+    </div>
+</section>
+
+<section style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);padding:1rem;margin:2rem 5rem;">
+    <div style="border-bottom: 1px dashed #63392C;">
+        <div style="padding: 1rem;" class="but">
+            <button onclick="showSection('productSpecs')" id="btnProductSpecs" class="btn">Product Specs</button>
+            <button onclick="showSection('description')" id="btnDescription" class="btn1">Description</button>
+        </div>
+    </div>
+    <div id="productSpecs" style="margin-top: 2rem;">
+        <div class="ch">
+            <div>
+                <div class="fl">
+                    <p>Stone Type</p>
+                    <p>{{ specs.get_stone_type_display }}</p>
+                </div>
+                <div class="fl">
+                    <p>Jeweller</p>
+                    <p>{{ specs.jeweller.name }}</p>
+                </div>
+                <div class="fl">
+                    <p>Category</p>
+                    <p>{{ specs.get_category_display }}</p>
+                </div>
+                <div class="fl">
+                    <p>Metal Purity</p>
+                    <p>{{ specs.get_metal_purity_details_display }}</p>
+                </div>
+            </div>
+            <div>
+                <div class="fl">
+                    <p>Gender</p>
+                    <p>{{ specs.get_gender_display }}</p>
+                </div>
+                <div class="fl">
+                    <p>Wearing Style</p>
+                    <p>{{ specs.wearing_style }}</p>
+                </div>
+                <div class="fl">
+                    <p>Metal Color</p>
+                    <p>{{ specs.get_metal_color_display }}</p>
+                </div>
+                <div class="fl">
+                    <p>Occasion</p>
+                    <p>{{ specs.get_occasion_display }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="description" style="display: none;">
+        <p>{{ description.content }}</p>
+    </div>
+</section>
+
+<section class="sec3" style="z-index: 0; overflow-y: hidden;">
+    <h1 class="sec-h1" style="font-size: 24px;">Related Products</h1>
+    <div class="owl-carousel b" style="display: flex; justify-content: center; gap:1rem; margin: 2rem 0;">
+        {% for related_product in related_products %}
+        <div class="cad" style="">
+            <img src="{{ related_product.image.url }}" style="height: 16rem; width: 14rem;" class="h">
+            <img src="{{ related_product.jeweller.logo.url }}" style="width:7rem; height: 3rem; padding: 1rem 3rem;">
+            <p>{{ related_product.name }}</p>
+            <h3 style="color: #63392C;">{{ related_product.weight }} gm</h3>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Price Modal -->
+<div id="priceModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePriceModal()">&times;</span>
+        <div style="font-size: 1rem;">Price Range</div>
+        <p style="color: rgb(230, 217, 41);font-size: 2rem;margin: 0;">{{ product.price_range }}</p>
+        <p style="font-size: .6rem;">*actual price may vary according to weight</p>
+        <div>Sold by</div>
+        <p style="color: rgb(230, 217, 41);font-size: 2rem;margin: 0;">{{ product.jeweller.name }}</p>
+        <div>Location</div>
+        <p> {{ product.jeweller.location }}</p>
+        <div style="display: flex;align-items: center;text-align: center;justify-content: center;">
+            <div>
+                <p>To check availability</p>
+            <button class="bt3" onclick="contactOnWhatsApp('{{ product.jeweller.contact_number }}')" style="background-color: #63392C;color: white;"><i class="fa-brands fa-whatsapp"></i>&nbsp;&nbsp;Ask on WhatsApp</button>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        showSection('productSpecs');
+    };
+
+    function showSection(sectionId) {
+        document.getElementById('productSpecs').style.display = 'none';
+        document.getElementById('description').style.display = 'none';
+        document.getElementById(sectionId).style.display = 'block';
+        document.getElementById('btnProductSpecs').classList.remove('active');
+        document.getElementById('btnDescription').classList.remove('active');
+        document.getElementById('btn' + sectionId.charAt(0).toUpperCase() + sectionId.slice(1)).classList.add('active');
+    }
+
+    function showPriceModal() {
+        document.getElementById('priceModal').style.display = 'block';
+    }
+
+    function closePriceModal() {
+        document.getElementById('priceModal').style.display = 'none';
+    }
+
+    function contactOnWhatsApp(contactNumber) {
+        window.open('https://wa.me/' + contactNumber, '_blank');
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            dots: false,
+            nav: true,
+            margin: 15,
+            autoplay: true,
+            autoplaySpeed: 1000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                1200: {
+                    items: 5
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

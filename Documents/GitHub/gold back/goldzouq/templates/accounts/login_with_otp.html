@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section style="display: flex; justify-content: center; text-align: center;">
+    <div class="log-div">
+        <h1 class="log">Login with phone</h1>
+        <form method="post" action="{% url 'accounts:login_with_otp' %}">
+            {% csrf_token %}
+            {{ phone_form.phone_number }}
+            <button type="submit" class="log-bt">Request OTP</button>
+        </form>
+        {% if phone_not_registered %}
+        <p style="color: red;">Phone number not registered. Please register.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

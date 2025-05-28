@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<script>
+    // JavaScript countdown timer
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                // You can redirect or perform some action when the timer reaches 0
+                window.location.href = "{% url 'accounts:otp_expired_page' %}"; // Update with your URL
+            }
+        }, 1000);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var fiveMinutes = 60 * 5, // Set the timer duration in seconds (5 minutes in this example)
+            display = document.querySelector('#timer');
+        startTimer(fiveMinutes, display);
+    });
+</script>
+
+<section style="display: flex; justify-content: center; text-align: center;">
+    <div class="log-div">
+        <h1 class="log">Enter OTP</h1>
+        <form method="post" action="{% url 'accounts:mail_otp' email=email %}">
+            {% csrf_token %}
+            <div>
+                <input type="text" name="otp" placeholder="Enter OTP" class="log-in">
+            </div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div style="margin-top: 1rem;">
+                <button type="submit" class="log-bt">Verify OTP</button>
+            </div>
+        </form>
+        
+        <p style="color: #63392C;">Didn't receive OTP? <a style="color:#63392C;" href="#">Resend OTP</a></p>
+        <p style="color: #63392C;">Time left: <span id="timer"></span></p>
+    </div>
+</section>
+{% endblock %}

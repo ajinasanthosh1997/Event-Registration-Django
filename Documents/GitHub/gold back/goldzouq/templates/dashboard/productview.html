@@ -1,0 +1,57 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Home - My Website{% endblock %}
+
+{% block header %}Welcome to the Home Page{% endblock %}
+
+{% block content %}
+<style>
+    /* Custom styles for product fields */
+    .product-field {
+        margin-bottom: 10px;
+    }
+    
+    .product-field strong {
+        display: inline-block;
+        width: 120px;
+        font-weight: bold;
+    }
+    
+    .product-value {
+        margin-left: 10px;
+        font-weight: normal;
+    }
+    
+</style>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Product Details</h6>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="product-field">
+                    <strong>Product Name:</strong>
+                    <span class="product-value">{{ product.product_name }}</span>
+                </div>
+                <div class="product-field">
+                    <strong>Category:</strong>
+                    <span class="product-value">{{ product.category }}</span>
+                </div>
+                <div class="product-field">
+                    <strong>Weight:</strong>
+                    <span class="product-value">{{ product.weight }}</span>
+                </div>
+                <div class="product-field">
+                    <strong>Price:</strong>
+                    <span class="product-value">{{ product.price }}</span>
+                </div>
+                <div class="product-field">
+                    <strong>Description:</strong>
+                    <span class="product-value">{{ product.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

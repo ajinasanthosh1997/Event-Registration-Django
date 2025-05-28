@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .input-container {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+label {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  transition: top 0.3s, font-size 0.3s;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: none; /* Remove other borders */
+  border-bottom: 1px solid #000; /* Set the bottom border */
+  border-radius: 0; /* Optional: Set border-radius to 0 for a straight bottom border */
+  outline: none; /* Remove the default outline */
+  transition: border-bottom 0.3s;
+}
+
+input:focus {
+  border-bottom: 2px solid #63392C; /* Change the bottom border color on focus */
+}
+
+/* Adjust label position when input is focused */
+.input-container input:focus + label {
+  top: -10px;
+  font-size: 12px;
+}
+</style>  
+<section>
+<div class="cl-flex">
+    <div style="" class="pd">
+        <h1 class="font">Become a Seller</h1>
+        <div class="ftr-icon">
+            <i class="fa-brands fa-linkedin" style="color:#63392C"></i>
+            <i class="fa-brands fa-facebook-f" style="color:#63392C"></i>
+            <i class="fa-brands fa-instagram" style="color:#63392C"></i>
+        </div>
+    </div>
+    <div>
+        <form id="" method="post" class="sl-flex">
+            {% csrf_token %}
+            <div>
+                
+                <div class="input-container">
+                    <input type="text" name="store_name">
+                    <label>Store Name</label>  
+                </div>
+                <div class="input-container">
+                    <input type="text" name="contact_person_name">
+                    <label>Contact Person Name</label>
+                </div>
+                <div class="input-container">
+                    <input type="tel" name="contact_number">
+                    <label>Contact Number</label>
+                </div>
+                
+            </div>
+            <div>
+                <div class="input-container">
+                    <input type="text" name="website_or_instagram">
+                    <label>Website/Instagram Handle</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" name="designation">
+                    <label>Designation</label>
+                </div>
+                <div class="input-container">
+                    <input type="email" name="email">
+                    <label>Email</label>
+                </div>
+                <button type="submit" class="sl-bt"><i class="fa-regular fa-paper-plane"></i>&nbsp;&nbsp;&nbsp;Submit</button>
+                
+            </div>
+            
+        </form>
+        <script>
+            // Add event listeners to all input elements within the form
+            document.querySelectorAll('.sl-flex input').forEach(function(input) {
+                input.addEventListener('focus', function() {
+                    // Move the label to the top when input is focused
+                    input.previousElementSibling.style.transform = 'translateY(-20px)';
+                    input.previousElementSibling.style.fontSize = '12px';
+                    input.previousElementSibling.style.color = '#333';
+                });
+        
+                input.addEventListener('blur', function() {
+                    // Move the label back down when input loses focus if there is no value
+                    if (!input.value) {
+                        input.previousElementSibling.style.transform = 'translateY(0)';
+                        input.previousElementSibling.style.fontSize = '';
+                        input.previousElementSibling.style.color = '';
+                    }
+                });
+            });
+        </script>
+        
+    </div>
+</div>
+</section>
+{% endblock %}

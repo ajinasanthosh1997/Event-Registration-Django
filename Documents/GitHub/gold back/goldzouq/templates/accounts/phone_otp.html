@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section style="display: flex; justify-content: center; text-align: center;">
+    <div class="log-div">
+        <h1 class="log">Enter OTP</h1>
+        <form method="post" action="{% url 'accounts:phone_otp' phone_number=phone_number %}">
+            {% csrf_token %}
+            {{ otp_form.otp }}
+            <button type="submit" class="log-bt">Verify OTP</button>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

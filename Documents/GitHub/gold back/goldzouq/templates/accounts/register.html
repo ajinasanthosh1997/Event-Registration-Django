@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section style="display: flex; justify-content: center;text-align: center;">
+    <div class="log-div">
+        <h1 class="log">Register</h1>
+        <form action={% url 'accounts:register' %} method="post">
+            {% csrf_token %}
+            <div class="reg">
+                {{ form.name }}
+            </div>
+            <div class="reg">
+                {{ form.phone_number }}
+            </div>
+            <div class="reg">
+                {{ form.email }}
+            </div>
+            <div class="reg">
+                {{ form.location }}
+            </div>
+            <p style="color: #63392C;">By continuing, I agree to the <a style="color:#63392C;" href="{% url 'main:terms_and_conditions' %}">Use Terms</a> &<br><a style="color:#63392C;" href="privacy_policy.html">Privacy Policy</a></p>
+            <button type="submit" class="log-bt1">Register</button>
+        </form>
+        
+        
+        <div style="margin: 2rem 0;">
+            <a href="{% url 'accounts:login_with_otp' %}" class="log-a4">Login</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

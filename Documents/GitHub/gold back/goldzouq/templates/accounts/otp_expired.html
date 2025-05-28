@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section style="display: flex; justify-content: center;text-align: center;">
+    <div class="log-div">
+
+        <h1 class="log">OTP Expired</h1>
+        <p style="color: #63392C;">The OTP has expired. Please request a new OTP.</p>
+        <a href="{% url 'accounts:login_with_mail' %}" class="log-a3">Request New OTP</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="cl-flex">
+        <div style="" class="pd">
+            <h1 class="font">Jewellery price calculator</h1>
+            <div class="ftr-icon">
+                <i class="fa-brands fa-linkedin" style="color:#63392C"></i>
+                <i class="fa-brands fa-facebook-f" style="color:#63392C"></i>
+                <i class="fa-brands fa-instagram" style="color:#63392C"></i>
+            </div>
+        </div>
+        <div>
+            <form id="myForm" class="cl-flex1" onsubmit="calculateTotalPrice(event)">
+                <div class="cl-fl">
+                    <h1>Total Amount</h1>
+                    <div>
+                        <div>
+                            <label>Gold Rate (Rs)</label>
+                        </div>
+                        <div>
+                            <input type="number" id="goldRate" oninput="calculateTotalPrice()">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Stone Weight (grams)</label>
+                        </div>
+                        <div>
+                            <input type="number" id="stoneWeight" oninput="calculateTotalPrice()">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Making Charge %</label>
+                        </div>
+                        <div>
+                            <input type="number" id="makingCharge" oninput="calculateTotalPrice()">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Total Price</label>
+                        </div>
+                        <div>
+                            <input type="number" id="totalPrice" readonly> 
+                        </div>
+                    </div>
+                </div>
+                <div class="cl-fl">
+                    <h1>Making Charge</h1>
+                    <div>
+                        <div>
+                            <label>Gross Weight (grams)</label>
+                        </div>
+                        <div>
+                            <input type="number" id="grossWeight" oninput="calculateTotalPrice()">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Stone Rate</label>
+                        </div>
+                        <div>
+                            <input type="number" id="stoneRate" oninput="calculateTotalPrice()">
+                        </div>
+                    </div>
+                    <button type="submit" class="cl-bt">Submit</button>
+                    <div class="tick">
+                        <img src="{% static 'assets/img/unnamed.jpg' %}" style="height: 2rem;">
+                        <h3>3% GST (included)</h3>
+                    </div>
+                </div>
+            </form>
+            
+            <script>
+                function calculateTotalPrice(event) {
+                    event.preventDefault(); // Prevent form submission
+                    
+                    // Get input values
+                    var goldRate = parseFloat(document.getElementById('goldRate').value);
+                    var stoneWeight = parseFloat(document.getElementById('stoneWeight').value);
+                    var makingCharge = parseFloat(document.getElementById('makingCharge').value);
+                    var grossWeight = parseFloat(document.getElementById('grossWeight').value);
+                    var stoneRate = parseFloat(document.getElementById('stoneRate').value);
+                    
+                    // Calculate total price
+                    var totalPrice = (goldRate * stoneWeight) + (makingCharge / 100) * (grossWeight * goldRate) + (stoneWeight * stoneRate);
+                    
+                    // Update total price input field
+                    document.getElementById('totalPrice').value = totalPrice.toFixed(2);
+                }
+            </script>
+            
+            {% comment %} <script>
+                // JavaScript code to toggle between Total Amount and Making Charge sections
+                document.addEventListener("DOMContentLoaded", function () {
+                    const totalAmountSection = document.querySelector('.cl-fl');
+                    const makingChargeSection = document.querySelector('.cl-flex1 > div:last-child');
+        
+                    totalAmountSection.addEventListener('click', function () {
+                        totalAmountSection.parentElement.insertBefore(makingChargeSection, totalAmountSection.nextSibling);
+                    });
+        
+                    makingChargeSection.addEventListener('click', function () {
+                        makingChargeSection.parentElement.insertBefore(totalAmountSection, makingChargeSection.nextSibling);
+                    });
+                });
+            </script>
+             {% endcomment %}
+            <p>3% GST is applicable for all gold, diamond and platinum ornaments and is implied on all our calculations.</p>
+            
+        </div>
+    </div>
+</section>
+<section style="display: flex;justify-content: center;flex-wrap: wrap;">
+    <video  class="video" controls>
+        <source src="{% static 'assets/videos/Calculator_Page_Video_-_Made_with_Clipchamp.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section> 
+<section style="display: flex;justify-content: center;flex-wrap: wrap;">
+    <img src="{% static 'assets/img/ear_rings_example_GAPlgkG.jpg' %}">
+</section>     
+{% endblock %}   

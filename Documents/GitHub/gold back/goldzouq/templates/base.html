@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/product.css' %}">
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-TsZ0HJ5un8EftmqUcR2RbC5apQxYo1P0ZcxNiiwOJOPTeD7NdmAuRbPw+8RIq7AH9eJhavZRMydrbI9zCuPR4w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script src="https://kit.fontawesome.com/57c218bfa9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        .hd-flex a{
+            text-decoration:none;
+            color:black;
+        }
+    </style>
+
+</head>
+<body>
+    <header id="hd">
+        <div class="flex">
+            <div>
+                <a href="{% url 'main:index' %}"><img src="{% static 'assets/img/gold-zouq_1.svg' %}" class="hd-img"></a>
+            </div>
+            <div>
+                <div class="header">
+                    <nav class="nav">
+                        {% for parent_category in parent_categories %}
+                            <a href="#" class="nav-link" data-id="{{ parent_category.id }}">{{ parent_category.name|upper }}</a>
+                        {% endfor %}
+                    </nav>
+                    <form action="/search" method="get">
+                        <div class="search-container">
+                            <img src="{% static 'assets/img/search.svg' %}" class="icon">
+                            <input type="text" name="q" placeholder="Search for products, brands and more" class="search">
+                        </div>
+                    </form>
+                    <div class="hd-div">
+                        <div class="box">
+                            <div style="display: flex;justify-content: center;">
+                                <img src="{% static 'assets/img/user.svg' %}">
+                            </div>
+                            <a href="{% url 'accounts:login_with_otp' %}" style="text-decoration: none;color: #63392C;">
+                                <div style="text-align: center;">User</div>
+                            </a>
+                        </div>
+                        <div class="box1">
+                            <div style="display: flex;justify-content: center;">
+                                <a href="{% url 'main:calculator' %}" style="text-decoration: none;color: #63392C;">
+                                    <img src="{% static 'assets/img/calculator-svgrepo-com (1).svg' %}" class="icon1">
+                                </a>
+                            </div>
+                            <div style="text-align: center;">Calculator</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="selectedContentMain" class="hd-flex" >
+                    <!-- Default content for the selected item -->
+                    <!-- This will be filled by the script below -->
+                </div>
+    
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        function showContent(parentCategoryId) {
+                            // Fetch child categories for the selected parent category
+                            fetch(`/get_child_categories/${parentCategoryId}/`)
+                                .then(response => response.json())
+                                .then(childCategories => {
+                                    var selectedContent = '';
+                                    childCategories.forEach(function (category) {
+                                        // Use Django's URL template tag to generate the URL dynamically
+                                        selectedContent += `<div><a  href="{% url 'main:product_list' %}?category={{ category.id }}" >${category.name}</a>
+</div>`;
+                                    });
+                                    document.getElementById('selectedContentMain').innerHTML = selectedContent;
+                                })
+                                .catch(error => console.error('Error fetching child categories:', error));
+                        }
+                
+                        // Add click event listeners to nav links
+                        document.querySelectorAll('.nav-link').forEach(function (link) {
+                            link.addEventListener('click', function (event) {
+                                event.preventDefault();
+                                var parentCategoryId = this.getAttribute('data-id');
+                                showContent(parentCategoryId);
+                
+                                // Remove the 'selected' class from all nav-links
+                                document.querySelectorAll('.nav-link').forEach(function (link) {
+                                    link.classList.remove('selected');
+                                });
+                
+                                // Add the 'selected' class to the clicked nav-link
+                                this.classList.add('selected');
+                            });
+                        });
+                
+                        // Show the default content (first category) when the page loads
+                        if (document.querySelector('.nav-link')) {
+                            document.querySelector('.nav-link').click();
+                        }
+                    });
+                </script>
+                
+            </div>
+        </div>
+        <div class="pos"></div>
+    </header>
+
+    <header id="hd1" >
+        <div class="res">
+            <div>
+                <div style="width:2rem;color:#63392C;" id="toggleBtn" onclick="toggleNav()">&#9776;</div>
+                <div style="color: #63392C;font-size:10px;">Menu</div>
+            </div>
+            <a href="{% url 'main:index' %}"><img src="{% static 'assets/img/gold-zouq_1.svg' %}" class="res-img"></a>
+            <div class="">
+                <div style="display: flex;justify-content: center;">
+                    <img src="{% static 'assets/img/user.svg' %}">
+                </div>
+                <a href="{% url 'accounts:login_with_otp' %}" style="text-decoration: none;color: #63392C;"><div style="text-align: center;color: #63392C;font-size:10px;">User</div></a>
+            </div>
+            <div class="">
+                <div style="display: flex;justify-content: center;">
+                    <a href="{% url 'main:calculator' %}" style="text-decoration: none;color: #63392C;"><img src="{% static 'assets/img/calculator-svgrepo-com (1).svg' %}" class="icon1"></a>
+                </div>
+                <div style="text-align: center;color: #63392C;font-size:10px;">Calculator</div>
+            </div>
+        </div>
+        <div style="display: flex;justify-content: center;">
+            <form action="/search" method="get">
+                <div class="search-container">
+                    <img src="{% static 'assets/img/search.svg' %}" class="icon">
+                    <input type="text" name="q" placeholder="Search for products, brands and more" class="search">
+                </div>
+            </form>
+        </div>
+
+        <div class="pos"></div>
+    </header>
+    <div id="mySidenav" class="sidenav">
+        <img src="{% static 'assets/img/gold-zouq_1.svg' %}" class="res-img" style="padding: 0 8rem;">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="res-flex">
+            <nav class="nav" style="border-right: 1px solid rgb(220, 218, 218);height: 50rem;padding: 1rem;">
+                <a href="#" class="nav-link selected" onclick="showContent('gold', 'responsive')">GOLD &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; ></a>
+                <a href="#" class="nav-link" onclick="showContent('diamond', 'responsive')">DIAMOND&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;   ></a>
+                <a href="#" class="nav-link" onclick="showContent('weddingRings', 'responsive')">WEDDING RINGS &nbsp; &nbsp; ></a>
+            </nav>
+            
+            <div id="selectedContentResponsive" class="hd-flex">
+                <!-- Default content for the selected item -->
+                <div style="margin-bottom: 20px;">Bangle</div>
+                <div style="margin-bottom: 20px;">Bracelet</div>
+                <div style="margin-bottom: 20px;">Chain</div>
+                <div style="margin-bottom: 20px;">Necklace</div>
+                <div style="margin-bottom: 20px;">Pendant</div>
+                <div style="margin-bottom: 20px;">Ring</div>
+                <div style="margin-bottom: 20px;">Studs</div>
+            </div>
+
+        </div>
+        <script>
+            // Show the default content (gold) when the page loads
+            // Show the default content (gold) when the page loads for both main and responsive navigation
+            window.onload = function () {
+            // Get the screen width
+            var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+            // Check if the screen width is greater than a specific value (e.g., 600px)
+            if (screenWidth > 600) {
+                showContent('gold', 'main');
+            }
+
+            // Optionally, you can also hide the toggle button on page load for smaller screens
+            // var toggleBtn = document.getElementById("toggleBtn");
+            // if (screenWidth <= 600) {
+            //     toggleBtn.style.display = "none";
+            // }
+            };
+            function showContent(contentType, navType) {
+                // Remove the 'selected' class from all nav-links (Main Navigation)
+                document.querySelectorAll('.nav-link').forEach(function (link) {
+                    link.classList.remove('selected');
+                });
+
+                // Add the 'selected' class to the clicked nav-link (Main Navigation)
+                var selectedLink = document.querySelector('.nav-link[href="#"][onclick="showContent(\'' + contentType + '\', \'' + navType + '\')"]');
+                selectedLink.classList.add('selected');
+
+                // Create the selected content dynamically (Main Navigation)
+                var selectedContentMain;
+                switch (contentType) {
+                    case 'gold':
+                    selectedContentMain = `
+                            <div style="margin-bottom: 20px;">Bangle</div>
+                            <div style="margin-bottom: 20px;">Bracelet</div>
+                            <div style="margin-bottom: 20px;">Chain</div>
+                            <div style="margin-bottom: 20px;">Necklace</div>
+                            <div style="margin-bottom: 20px;">Pendant</div>
+                            <div style="margin-bottom: 20px;">Ring</div>
+                            <div style="margin-bottom: 20px;">Studs</div>
+                        `;
+                        break;
+                    case 'diamond':
+                        selectedContentMain = `
+                                <div style="margin-bottom: 20px;">Bangle</div>
+                                <div style="margin-bottom: 20px;">Bracelet</div>
+                                <div style="margin-bottom: 20px;">Pendant</div>
+                                <div style="margin-bottom: 20px;">Ring</div>
+                                <div style="margin-bottom: 20px;">Studs</div>
+                            `;
+                        break;
+                    case 'weddingRings':
+                        selectedContentMain = '<div style="margin-bottom: 20px;">Gold Ring</div><br>';
+                        break;
+                    default:
+                        selectedContentMain = '';
+                }
+
+                // Update the selected content area (Main Navigation)
+                var selectedContentAreaMain = document.getElementById('selectedContentMain');
+                selectedContentAreaMain.innerHTML = selectedContentMain;
+
+                // Remove the 'selected' class from all nav-links (Responsive Navigation)
+                document.querySelectorAll('.nav-link').forEach(function (link) {
+                    link.classList.remove('selected');
+                });
+
+                // Add the 'selected' class to the clicked nav-link (Responsive Navigation)
+                var selectedLinkResponsive = document.querySelector('.nav-link[href="#"][onclick="showContent(\'' + contentType + '\', \'' + navType + '\')"]');
+                selectedLinkResponsive.classList.add('selected');
+
+                // Create the selected content dynamically (Responsive Navigation)
+                var selectedContentResponsive;
+                switch (contentType) {
+                    case 'gold':
+                        selectedContentResponsive = `
+                                <div style="margin-bottom: 20px;">Bangle</div>
+                                <div style="margin-bottom: 20px;">Bracelet</div>
+                                <div style="margin-bottom: 20px;">Chain</div>
+                                <div style="margin-bottom: 20px;">Necklace</div>
+                                <div style="margin-bottom: 20px;">Pendant</div>
+                                <div style="margin-bottom: 20px;">Ring</div>
+                                <div style="margin-bottom: 20px;">Studs</div>
+                            `;
+                        break;
+                    case 'diamond':
+                        selectedContentResponsive = `
+                                <div style="margin-bottom: 20px;">Bangle</div>
+                                <div style="margin-bottom: 20px;">Bracelet</div>
+                                <div style="margin-bottom: 20px;">Pendant</div>
+                                <div style="margin-bottom: 20px;">Ring</div>
+                                <div style="margin-bottom: 20px;">Studs</div>
+                            `;
+                        break;
+                    case 'weddingRings':
+                        selectedContentResponsive = '<div style="margin-bottom: 20px;">Gold Ring</div>';
+                        break;
+                    default:
+                        selectedContentResponsive = '';
+                }
+
+                // Update the selected content area (Responsive Navigation)
+                var selectedContentAreaResponsive = document.getElementById('selectedContentResponsive');
+                selectedContentAreaResponsive.innerHTML = selectedContentResponsive;
+            }
+        </script>
+        <script>
+            // Close the side navigation when the page loads
+            window.onload = function () {
+                closeNav();
+            };
+        
+            function toggleNav() {
+                document.getElementById("mySidenav").style.width = "100%";
+            }
+        
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+        
+    </div>  
+    {% block content %}
+    
+    {% endblock %}
+    <div id="res1" style="background-color: #F9EFE1; padding: .4rem .2rem ; position: fixed; bottom: 0; width: 100%;z-index: 1;">
+        <div style="display: flex; justify-content: space-around;align-items: center;text-align: center;">
+            <div>
+                <div style="display: flex;justify-content: center;">
+                    <a href="{% url 'main:index' %}"><img src="{% static 'assets/img/icons-home.svg' %}" alt="" style="height: 2rem;"></a>
+                </div>
+                <div style="font-size: 10px;color: #63392C;">Home</div>
+            </div>
+            <div style="border-left: 1px solid rgb(219, 218, 218);border-right: 1px solid rgb(219, 218, 218); padding: 0 2rem;">
+                <div style="display: flex;justify-content: center;">
+                    <a href="{% url 'main:calculator' %}" style="text-decoration: none;color: #63392C;"><img src="{% static 'assets/img/calculator-svgrepo-com.svg' %}" alt="" style="height: 2rem;"></a>
+                </div>
+                <div style="font-size: 10px;color: #63392C;">Calculator</div>
+            </div>
+            <div>
+                <div style="display: flex;justify-content: center;">
+                    <a href="{% url 'main:reels' %}" style="text-decoration: none;color: #63392C;"><img src="{% static 'assets/img/icons-reels.svg' %}" alt="" style="height: 2rem;"></a>
+                </div>
+                <div style="font-size: 10px;color: #63392C;">Reels</div>
+            </div>
+        </div>
+    </div>
+    <section style="border-top: 1px dashed #63392C;margin: 3rem 0;"></section>
+    <footer>
+        <div class="flex1" >
+            <div>
+                <img src="{% static 'assets/img/gold-zouq_1.svg' %}" class="ft-img">
+                <div style="margin-top: 1rem;margin-bottom: 2rem;">
+                    <a href="{% url 'main:seller' %}" class="ftr-a">Become a Seller</a>
+                </div>
+            </div>
+            <div class="ftr">
+                
+                <div style="">
+                    <h4>Who We Are</h4>
+                    <p>About Us</p>
+                    <p>Contact Us</p>
+                    <p>Testimonials</p>
+                    <p>Stores</p>
+                </div>
+                <div style="">
+                    <h4>Account</h4>
+                    <p>My Account</p>
+                    <p>Become a Seller</p>
+                </div>
+                <div style="">
+                    <h4>Categories</h4>
+                    <p>GOLD</p>
+                    <p>DIAMOND</p>
+                    <p>WEDDING RINGS</p>
+                </div>
+                <div style="">
+                    <h4>Contact</h4>
+                    <p><i class="fa-solid fa-envelope" style="color:#63392C"></i>
+                        hello@goldzouq.com
+                    </p>
+                    <p><i class="fa-solid fa-phone" style="color:#63392C"></i>
+                        9496699447
+                    </p>
+                    <div class="ftr-icon">
+                        <i class="fa-brands fa-linkedin" style="color:#63392C"></i>
+                        <i class="fa-brands fa-facebook-f" style="color:#63392C"></i>
+                        <i class="fa-brands fa-instagram" style="color:#63392C"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div style="background-color: #63392C;padding: 2rem 4rem;color:white;" id="ft">
+        <div style="display: flex;justify-content: space-between;flex-wrap: wrap;">
+            <div>© Powered by WebCastle</div>
+            <div style="display: flex;justify-content: center;gap: 2rem;" id="p">
+                <div>
+                    Terms & Condition
+                </div>
+                <div>
+                    <a href="{% url 'main:privacy_policy' %}">Privacy policy</a>
+                </div>
+                <div>
+                    <a href="{% url 'main:calculator' %}">Price Calculator</a>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+    
+</body>
+</html>

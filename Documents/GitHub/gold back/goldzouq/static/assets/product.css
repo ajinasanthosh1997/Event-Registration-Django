@@ -1,0 +1,728 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Switzer', sans-serif;
+}
+
+.prct-img {
+    height: 30rem;
+    width: 30rem;
+}
+
+section {
+    margin: 2rem 2rem;
+}
+
+.prdct-flex {
+    display: flex;
+    justify-content: left;
+    gap: 2rem;
+    margin: 2rem 3rem;
+}
+
+.bt1,
+.bt2,
+.bt3 {
+    padding: 0.7rem 3rem;
+    border-radius: 2rem;
+    border: 1px solid #63392C;
+    background-color: white;
+    color: #63392C;
+}
+
+.bt1:hover,
+.bt2:hover {
+    border-radius: 0.2rem;
+}
+
+.prdct {
+    display: flex;
+    justify-content: left;
+    padding-left: 5rem;
+    padding-top: 1.5rem;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.pr-img {
+    height: 6rem;
+    width: 10rem;
+}
+
+.btn,
+.btn1 {
+    border: none;
+    background-color: white;
+    font-size: 1rem;
+}
+
+#productSpecs {
+    display: none;
+}
+
+.fl {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-basis: 19%;
+}
+
+.fl p {
+    margin: 0;
+}
+
+
+
+.log{
+    font-family: "DM Serif Display",serif;
+    color: #63392C;
+}
+.log-in{
+    padding: .8rem;
+    width: 17rem;
+    border: 1px solid #d0cece;
+    border-radius: 0.3rem;
+}
+.log-div{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: .5rem;
+    padding: 3rem 2rem;
+}
+.log-bt{
+    background-color: #63392C;
+    color: white;
+    padding: 1rem 7rem;
+    border: none;
+    border-radius: .3rem;
+    font-size: 16px;
+}
+.log-a1{
+    text-decoration: none;
+    color: #63392C;
+    padding: .8rem 5.5rem;
+    
+    border: 1px solid #63392C;
+    border-radius: .3rem;
+    font-size: 16px;
+}
+.log-a1:hover{
+    background-color: #63392C;
+    color: white;
+}
+.log-a2{
+    text-decoration: none;
+    color: #63392C;
+    padding: .8rem 8rem;
+    
+    border: 1px solid #63392C;
+    border-radius: .3rem;
+    font-size: 16px;
+}
+.log-a3{
+    text-decoration: none;
+    color: #63392C;
+    padding: .8rem 5rem;
+    
+    border: 1px solid #63392C;
+    border-radius: .3rem;
+    font-size: 16px;
+}
+.log-a3:hover{
+    background-color: #63392C;
+    color: white;
+}
+.log-a2:hover{
+    background-color: #63392C;
+    color: white;
+}
+
+.log-a4{
+    text-decoration: none;
+    color: #63392C;
+    padding: .8rem 7.5rem;
+    
+    border: 1px solid #63392C;
+    border-radius: .3rem;
+    font-size: 16px;
+}
+.log-a4:hover{
+    background-color: #63392C;
+    color: white;
+}
+.log-bt1{
+    background-color: #63392C;
+    color: white;
+    padding: 1rem 7rem;
+    border: none;
+    border-radius: .3rem;
+    font-size: 16px;
+}
+.reg {
+    margin: 1rem 0;
+}
+
+
+.font {
+    font-family: "DM Serif Display", serif;
+    font-size: 2rem;
+    color: #63392C;
+}
+
+.cl-flex {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.cl-flex1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cl-flex1 input {
+    border: 1px solid #c17324;
+    height: 1.8rem;
+    width: 16rem;
+    margin-bottom: 1rem;
+}
+
+.cl-fl {
+    flex: 1;
+    cursor: pointer;
+}
+
+.tick {
+    display: flex;
+    align-items: center;
+}
+
+.cl-bt {
+    background-color: #63392C;
+    color: white;
+    padding: 0.7rem 6.6rem;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+}
+
+.pd {
+    padding: 2rem;
+    border-right: 1px solid rgb(233, 230, 230);
+}
+
+.sl-flex {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.sl-flex input {
+    border-bottom: 1px solid rgb(210, 209, 209);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin-bottom: 2rem;
+    width: 28rem;
+}
+
+.sl-flex label {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sl-flex input:focus+label {
+    transform: translateY(-20px);
+    font-size: 12px;
+    color: #333;
+}
+
+.sl-bt {
+    background-color: #63392C;
+    color: white;
+    padding: 0.7rem 2rem;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+    border-radius: 0.4rem;
+    border: none;
+}
+
+.video {
+    height: 31rem;
+    width: 25rem;
+}
+
+.accordian {
+    display: flex;
+    flex-direction: column;
+}
+
+.card12 {
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    max-height: auto; /* Set an initial max-height for transition */
+}
+
+.card-header {
+    cursor: pointer;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 6rem;
+    align-items: center;
+}
+
+.card-body {
+    display: none;
+    height: max-content;
+    transition: all .5s ease-in;
+}
+
+ @keyframes card-body{
+    from {
+        opacity: 0; 
+    }
+
+    to {
+        opacity: 1; 
+    }
+} 
+
+.card-body ul {
+    padding: 0rem 1rem;
+    color: #63392C;
+   
+}
+
+.more {
+    padding: 10px;
+    display: none;
+}
+p{
+    color: #63392C;
+    font-weight: 400;
+}
+.ftr-list {
+    /* margin: 2rem 0; */
+}
+.but button.active {
+    position: relative;
+}
+
+.but button.active:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -17px; /* Adjust this value to change the distance of the underline from the text */
+    width: 100%;
+    height: 1px; /* Adjust this value to change the thickness of the underline */
+    background-color: #63392C; /* Adjust this value to change the color of the underline */
+}
+.fil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0 .5rem;
+    margin-bottom: 2rem;
+}
+.fil1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5rem;
+    padding:0 .5rem;
+    margin-bottom: 2rem;
+}
+.fil {
+    display: flex;
+}
+
+.filter-option,
+.sort-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem 3rem; /* Adjust padding as needed */
+}
+
+.filter-option {
+    border-right: 1px solid #e1e1e1;
+}
+ input[type="checkbox"] {
+    width: 1rem; /* Set the width of the checkbox */
+    height: 1rem; /* Set the height of the checkbox */
+    color: #63392C;
+    
+}
+input[type="radio"] {
+    width: 1rem; /* Set the width of the checkbox */
+    height: 1rem; /* Set the height of the checkbox */
+    color: #63392C;
+}
+.prdct1-flex{
+    display: flex;
+    justify-content: center;
+    gap:28rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.pr-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.pr-bt{
+    color: #63392C;
+    text-decoration: none;
+    border: 1px solid #63392C;
+    padding: .5rem .5rem;
+    border-radius: 0.2rem;
+}
+.pr-img{
+    height: 3rem;padding: 1rem 2rem;
+}
+.pr-img1{
+    height: 16rem;width: 14rem;
+}
+.pr-flex12 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two items per row */
+    gap: 1rem;
+    margin-top: -1rem; /* Adjust for margin added to the container */
+}
+
+
+
+.flex1{
+    display: flex;justify-content: left;gap:4rem;margin: 2rem 4rem;
+}
+.pr-bt {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+.hidden {
+    display: none;
+}
+.close-button {
+    position: relative;
+    
+    width: 24px;
+    height: 23px;
+    border:none;
+    border-radius: 50%;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    top: 0rem;
+    left: .3rem;
+    background-color: #63392C;
+}
+.p-bt{
+    display: flex;
+    justify-content: left;
+    gap: 1rem;
+    font-size: 14px;
+}
+.p-bt1{
+    border: none;
+    background-color: white;
+}
+.prdct1-flex button {
+    margin-right: 5px;
+    font-weight: normal;
+}
+
+.prdct1-flex button.selected {
+    font-weight: bold;
+}
+#content{
+    display: block;
+}
+#content2{
+    display: none;
+}
+.fil{
+    display: flex;
+}
+.pr-sec{
+    margin: 1rem 1rem;
+}
+.mr{
+    margin: 2rem 6rem;
+}
+
+#toggleBtn1 {
+    font-size: 20px;
+    cursor: pointer;
+}
+.sidetoggle {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#F9EFE1;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidetoggle a {
+    padding: 8px 1px 8px 32px;
+    text-decoration: none;
+    /* font-size: 26px; */
+    display: block;
+    transition: 0.3s;
+    color: #63392C;
+}
+
+
+
+.sidetoggle .closebtn1 {
+    
+    font-size: 38px;
+    
+}
+.side {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:#F9EFE1;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.side a {
+    padding: 8px 1px 8px 32px;
+    text-decoration: none;
+    /* font-size: 26px; */
+    display: block;
+    transition: 0.3s;
+    color: #63392C;
+}
+
+
+
+.side .closebtn2 {
+    
+    font-size: 38px;
+    
+}
+.terms h1{
+    font-family: 'Switzer-Light';font-size: 3rem;color: #63392C;
+}
+.terms{
+    margin: 2rem 8rem;line-height: 2rem;
+}
+.logo img{
+    height: 8rem;
+    width: 16rem;
+    padding: 1rem;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    border-radius: .5rem;
+    transition: transform 0.3s ease-in-out;
+}
+.logo img:hover{
+    transform: scale(1.1);
+    /* transform: rotateY(180deg); */
+
+}
+.logo-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  /* border: 1px solid #f1f1f1; */
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+.flip-card img{
+    height: 8rem;
+    width: 16rem;
+    padding: 1rem;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    border-radius: .5rem;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  /* background-color: #bbb; */
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  /* background-color: dodgerblue; */
+  color: white;
+  transform: rotateY(180deg);
+  height: 8rem;
+    width: 16rem;
+    padding: 1rem;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    border-radius: .5rem;
+}
+.flip-card-back a{
+    text-decoration: none;
+    
+}
+
+@media only screen and (max-width: 500px) {
+    .terms{
+        margin: 2rem 1rem;
+    }
+    .terms h1{
+        font-size: 2rem;
+        font-family: 'Switzer-Light';
+    }
+    .mr{
+        margin: 2rem 2rem;
+    }
+    .pr-img1{
+        height: 10rem;width: 14rem;
+    }
+    p {
+        color: #63392C;
+        font-weight: 400;
+        font-size: 12px;
+    }
+    .pr-img {
+        height: 2rem;
+        width: 4rem;
+        padding: .5rem 2.1rem;
+    }
+    #content{
+        display: none;
+    }
+    #content2{
+        display: block;
+    }
+    .flex1{
+        display: block;
+        margin:0;
+    }
+    .prdct1-flex{
+        
+        gap:2rem;
+    }
+    .video {
+        height: 30rem;
+        width: 25rem;
+    }
+
+    .cl-flex {
+        justify-content: left;
+    }
+
+    .sl-flex {
+        gap: 0rem;
+        justify-content: left;
+    }
+
+    .sl-flex input {
+        width: 18rem;
+    }
+
+    .prct-img {
+        height: 23rem;
+        width: 23rem;
+    }
+
+    .prdct-flex {
+        margin: 2rem 0rem;
+    }
+
+    .log-div {
+        padding: 3rem 1rem;
+    }
+
+    .log-bt {
+        padding: 1rem 6rem;
+    }
+
+    .log-bt1 {
+        padding: 1rem 7rem;
+    }
+
+    .log-a1 {
+        padding: 0.8rem 4.5rem;
+    }
+
+    .log-a2 {
+        padding: 0.8rem 7rem;
+    }
+
+    .log-a3 {
+        padding: 0.8rem 4rem;
+    }
+
+    .log-a4 {
+        padding: 0.8rem 7.5rem;
+    }
+
+    .cl-flex1 input {
+        width: 8rem;
+    }
+
+    .cl-flex1 label {
+        font-size: 13px;
+    }
+
+    .cl-bt {
+        padding: 0.7rem 2.6rem;
+    }
+
+    .font {
+        font-size: 25px;
+    }
+
+    .pd {
+        padding: 0rem;
+        border-right: none;
+        margin-bottom: 2rem;
+    }
+
+    form h1 {
+        font-size: 1.2rem;
+    }
+
+    form h3 {
+        font-size: 0.8rem;
+    }
+}

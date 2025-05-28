@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+section{
+    margin: 2rem 8rem;
+}
+.ac-flex label{
+    font-size: 0.9rem;
+    transition: transform 0.3s ease-in-out;
+    color: #63392C;
+}
+.ac-flex input{
+    border-bottom: 1px solid rgb(210, 209, 209);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin-bottom: 2rem;
+    width: 28rem;
+    
+}
+.ac-flex input:focus+label {
+    transform: translateY(-10px);
+    font-size: 12px;
+    color: #333;
+}
+
+h1{
+    font-family: "DM Serif Display",serif;
+    color: #63392C;
+    font-size: 2rem;
+}
+h4{
+    color: #63392C;
+}
+.account-flex{
+    display: flex;
+    justify-content: left;
+    gap:4rem;
+    flex-wrap: wrap;
+}
+.account-flex1{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:2rem;
+    flex-wrap: wrap;
+}
+a{
+    text-decoration: none;
+    color: #63392C;
+}
+.ac-mar{
+    margin-top: 4rem;
+}
+button{
+    background-color: #63392C;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 1rem 1rem;
+    border-radius: .4rem;
+}
+
+        .input-container {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    label {
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      transition: top 0.3s, font-size 0.3s;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none; /* Remove other borders */
+      border-bottom: 1px solid #000; /* Set the bottom border */
+      border-radius: 0; /* Optional: Set border-radius to 0 for a straight bottom border */
+      outline: none; /* Remove the default outline */
+      transition: border-bottom 0.3s;
+    }
+
+    input:focus {
+      border-bottom: 2px solid #63392C; /* Change the bottom border color on focus */
+    }
+
+    /* Adjust label position when input is focused */
+    .input-container input:focus + label {
+      top: -5px;
+      font-size: 12px;
+    }
+    #hddd{
+        display: block;
+    }
+    @media only screen and (max-width: 500px) {
+        #hddd{
+        display: none;
+    }
+    section{
+        margin: 2rem 1rem;
+    }
+    .ac-flex input{
+        width: 20rem;
+    }
+    .account-flex1{
+        gap:0rem;
+    }
+    .account-flex{
+        gap:0rem;
+    }
+    }
+</style>
+<section>
+    <div class="account-flex">
+        <div>
+            <h1>My Account</h1>
+            <div id="hddd">
+                <h4>My Profile</h4>
+                <hr style="color: #63392C;">
+                <a href="{% url 'accounts:logout' %}">Logout</a>
+            </div>
+        </div>
+        <form method="post" action="{% url 'accounts:account' %}" class="ac-flex">
+            {% csrf_token %}
+            <div class="account-flex1">
+                <div>
+                    <div class="input-container">
+                        <input type="text" value="{{ user.name }}">
+                        <label>Your Name</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" value="{{ user.email }}">
+                        <label>Your Email</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="tel" value="{{ user.phone_number }}">
+                        <label>Your Phone</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" value="{{ user.location }}">
+                        <label>Location</label>
+                    </div>
+                </div>
+            </div>
+            <div style="margin:2rem 0;">
+                <button type="submit" value="submit">Update Profile</button>
+            </div>
+        </form>
+        
+        <script>
+            // Add event listeners to all input elements within the form
+            document.querySelectorAll('.ac-flex input').forEach(function(input) {
+                input.addEventListener('focus', function() {
+                    // Move the label to the top when input is focused
+                    input.previousElementSibling.style.transform = 'translateY(-10px)';
+                    input.previousElementSibling.style.fontSize = '12px';
+                    input.previousElementSibling.style.color = '#333';
+                });
+        
+                input.addEventListener('blur', function() {
+                    // Move the label back down when input loses focus if there is no value
+                    if (!input.value) {
+                        input.previousElementSibling.style.transform = 'translateY(0)';
+                        input.previousElementSibling.style.fontSize = '';
+                        input.previousElementSibling.style.color = '';
+                    }
+                });
+            });
+        </script>
+    </div>
+</section>    
+{% endblock %}
