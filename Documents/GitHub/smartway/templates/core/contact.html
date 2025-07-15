@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+  <!-- Hero Section -->
+  <section class="pt-20 pb-16 text-center bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h1 class="text-5xl md:text-6xl font-light text-blue-900 mb-6">
+        Contact <span class="font-bold text-blue-700">Us</span>
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+        Get in touch with our team for personalized business solutions and expert guidance
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
+
+      <!-- Contact Form -->
+      <div class="bg-gray-50 rounded-2xl p-8">
+        <h2 class="text-3xl font-bold text-blue-900 mb-6">Send us a Message</h2>
+       <form id="contact-form" method="POST" class="space-y-6">
+  {% csrf_token %}
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <label for="fullname">Full Name *</label>
+      <input type="text" id="fullname" name="fullname" required placeholder="Your Name"
+        class="mt-1 py-2 px-3 w-full bg-white ring-1 ring-slate-400 rounded-md focus:outline-none" />
+    </div>
+    <div>
+      <label for="mobile">Phone</label>
+      <input type="text" id="mobile" name="mobile" placeholder="Phone Number"
+        class="mt-1 py-2 px-3 w-full bg-white ring-1 ring-slate-400 rounded-md focus:outline-none" />
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <label for="email">Email (optional)</label>
+      <input type="email" id="email" name="email" placeholder="Email"
+        class="mt-1 py-2 px-3 w-full bg-white ring-1 ring-slate-400 rounded-md focus:outline-none" />
+    </div>
+    <div>
+      <label for="cpr">CPR</label>
+      <input type="text" id="cpr" name="cpr" required placeholder="CPR"
+        class="mt-1 py-2 px-3 w-full bg-white ring-1 ring-slate-400 rounded-md focus:outline-none" />
+    </div>
+  </div>
+
+  <div>
+    <label for="type_of_request">Type of Request</label>
+    <select id="type_of_request" name="type_of_request" required
+  class="mt-1 py-2 px-3 w-full bg-white ring-1 ring-slate-400 rounded-md focus:outline-none">
+  <option value="">Select</option>
+  <option value="rent_car">Rent a car</option>
+  <option value="travel">Travel</option>
+  <option value="business_center">Business Center</option>
+</select>
+
+  </div>
+
+  <button type="submit"
+    class="w-full bg-blue-700 text-white flex items-center justify-center px-4 py-2 rounded-lg hover:bg-blue-600">
+    Send Message
+  </button>
+</form>
+
+<script>
+  function getCSRFToken() {
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
+    return csrfToken ? csrfToken.value : '';
+  }
+
+  document.getElementById('contact-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const data = {
+      full_name: formData.get('fullname'),
+      phone: formData.get('mobile'),
+      email: formData.get('email'),
+      cpr: formData.get('cpr'),
+      type_of_request: formData.get('type_of_request'),
+    };
+
+    try {
+      const response = await fetch('/api/contact/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCSRFToken(),
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert('✅ Message submitted successfully!');
+        form.reset();
+      } else {
+        alert('⚠️ Submission failed. Please check your input.');
+        console.log(result);
+      }
+    } catch (error) {
+      console.error(error);
+      alert('❌ Error submitting form.');
+    }
+  });
+</script>
+
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-3xl font-bold text-blue-900 mb-6">Get in Touch</h2>
+          <p class="text-lg text-gray-600 mb-8">
+            We're here to help you find the perfect solution for your business needs.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-blue-900">Phone</h3>
+            <p class="text-gray-600">+973 77903284</p>
+            <p class="text-sm text-gray-500">Available 9 AM - 6 PM</p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-blue-900">Email</h3>
+            <p class="text-gray-600">info@smartway.bh</p>
+            <p class="text-sm text-gray-500">We'll respond within 24 hours</p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-blue-900">Address</h3>
+            <p class="text-gray-600">Building 123, Road 456</p>
+            <p class="text-gray-600">Manama 123, Bahrain</p>
+            <p class="text-sm text-gray-500">Visit us for face-to-face consultation</p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-blue-900">Business Hours</h3>
+            <p class="text-gray-600">Sun - Thu: 9:00 AM - 6:00 PM</p>
+            <p class="text-gray-600">Fri - Sat: Closed</p>
+          </div>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <h3 class="font-semibold text-blue-900 mb-2">Need Immediate Assistance?</h3>
+          <p class="text-gray-600 mb-4">Contact us on WhatsApp for instant support</p>
+          <a href="https://wa.me/97377903284" target="_blank"
+            class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-600 inline-block">
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-blue-900 mb-6">Find Us</h2>
+      <p class="text-xl text-gray-600 mb-8">Visit our office in the heart of Manama</p>
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="aspect-w-16 aspect-h-9">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.8234!2d50.5876!3d26.2235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49aff5d5f8b86f%3A0x7b2b7f8b7b2b7f8b!2sManama%2C%20Bahrain!5e0!3m2!1sen!2s!4v1635890000000!5m2!1sen!2s"
+            width="100%" height="450" frameborder="0" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+{% endblock %}

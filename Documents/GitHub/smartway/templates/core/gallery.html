@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="pt-32 pb-16">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h1 class="text-5xl md:text-6xl font-light text-blue-900 mb-6">
+      Our <span class="font-bold text-blue-700">Gallery</span>
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+      Explore our collection of professional work across all divisions
+    </p>
+  </div>
+</section>
+
+<section class="pb-16">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Dynamic Category Filters -->
+    <div class="flex flex-wrap justify-center gap-2 mb-12">
+      <a href="{% url 'gallery' %}" class="rounded-full px-6 py-2 text-sm {% if not request.GET.category %}bg-blue-700 text-white{% else %}text-gray-600 hover:text-blue-700{% endif %}">All</a>
+      {% for cat in categories %}
+        <a href="?category={{ cat.id }}" class="rounded-full px-6 py-2 text-sm {% if request.GET.category|add:0 == cat.id %}bg-blue-700 text-white{% else %}text-gray-600 hover:text-blue-700{% endif %}">
+          {{ cat.name }}
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[200px] gap-4">
+      {% for item in gallery_items %}
+      <div class="group relative overflow-hidden rounded-2xl bg-gray-100 
+                 {% if forloop.counter == 1 %}md:col-span-2{% endif %}
+                 {% if forloop.counter == 2 %}md:row-span-3{% endif %}
+                 {% if forloop.counter == 3 %}md:col-span-2 md:row-span-3{% endif %}
+                 h-full"
+                 data-video-container="{% if item.is_video %}true{% else %}false{% endif %}">
+        {% if item.is_video %}
+          <video 
+            src="{{ item.file.url }}" 
+            muted 
+            loop 
+            preload="none"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            data-video
+          ></video>
+          <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+            <div class="bg-white/30 backdrop-blur-md p-4 rounded-full">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        {% else %}
+          <img src="{{ item.file.url }}" alt="{{ item.title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        {% endif %}
+        
+        <!-- Title and Category - Hidden by default, shown on hover -->
+        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h3 class="font-bold">{{ item.title }}</h3>
+          <p class="text-sm opacity-80">{{ item.category.name }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Add hover event listeners to all video containers
+  document.querySelectorAll('[data-video-container="true"]').forEach(container => {
+    const video = container.querySelector('video[data-video]');
+    
+    container.addEventListener('mouseenter', () => {
+      if (video) {
+        // Set currentTime to 0 to ensure it starts from beginning
+        video.currentTime = 0;
+        
+        // Play video with promise-based approach
+        const playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log('Video play failed:', error);
+            // Fallback: Show play button overlay
+            container.querySelector('.absolute.inset-0').classList.remove('opacity-0');
+          });
+        }
+      }
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      if (video) {
+        video.pause();
+        video.currentTime = 0; // Reset to start
+      }
+    });
+  });
+});
+</script>
+
+{% endblock %}

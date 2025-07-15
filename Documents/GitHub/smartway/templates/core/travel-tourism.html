@@ -1,0 +1,382 @@
+{% extends "core/service_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section 
+  class="relative py-40 flex items-center justify-start bg-cover bg-center"
+  style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');"
+>
+  <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-transparent"></div>
+  <div class="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-xl lg:pl-40">
+      <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+        GREEN LIGHT TRAVEL
+      </h1>
+      <p class="text-xl text-white/90 mb-8 leading-relaxed">
+        Complete travel services for business and leisure with personalized experiences that create unforgettable memories.
+      </p>
+      <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105">
+        Start Adventure
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-emerald-900 mb-4">Our Services</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Comprehensive travel solutions tailored to your needs, from planning to execution
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Feature 1 -->
+      <div class="text-center group hover:scale-105 transition-transform duration-300">
+        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-600 transition-colors">
+          <!-- Plane Icon Placeholder -->
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><!-- Add icon here --></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-emerald-900 mb-4">Flight Bookings</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Book domestic and international flights with competitive prices and flexible scheduling options.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="text-center group hover:scale-105 transition-transform duration-300">
+        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-600 transition-colors">
+          <!-- Hotel Icon Placeholder -->
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><!-- Add icon here --></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-emerald-900 mb-4">Hotel Reservations</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Find and reserve the perfect accommodation from budget-friendly to luxury hotels worldwide.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="text-center group hover:scale-105 transition-transform duration-300">
+        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-600 transition-colors">
+          <!-- MapPin Icon Placeholder -->
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><!-- Add icon here --></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-emerald-900 mb-4">Tour Packages</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Discover curated tour packages for destinations around the world with expert local guides.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="text-center group hover:scale-105 transition-transform duration-300">
+        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-600 transition-colors">
+          <!-- FileText Icon Placeholder -->
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><!-- Add icon here --></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-emerald-900 mb-4">Visa Assistance</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Get professional help with visa applications and travel documentation for hassle-free journeys.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- About Us / Story Section -->
+<section class="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Left Side Content -->
+      <div class="space-y-8">
+        <div class="space-y-4">
+          <div class="inline-block">
+            <span class="text-sm font-semibold text-emerald-400 uppercase tracking-wider">
+              About us
+            </span>
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-bold text-white leading-tight">
+            Green Light<br />
+            <span class="text-emerald-400">Travel & Tourism</span>
+          </h2>
+        </div>
+
+        <div class="space-y-6">
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Your trusted partner in creating extraordinary travel experiences. We specialize in personalized travel solutions for both business and leisure, ensuring every journey is memorable and hassle-free.
+          </p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="grid grid-cols-2 gap-8 pt-8">
+          <div class="text-left">
+            <div class="text-3xl font-bold text-emerald-400">500+</div>
+            <div class="text-sm text-gray-400 mt-1">Destinations</div>
+          </div>
+          <div class="text-left">
+            <div class="text-3xl font-bold text-emerald-400">10K+</div>
+            <div class="text-sm text-gray-400 mt-1">Happy Travelers</div>
+          </div>
+          <div class="text-left">
+            <div class="text-3xl font-bold text-emerald-400">50+</div>
+            <div class="text-sm text-gray-400 mt-1">Awards</div>
+          </div>
+          <div class="text-left">
+            <div class="text-3xl font-bold text-emerald-400">15+</div>
+            <div class="text-sm text-gray-400 mt-1">Years Experience</div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="pt-4">
+          <button class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+            Contact Us
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Side Image Grid -->
+      <div class="relative">
+        <div class="grid grid-cols-12 grid-rows-8 gap-4 h-[600px]">
+          
+          <!-- Main Image -->
+          <div class="col-span-7 row-span-5 bg-white rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Travel destination"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Top Right Image -->
+          <div class="col-span-5 row-span-3 bg-slate-700 rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+              alt="Hotel lobby"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Bottom Left Image -->
+          <div class="col-span-4 row-span-3 bg-emerald-600 rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+              alt="Beach vacation"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Bottom Right Image 1 -->
+          <div class="col-span-3 row-span-2 bg-slate-600 rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+              alt="City skyline"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Bottom Right Image 2 -->
+          <div class="col-span-5 row-span-2 bg-blue-600 rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+              alt="Mountain landscape"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-emerald-900 mb-4">DUBAWS</h2>
+      <p class="text-xl text-gray-600">Choose your next adventure</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Card 1: Alpine Camping -->
+      <div class="group cursor-pointer">
+        <div class="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img
+            src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80"
+            alt="Alpine Camping"
+            class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3">
+              CAMPING
+            </span>
+            <h3 class="text-xl font-bold text-white mb-2">Alpine Camping</h3>
+            <p class="text-white/90 text-sm leading-relaxed">
+              Experience the serenity of high-altitude camping under starlit skies.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Waterfall Expeditions -->
+      <div class="group cursor-pointer">
+        <div class="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img
+            src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2087&q=80"
+            alt="Waterfall Expeditions"
+            class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3">
+              HIKING
+            </span>
+            <h3 class="text-xl font-bold text-white mb-2">Waterfall Expeditions</h3>
+            <p class="text-white/90 text-sm leading-relaxed">
+              Discover hidden waterfalls and pristine pools in remote wilderness areas.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Wildlife Encounters -->
+      <div class="group cursor-pointer">
+        <div class="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img
+            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2052&q=80"
+            alt="Wildlife Encounters"
+            class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3">
+              WILDLIFE
+            </span>
+            <h3 class="text-xl font-bold text-white mb-2">Wildlife Encounters</h3>
+            <p class="text-white/90 text-sm leading-relaxed">
+              Observe majestic wildlife in their natural habitat with expert naturalists.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Rock Climbing -->
+      <div class="group cursor-pointer">
+        <div class="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img
+            src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2019&q=80"
+            alt="Rock Climbing"
+            class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-3">
+              CLIMBING
+            </span>
+            <h3 class="text-xl font-bold text-white mb-2">Rock Climbing</h3>
+            <p class="text-white/90 text-sm leading-relaxed">
+              Challenge yourself on world-class climbing routes with professional instruction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Blog Section -->
+<section class="py-20 bg-emerald-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-emerald-900 mb-4">Na Ha Tandas</h2>
+      <p class="text-xl text-gray-600">Stories from the trail</p>
+    </div>
+
+    <!-- Blog Cards -->
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-3 grid md:grid-cols-3 gap-6">
+        
+        <!-- Blog 1 -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Mountain Rivers: Hidden Gems"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              NATURE
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-emerald-900 mb-3 group-hover:text-orange-500 transition-colors">
+              Mountain Rivers: Hidden Gems
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Discover pristine mountain rivers and the incredible ecosystems they support.
+            </p>
+          </div>
+        </article>
+
+        <!-- Blog 2 -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              alt="Forest Photography Tips"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              PHOTOGRAPHY
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-emerald-900 mb-3 group-hover:text-orange-500 transition-colors">
+              Forest Photography Tips
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Master the art of capturing the magic and mystery of ancient forests.
+            </p>
+          </div>
+        </article>
+
+        <!-- Blog 3 -->
+        <article class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2106&q=80"
+              alt="Mountaineering with Safety: Tips for Beginners"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <span class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              SAFETY
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-emerald-900 mb-3 group-hover:text-orange-500 transition-colors">
+              Mountaineering with Safety: Tips for Beginners
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Essential safety guidelines and preparation tips for your first mountaineering adventure.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ 
+
+
+
+{% endblock %}

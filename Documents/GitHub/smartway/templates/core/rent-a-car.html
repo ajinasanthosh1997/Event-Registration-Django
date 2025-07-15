@@ -1,0 +1,260 @@
+{% extends "core/service_base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- Hero Section -->
+<section class="pt-20 bg-blue-900 relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('{% static "public/car/bg-1.png"%}')] bg-cover bg-center opacity-80"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 grow gap-12 items-center min-h-[600px]">
+      <div class="text-white space-y-8">
+        <h1 class="text-7xl font-bold">
+          Premium car<br /><span class="text-g">Rental</span>
+        </h1>
+        <p class="text-xl text-slate-300 leading-relaxed max-w-lg">
+          Experience luxury and comfort with our premium fleet of vehicles.
+        </p>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 space-y-4">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm text-slate-300 mb-2">Pickup Date</label>
+              <input type="date" class="bg-white/20 px-4 w-full py-3 rounded-lg border-white/30 text-white" />
+            </div>
+            <div>
+              <label class="block text-sm text-slate-300 mb-2">Return Date</label>
+              <input type="date" class="bg-white/20 px-4 py-3 rounded-lg w-full border-white/30 text-white" />
+            </div>
+          </div>
+          <button class="w-full bg-blue-600 rounded-lg hover:bg-blue-700 text-white py-3 text-lg">
+            Search Available Cars
+          </button>
+        </div>
+      </div>
+      <div class="relative flex h-full pb-10 items-end grow">
+        <!-- Placeholder for car image -->
+        <!-- <img src="/car/car-1.png" alt="Premium Car" class="w-full max-w-2xl mx-auto" /> -->
+        <div class="absolute inset-0 rounded-3xl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Car Categories Section -->
+<section class="py-16 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-4xl font-bold text-slate-900">Car Category</h2>
+      <button class="text-blue-600 border flex items-center px-5 py-3 rounded-lg hover:text-blue-700">
+        View All
+        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Mercedes -->
+      <div class="group cursor-pointer">
+        <div class="bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="aspect-[4/5] bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">
+            <img src="{% static 'public/car/car-2.png'%}" alt="Mercedes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <h3 class="text-xl font-bold text-white absolute bottom-0 left-4 z-10 mb-2">Mercedes</h3>
+          </div>
+        </div>
+      </div>
+      <!-- Audi -->
+      <div class="group cursor-pointer">
+        <div class="bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="aspect-[4/5] bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">
+            <img src="{% static 'public/car/car-3.png'%}" alt="Audi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <h3 class="text-xl font-bold text-white absolute bottom-0 left-4 z-10 mb-2">Audi</h3>
+          </div>
+        </div>
+      </div>
+      <!-- BMW -->
+      <div class="group cursor-pointer">
+        <div class="bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="aspect-[4/5] bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">
+            <img src="{% static 'public/car/car-4.png'%}" alt="BMW" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <h3 class="text-xl font-bold text-white absolute bottom-0 left-4 z-10 mb-2">BMW</h3>
+          </div>
+        </div>
+      </div>
+      <!-- Porsche -->
+      <div class="group cursor-pointer">
+        <div class="bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="aspect-[4/5] bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">
+            <img src="{% static 'public/car/car-5.png'%}" alt="Porsche" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <h3 class="text-xl font-bold text-white absolute bottom-0 left-4 z-10 mb-2">Porsche</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Trending Vehicles -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center mb-12">
+      <h2 class="text-4xl font-bold text-slate-900">Trend vehicles</h2>
+      <div class="flex space-x-2">
+        <button class="w-10 h-10 p-0 border border-gray-300 rounded-full flex items-center justify-center">
+          <!-- Left Chevron Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button class="w-10 h-10 p-0 border border-gray-300 rounded-full flex items-center justify-center">
+          <!-- Right Chevron Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Vehicle 1 -->
+      <div class="group cursor-pointer">
+        <div class="bg-white border border-slate-200 rounded-2xl hover:shadow-lg transition-all duration-300">
+          <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+            <img src="{% static 'public/car/car-01.jpg'%}" alt="MG Zs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">MG Zs</h3>
+                <p class="text-sm text-slate-600">SUV</p>
+              </div>
+              <div class="flex items-center space-x-1">
+                <svg class="h-4 w-4 text-yellow-400 fill-current" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <span class="text-sm text-slate-600">4.8</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">Automatic</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">Premium</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">7 Seats</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-blue-600">45 BHD/day</span>
+              <button class="bg-blue-600 px-3 py-2 rounded-lg hover:bg-blue-700 text-white text-sm">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle 2 -->
+      <div class="group cursor-pointer">
+        <div class="bg-white border border-slate-200 rounded-2xl hover:shadow-lg transition-all duration-300">
+          <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+            <img src="{% static 'public/car/car-02.jpg'%}" alt="MG Zs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">MG Zs</h3>
+                <p class="text-sm text-slate-600">SUV</p>
+              </div>
+              <div class="flex items-center space-x-1">
+                <svg class="h-4 w-4 text-yellow-400 fill-current" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <span class="text-sm text-slate-600">4.7</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">Automatic</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">Luxury</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">5 Seats</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-blue-600">38 BHD/day</span>
+              <button class="bg-blue-600 px-3 py-2 rounded-lg hover:bg-blue-700 text-white text-sm">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle 3 -->
+      <div class="group cursor-pointer">
+        <div class="bg-white border border-slate-200 rounded-2xl hover:shadow-lg transition-all duration-300">
+          <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+            <img src="{% static 'public/car/car-03.jpg'%}" alt="Lexus ES" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">Lexus ES</h3>
+                <p class="text-sm text-slate-600">SUV</p>
+              </div>
+              <div class="flex items-center space-x-1">
+                <svg class="h-4 w-4 text-yellow-400 fill-current" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <span class="text-sm text-slate-600">4.9</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">Automatic</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">Premium</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">7 Seats</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-blue-600">52 BHD/day</span>
+              <button class="bg-blue-600 px-3 py-2 rounded-lg hover:bg-blue-700 text-white text-sm">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle 4 -->
+      <div class="group cursor-pointer">
+        <div class="bg-white border border-slate-200 rounded-2xl hover:shadow-lg transition-all duration-300">
+          <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+            <img src="{% static 'public/car/car-04.jpg'%}" alt="Lexus NX" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">Lexus NX</h3>
+                <p class="text-sm text-slate-600">SUV</p>
+              </div>
+              <div class="flex items-center space-x-1">
+                <svg class="h-4 w-4 text-yellow-400 fill-current" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <span class="text-sm text-slate-600">5.0</span>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">Manual</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">Sports</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">2 Seats</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-blue-600">85 BHD/day</span>
+              <button class="bg-blue-600 px-3 py-2 rounded-lg hover:bg-blue-700 text-white text-sm">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Special Offer -->
+<section class="py-24 bg-slate-900 relative overflow-hidden mb-24">
+  <div class="absolute inset-0 bg-[url('public/car/bg.png')] bg-cover bg-center opacity-60"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="flex gap-12 items-center">
+      <div class="text-white space-y-6">
+        <h2 class="text-4xl lg:text-6xl font-bold">
+          Book Tesla with<br />a big discount
+        </h2>
+        <p class="text-xl text-slate-300">
+          Experience the future of driving with our Tesla fleet.
+        </p>
+        <button class="bg-blue-600 hover:bg-blue-700 rounded-lg text-white px-8 py-3 text-lg">
+          Book Now
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+

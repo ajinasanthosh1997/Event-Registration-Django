@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+<section class="py-28 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-24">
+      <h1 class="text-5xl md:text-6xl font-light text-blue-900 mb-6">
+        Explore Our <span class="font-bold text-blue-700">Divisions</span>
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+        Each division offers specialized expertise tailored to your unique business needs
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+      
+    {% for service in services %}
+    <div class="group relative">
+    <a href="{{ service.get_absolute_url }}" class="w-full">
+        <div class="bg-white flex flex-col rounded-3xl p-8 h-full shadow-lg border border-slate-100 hover:shadow-2xl transition duration-500 hover:-translate-y-2">
+            <div class="mb-6 group-hover:scale-110 transition duration-300">
+                <img src="{{ service.logo.url }}" class="h-20" alt="{{ service.name }}">
+            </div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 group-hover:text-blue-600 transition">
+                {{ service.name }}
+            </h3>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+                {{ service.short_description }}
+            </p>
+            <div class="space-y-3 mb-8">
+                {% for feature in service.features %}
+                <div class="flex items-center space-x-3">
+                    <span class="text-green-500 font-bold">✓</span>
+                    <span class="text-sm text-slate-600">{{ feature }}</span>
+                </div>
+                {% endfor %}
+            </div>
+           <a href="{{ service.get_absolute_url }}" class="w-full">
+                <button class="w-full bg-blue-900 text-white px-4 py-3 rounded-md hover:opacity-90 transition">
+                Explore Service →
+              </button>
+            </a>
+        </div>
+    </a>
+</div>
+    {% endfor %}
+</div>
+  </div>
+</section>
+
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+
+      <!-- Business Divisions -->
+      <div>
+        <div class="text-4xl font-bold text-blue-600 mb-2" data-target="6">0</div>
+        <div class="text-slate-600">Business Divisions</div>
+      </div>
+
+      <!-- Happy Clients -->
+      <div>
+        <div class="text-4xl font-bold text-blue-600 mb-2" data-target="500">0</div>
+        <div class="text-slate-600">Happy Clients</div>
+      </div>
+
+      <!-- Support Available -->
+      <div>
+        <div class="text-4xl font-bold text-blue-600 mb-2" data-target="24">0</div>
+        <div class="text-slate-600">Support Available</div>
+      </div>
+
+      <!-- Years Experience -->
+      <div>
+        <div class="text-4xl font-bold text-blue-600 mb-2" data-target="10">0</div>
+        <div class="text-slate-600">Years Experience</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CountUp Script -->
+<script>
+  const counters = document.querySelectorAll('[data-target]');
+  const speed = 100; // lower is faster
+
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const current = +counter.innerText;
+      const increment = Math.ceil(target / speed);
+
+      if (current < target) {
+        counter.innerText = current + increment;
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    // Trigger on page load or when in view
+    updateCount();
+  });
+</script>
+
+
+<section style="padding: 5rem 0; background: linear-gradient(to bottom right, #2563eb, #4f46e5, #7c3aed); position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background: url('/placeholder.svg') center/cover no-repeat; opacity: 0.1;"></div>
+  <div style="position: relative; max-width: 64rem; margin: 0 auto; text-align: center; padding: 0 1rem;">
+    <h2 style="font-size: 3rem; font-weight: bold; color: white; margin-bottom: 1.5rem;">Ready to Get Started?</h2>
+    <p style="font-size: 1.25rem; color: #dbeafe; margin-bottom: 2.5rem;">
+      Let us create a customized solution that combines services from multiple divisions to perfectly match your business requirements.
+    </p>
+    <div style="display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; align-items: center;">
+      <a href="{% url 'contact' %}">
+        <button style="background-color: white; color: #2563eb; padding: 1rem 2rem; font-size: 1.125rem; font-weight: 600; border-radius: 9999px; border: none; cursor: pointer;">
+          Start Your Journey
+        </button>
+      </a>
+      <a href="{% url 'about' %}">
+        <button style="background: transparent; color: white; border: 2px solid white; padding: 1rem 2rem; font-size: 1.125rem; font-weight: 600; border-radius: 9999px; cursor: pointer;">
+          Learn More About Us
+        </button>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+{% endblock %}

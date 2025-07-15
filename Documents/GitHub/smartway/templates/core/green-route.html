@@ -1,0 +1,452 @@
+{% extends "core/service_base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="relative min-h-screen flex items-center bg-lime-600/10">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+        Comprehensive
+        <span class="text-green-600 block">Logistics Solutions</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        Efficient supply chain management that connects your business to the world. 
+        From freight forwarding to distribution networks, we handle it all.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <button class="bg-green-600 rounded-lg hover:bg-green-700 text-white px-8 py-4 text-lg flex items-center justify-center">
+          Get Started
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7" />
+          </svg>
+        </button>
+        <button class="border-green-600 border rounded-lg text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 text-lg">
+          Learn More
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 text-gray-700">
+        <!-- Secure & Reliable -->
+        <div class="flex items-center justify-center space-x-3">
+          <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-2.209 1.791-4 4-4s4 1.791 4 4c0 1.104-.896 2-2 2s-2-.896-2-2 0-4-4-4-4 4-4 4 1.105 4 4 4c1.104 0 2-.896 2-2" />
+          </svg>
+          <div>
+            <h3 class="font-semibold">Secure & Reliable</h3>
+            <p class="text-sm">Protected cargo handling</p>
+          </div>
+        </div>
+
+        <!-- On-Time Delivery -->
+        <div class="flex items-center justify-center space-x-3">
+          <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2" />
+          </svg>
+          <div>
+            <h3 class="font-semibold">On-Time Delivery</h3>
+            <p class="text-sm">Guaranteed schedules</p>
+          </div>
+        </div>
+
+        <!-- Global Network -->
+        <div class="flex items-center justify-center space-x-3">
+          <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z" />
+          </svg>
+          <div>
+            <h3 class="font-semibold">Global Network</h3>
+            <p class="text-sm">Worldwide coverage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Our Services
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Comprehensive logistics solutions designed to optimize your supply chain and drive business growth.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+      <!-- Service 1 -->
+      <div class="group relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-96">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=400&h=300&fit=crop" alt="Freight Forwarding" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9h18v6H3z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold">Freight Forwarding</h3>
+          </div>
+          <p class="text-sm text-gray-200">
+            Comprehensive freight forwarding services by land, sea, and air with real-time tracking and competitive rates.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="group relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-96 mt-14">
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" alt="Ocean Cargo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M3 10h18l-2 6H5l-2-6z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold">Ocean Cargo</h3>
+          </div>
+          <p class="text-sm text-gray-200">
+            Reliable ocean freight services connecting global markets with efficient container shipping solutions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="group relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-96">
+        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=300&fit=crop" alt="Rail Transportation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M4 6h16v12H4z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold">Rail Transportation</h3>
+          </div>
+          <p class="text-sm text-gray-200">
+            Cost-effective rail transport solutions for bulk cargo and long-distance freight delivery.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="group relative overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-96 mt-14">
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=400&h=300&fit=crop" alt="Supply Chain Solutions" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M3 3h18v4H3V3zm0 6h18v4H3V9zm0 6h18v4H3v-4z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold">Supply Chain Solutions</h3>
+          </div>
+          <p class="text-sm text-gray-200">
+            End-to-end supply chain optimization and comprehensive logistics management services.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Why Choose Logistics Solutions -->
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Why Choose Logistics Solutions
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        We deliver excellence through innovation, reliability, and customer-focused solutions that drive your business forward.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Feature 1 -->
+      <div class="text-center group">
+        <div class="w-20 h-20 bg-lime-700/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-600/20 transition-colors">
+          <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M12 8l3 6H9l3-6z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Industry Expertise</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Over 15 years of experience in logistics and supply chain management with proven track record.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="text-center group">
+        <div class="w-20 h-20 bg-lime-700/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-600/20 transition-colors">
+          <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">24/7 Support</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Round-the-clock customer support and real-time tracking for complete peace of mind.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="text-center group">
+        <div class="w-20 h-20 bg-lime-700/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-600/20 transition-colors">
+          <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Reliable Solutions</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Consistent, dependable service delivery with 99.8% on-time performance rate.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="text-center group">
+        <div class="w-20 h-20 bg-lime-700/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-600/20 transition-colors">
+          <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M9 20H4v-2a3 3 0 015.356-1.857" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Global Network</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Extensive worldwide network of partners and facilities for seamless global operations.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Green Route -->
+<section id="about" class="py-20 bg-gradient-to-br from-lime-700/6 to-yellow-100/5">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- About Text -->
+      <div>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          About Green Route
+        </h2>
+        <p class="text-lg text-gray-600 mb-6">
+          For over 15 years, Green Route has been a trusted partner in comprehensive logistics and transportation services. We specialize in creating efficient supply chain solutions that help businesses grow and thrive in today's competitive market.
+        </p>
+        <p class="text-lg text-gray-600 mb-8">
+          Our commitment to sustainability, reliability, and innovation has made us a leader in the logistics industry. We combine cutting-edge technology with experienced professionals to deliver exceptional results for our clients.
+        </p>
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold text-green-600 mb-2">Our Mission</h3>
+            <p class="text-gray-600 text-sm">
+              To provide sustainable, efficient logistics solutions that drive business success.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-green-600 mb-2">Our Vision</h3>
+            <p class="text-gray-600 text-sm">
+              To be the global leader in eco-friendly logistics and supply chain management.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 gap-6">
+        <!-- Stat 1 -->
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-lime-700/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="7" r="4" />
+              <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M9 20H4v-2a3 3 0 015.356-1.857" />
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-green-600 mb-2">500+</h3>
+          <p class="text-gray-600 text-sm">Satisfied Clients</p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-lime-700/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M12 8l3 6H9l3-6z" />
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-green-600 mb-2">15+</h3>
+          <p class="text-gray-600 text-sm">Years Experience</p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-lime-700/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M21 10l-6.5-6.5M8 8l8.5 8.5" />
+              <path d="M14 7h7v7" />
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-green-600 mb-2">50+</h3>
+          <p class="text-gray-600 text-sm">Countries Served</p>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-12 h-12 bg-lime-700/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M3 3v18h18" />
+              <path d="M9 17l3-3 4 4" />
+              <path d="M9 7l3 3 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold text-green-600 mb-2">99.9%</h3>
+          <p class="text-gray-600 text-sm">On-Time Delivery</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="contact" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Ready to optimize your supply chain? Contact us today for a personalized consultation 
+        and discover how Green Route can transform your logistics operations.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Contact Info -->
+      <div class="space-y-6">
+        <div class="border-2 border-slate-300 hover:border-lime-600/20 transition-colors rounded-lg">
+          <div class="p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-10 h-10 bg-lime-500/10 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-lime-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92V21a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.12A19.86 19.86 0 013 6.18 2 2 0 015 4h4.09a2 2 0 012 1.72 12.1 12.1 0 00.56 2.57 2 2 0 01-.45 2.11L9.91 11.09a16 16 0 006 6l1.69-1.69a2 2 0 012.11-.45 12.1 12.1 0 002.57.56 2 2 0 011.72 2z"/></svg>
+              </div>
+              <h3 class="text-lg font-semibold">Phone</h3>
+            </div>
+            <p class="text-gray-600">+1 (555) 123-4567</p>
+            <p class="text-gray-600">+1 (555) 987-6543</p>
+          </div>
+        </div>
+
+        <div class="border-2 border-slate-300 hover:border-lime-500/20 transition-colors rounded-lg">
+          <div class="p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-10 h-10 bg-lime-500/10 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-lime-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 4L12 13 2 4"/></svg>
+              </div>
+              <h3 class="text-lg font-semibold">Email</h3>
+            </div>
+            <p class="text-gray-600">info@greenroute.com</p>
+            <p class="text-gray-600">sales@greenroute.com</p>
+          </div>
+        </div>
+
+        <div class="border-2 border-slate-300 hover:border-lime-500/20 transition-colors rounded-lg">
+          <div class="p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-10 h-10 bg-lime-500/10 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-lime-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <h3 class="text-lg font-semibold">Address</h3>
+            </div>
+            <p class="text-gray-600">123 Logistics Avenue</p>
+            <p class="text-gray-600">Business District, NY 10001</p>
+          </div>
+        </div>
+
+        <div class="border-2 border-slate-300 hover:border-lime-500/20 transition-colors rounded-lg">
+          <div class="p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-10 h-10 bg-lime-500/10 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-lime-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3 class="text-lg font-semibold">Business Hours</h3>
+            </div>
+            <p class="text-gray-600">Mon - Fri: 8:00 AM - 6:00 PM</p>
+            <p class="text-gray-600">Sat: 9:00 AM - 2:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:col-span-2">
+        <div class="border-2 border-slate-300 hover:border-lime-500/20 transition-colors rounded-lg">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold mb-6">Send us a Message</h3>
+            <form class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                  <input placeholder="John" class="border-2 focus:outline-0 border-slate-200 w-full rounded-lg px-4 py-2 focus:border-lime-500/20" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                  <input placeholder="Doe" class="border-2 focus:outline-0 border-slate-200 w-full rounded-lg px-4 py-2 focus:border-lime-500/20" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" placeholder="john.doe@example.com" class="border-2 focus:outline-0 border-slate-200 w-full rounded-lg px-4 py-2 focus:border-lime-500/20" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                <input placeholder="+1 (555) 123-4567" class="border-2 focus:outline-0 border-slate-200 w-full rounded-lg px-4 py-2 focus:border-lime-500/20" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Service Needed</label>
+                <select class="border-2 focus:outline-0 border-slate-200 w-full rounded-lg px-4 py-2 focus:border-lime-500/20">
+                  <option>Freight Forwarding</option>
+                  <option>Supply Chain Solutions</option>
+                  <option>Warehousing Services</option>
+                  <option>Distribution Network</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <textarea placeholder="Tell us about your logistics needs..." class="border-2 h-32 focus:outline-0 border-slate-200 w-full rounded-lg px-4 py-2 focus:border-lime-500/20"></textarea>
+              </div>
+
+              <button type="submit" class="w-full rounded-lg bg-lime-500 hover:bg-green-600 text-white py-3">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+

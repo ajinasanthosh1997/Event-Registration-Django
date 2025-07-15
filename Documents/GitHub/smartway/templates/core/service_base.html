@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smartway</title>
+    <link rel="icon" href="/favicon.ico" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Common header -->
+    <header class="bg-gradient-to-r from-white to-white w-full relative text-white h-14 sm:h-20 flex items-center justify-between shadow-lg">
+        <div class="sm:px-20 w-full bg-gradient-to-r fixed z-20 h-14 sm:h-20 px-4 flg:px-8 from-white to-white">
+            <div class="flex items-center h-full justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center justify-center">
+                        <img src="{{ service.logo.url }}" class="h-14 sm:h-20 py-2" alt="{{ service.name }}">
+                    </div>
+                </div>
+                <button onclick="history.back()" class="border text-xs md:text-base text-white bg-blue-900 flex px-5 py-2 rounded-lg items-center hover:text-gray-900 backdrop-blur-sm">
+                    <!-- Back button SVG -->
+                    Back
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    {% block content %}{% endblock %}
+    
+    
+
+
+<footer class="bg-blue-950 text-white py-16">
+  <div class="container mx-auto px-4">
+    <div class="grid md:grid-cols-4 gap-8">
+      <!-- Company Info -->
+      <div class="space-y-4">
+        <div class="flex items-center space-x-2">
+          <img class="h-20" src="{% static 'public/logo/samartway_1.png'%}" alt="Smart Way Logo" />
+        </div>
+        <p class="text-white/80 leading-relaxed">
+          Your trusted partner in simplifying business operations and driving success across Bahrain through innovative solutions and collaborative growth.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="home" class="text-white/80 hover:text-yellow-400 transition-colors">Home</a></li>
+          <li><a href="./about" class="text-white/80 hover:text-yellow-400 transition-colors">About Us</a></li>
+          <li><a href="#services" class="text-white/80 hover:text-yellow-400 transition-colors">Services</a></li>
+          <li><a href="#contact" class="text-white/80 hover:text-yellow-400 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Our Divisions -->
+      <div>
+        <h3 class="font-bold text-lg mb-4">Our Divisions</h3>
+        <ul class="space-y-2">
+          <li><a href="#smartway-business" class="text-white/80 hover:text-yellow-400 transition-colors">Smartway Business Center</a></li>
+          <li><a href="#green-light-service" class="text-white/80 hover:text-yellow-400 transition-colors">Green Light Service</a></li>
+          <li><a href="#green-light-travel" class="text-white/80 hover:text-yellow-400 transition-colors">Green Light Travel & Tourism</a></li>
+          <li><a href="#green-light-rent" class="text-white/80 hover:text-yellow-400 transition-colors">Green Light Rent A Car</a></li>
+          <li><a href="#seven-solution" class="text-white/80 hover:text-yellow-400 transition-colors">Seven Solution</a></li>
+          <li><a href="#green-route" class="text-white/80 hover:text-yellow-400 transition-colors">Green Route</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="font-bold text-lg mb-4">Contact Info</h3>
+        <div class="space-y-3">
+          <div class="flex items-center space-x-3">
+            <span class="text-yellow-400">📞</span>
+            <span class="text-white/80">+973 77903284</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="text-yellow-400">✉️</span>
+            <span class="text-white/80">info@smartway.bh</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="text-yellow-400">📍</span>
+            <span class="text-white/80">Manama, Bahrain</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/20 mt-12 pt-8 text-center">
+      <p class="text-white/60">
+        © 2025 Pro4 All rights reserved. | Designed for innovative business solutions
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+    <!-- Mobile Drawer Script -->
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("translate-x-full");
+      }
+    </script>
+
+
+</body>
+</html>

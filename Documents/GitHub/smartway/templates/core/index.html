@@ -1,0 +1,656 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section id="home" class="relative bg-sky-100 overflow-hidden">
+  <!-- Carousel Wrapper -->
+  <div class="relative w-full z-10">
+    <div class="relative flex items-center w-full overflow-hidden bg-blue-950" id="carouselContainer">
+      <!-- Carousel Items -->
+      <div id="carouselSlides" class="flex transition-transform duration-700 w-full">
+        <!-- Slide 1 -->
+        <div class="min-w-full relative grid px-6 sm:px-12 lg:px-32 lg:grid-cols-2 gap-12 items-center min-h-[80vh] py-20 bg-blue-950">
+          <div style="background-image: url('{% static "public/hero/meeting.jpg" %}');" class="absolute inset-0 h-screen bg-cover bg-center w-full opacity-60 z-0"></div>
+          <div class="text-white relative z-10">
+            <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Smartway business center Best business solution in bahrain
+            </h1>
+            <p class="text-xl font-semibold lg:text-2xl mb-8 leading-relaxed">
+              Smartway simplifies your operations so you can focus on growth, innovation, and success.
+            </p>
+            <button class="bg-blue-900 text-white font-semibold px-8 py-4 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center">
+              Get Started
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="min-w-full relative grid px-6 sm:px-12 lg:px-32 lg:grid-cols-2 gap-12 items-center min-h-[80vh] py-20 bg-blue-950">
+          <div style="background-image: url('{% static "public/hero/public.jpg" %}');" class="absolute inset-0 h-screen bg-cover bg-center w-full opacity-60 z-0"></div>
+          <div class="text-white relative z-10">
+            <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Your Partner in Business Efficiency
+            </h1>
+            <p class="text-xl font-semibold lg:text-2xl mb-8 leading-relaxed">
+              We optimize efficiency with tailored consultancy, process improvement, and compliance solutions—built to fit your unique business needs.
+            </p>
+            <button class="bg-blue-900 text-white font-semibold px-8 py-4 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center">
+              Get Started
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Add more slides here if needed -->
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button onclick="scrollCarousel(-1)" class="absolute left-4 z-20 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full">
+        &#10094;
+      </button>
+      <button onclick="scrollCarousel(1)" class="absolute right-4 z-20 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full">
+        &#10095;
+      </button>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+    <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+      <div class="w-1 h-3 bg-white/50 rounded-full mt-2"></div>
+    </div>
+  </div>
+
+  <!-- Carousel Script -->
+  
+</section>
+
+
+<!-- About Section -->
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Text Content -->
+      <div class="space-y-6">
+        <h1 class="text-4xl md:text-5xl font-bold text-blue-900 pb-8">
+          Best Business Center in Bahrain | Smartway Facilities
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed pr-0 lg:pr-20">
+          Smart Way Facilities W.L.L is a dynamic business conglomerate based in Bahrain, 
+          specializing in comprehensive business solutions across multiple industries. 
+          Our integrated approach combines traditional business services with modern 
+          technological solutions to create value for our clients.
+        </p>
+
+        <!-- Counters -->
+        <div class="grid grid-cols-2 gap-6">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-orange-500 counter" data-count="6">6</div>
+            <div class="text-gray-600">Business Divisions</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-blue-600 counter" data-count="500">500+</div>
+            <div class="text-gray-600">Happy Clients</div>
+          </div>
+        </div>
+
+        <!-- Optional Button -->
+        <!--
+        <a href="/about">
+          <button class="bg-blue-600 mt-5 w-full justify-center rounded-lg flex items-center px-5 py-2 hover:bg-blue-700 text-white">
+            About Us
+            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </a>
+        -->
+      </div>
+
+      <!-- Image -->
+      <div class="relative">
+        <img
+          src="{% static 'public/team/RVS02917.jpg'%}"
+          alt="Smart Way Building"
+          class="rounded-2xl object-cover h-96 w-full shadow-2xl"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="text-blue-950 pt-5 bg-gray-100">
+  <div class="container mx-auto items-center px-4 overflow-hidden">
+    <!-- Carousel Container -->
+    <div class="relative overflow-hidden">
+      <div id="partnersTrack" class="flex gap-4 transition-transform duration-700">
+        <!-- Partner Logos (duplicated for infinite loop effect) -->
+        <div class="flex gap-4 shrink-0">
+          <!-- Repeat each logo as needed -->
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/Samartway_01.png'%}" alt="Smartway Business Center" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/GreenLight.png'%}" alt="Green Light Service WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/TravelnTourism.png'%}" alt="Green Light Travel & Tourism WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/Rentcar.png'%}" alt="Green Light Rent A Car" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/Seven.png'%}" alt="Seven Solution WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/GreenRoute.png'%}" alt="Green Route WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+        </div>
+        <!-- Duplicate for infinite scroll -->
+        <div class="flex gap-4 shrink-0">
+          <!-- Same logos again -->
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/Samartway_01.png'%}" alt="Smartway Business Center" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/GreenLight.png'%}" alt="Green Light Service WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/TravelnTourism.png'%}" alt="Green Light Travel & Tourism WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/Rentcar.png'%}" alt="Green Light Rent A Car" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/Seven.png'%}" alt="Seven Solution WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+          <div class="h-40 flex items-center justify-center min-w-[150px]">
+            <img src="{% static 'public/logo/GreenRoute.png'%}" alt="Green Route WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- BENEFITS SECTION -->
+<section class="py-20 bg-gradient-to-b from-white to-sky-50 text-blue-950">
+  <div class="container mx-auto px-4 py-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-amber-500 font-semibold text-lg tracking-wide">WHY CHOOSE US</span>
+      <h2 class="text-4xl lg:text-5xl font-bold mt-4 mb-6 text-blue-900">Why Choose Smart Way?</h2>
+      <p class="text-lg text-blue-900 max-w-3xl mx-auto leading-relaxed">
+        Smart Way is your trusted partner in simplifying business operations and driving success. 
+        We specialize in providing innovative and concrete solutions for every business, while 
+        fostering a collaborative community to achieve collective growth.
+      </p>
+    </div>
+
+    <!-- Benefits Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+        <div class="mb-6 group-hover:scale-110 transition-transform duration-300">
+          <!-- Target Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" stroke-width="2" />
+            <circle cx="12" cy="12" r="4" stroke-width="2" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-blue-900 mb-4">End-to-End Solutions</h3>
+        <p class="text-blue-900 leading-relaxed">
+          Complete business solutions from startup to growth, ensuring a seamless journey tailored to your unique needs.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+        <div class="mb-6 group-hover:scale-110 transition-transform duration-300">
+          <!-- Zap Icon -->
+          <svg xmlns="http://http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M13 2L3 14h9l-1 8L21 10h-9l1-8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-blue-900 mb-4">Innovation & Efficiency</h3>
+        <p class="text-blue-900 leading-relaxed">
+          We prioritize making your business experience effortless with innovative solutions and process optimization.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+        <div class="mb-6 group-hover:scale-110 transition-transform duration-300">
+          <!-- Users Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M17 21v-2a4 4 0 00-3-3.87M9 21v-2a4 4 0 013-3.87m4-4a4 4 0 10-8 0 4 4 0 008 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-blue-900 mb-4">Collaborative Community</h3>
+        <p class="text-blue-900 leading-relaxed">
+          Fostering a strong, collaborative community within Smart Way to achieve collective growth and success.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+        <div class="mb-6 group-hover:scale-110 transition-transform duration-300">
+          <!-- Award Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M12 8c2.209 0 4-1.791 4-4S14.209 0 12 0 8 1.791 8 4s1.791 4 4 4zM2 20v-1c0-2.761 2.239-5 5-5h10c2.761 0 5 2.239 5 5v1H2z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-blue-900 mb-4">100% Business Solutions</h3>
+        <p class="text-blue-900 leading-relaxed">
+          Our mission is to provide complete business solutions that drive successful execution of every project.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+        <div class="mb-6 group-hover:scale-110 transition-transform duration-300">
+          <!-- Shield Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-blue-900 mb-4">Trusted Partner</h3>
+        <p class="text-blue-900 leading-relaxed">
+          Your trusted partner in simplifying business operations and driving success across Bahrain.
+        </p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+        <div class="mb-6 group-hover:scale-110 transition-transform duration-300">
+          <!-- CheckCircle Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M9 12l2 2 4-4M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-blue-900 mb-4">Impactful Results</h3>
+        <p class="text-blue-900 leading-relaxed">
+          Ensuring sustained growth and delivering impactful results that truly matter to your business.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 bg-blue-950 text-white relative overflow-hidden" id="services">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <!-- Left Side -->
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-4xl lg:text-5xl font-bold mt-4 mb-8">OUR DIVISIONS</h2>
+          <p class="text-lg text-gray-300 max-w-3xl leading-relaxed">
+            Smart Way operates through multiple specialized divisions, each focused on delivering excellence in their respective fields to serve our clients' diverse needs.
+          </p>
+        </div>
+        <div id="service-list" class="space-y-4"></div>
+      </div>
+
+      <!-- Right Side -->
+      <div id="service-detail" class="bg-white text-blue-950 flex flex-col h-full rounded-2xl p-7 shadow-2xl transition-all"></div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  .fade-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .fade-active {
+    transition: all 0.5s ease;
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const services = [
+    {
+      title: "Smartway Business Center",
+      description: "Comprehensive corporate solutions and facilities in Bahrain.",
+      logo: "{% static 'public/logo/Samartway_01.png'%}",
+      pageUrl: "{% url 'business_center'%}",
+      detailedContent: {
+        image: "{% static 'public/hero/meeting.jpg'%}",
+        title: "Smartway Business Center",
+        description: "Smartway Business Center is the flagship division, offering top-tier corporate services, office facilities, and end-to-end support for businesses operating in Bahrain.",
+        features: [
+          "Fully equipped business center",
+          "Administrative and legal assistance",
+          "Premium location in Bahrain",
+          "Virtual office & co-working spaces"
+        ]
+      }
+    },
+    {
+      title: "Green Light Service",
+      description: "Tailored professional service solutions.",
+      logo: "{% static 'public/logo/GreenLight.png'%}",
+      pageUrl: "{% url 'green_light_service'%}",
+      detailedContent: {
+        image: "{% static 'public/hero/public.jpg'%}",
+        title: "Green Light Service WLL",
+        description: "Green Light Service offers versatile business and operational services tailored for startups, SMEs, and enterprises needing efficient support structures.",
+        features: [
+          "Business support services",
+          "Operations outsourcing",
+          "Customer service solutions",
+          "Facilities management"
+        ]
+      }
+    },
+    {
+      title: "Green Light Travel & Tourism",
+      description: "Complete travel and tourism solutions.",
+      logo: "{% static 'public/logo/TravelnTourism.png'%}",
+      pageUrl: "{% url 'travel_tourism'%}",
+      detailedContent: {
+        image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2074&q=80",
+        title: "Green Light Travel & Tourism WLL",
+        description: "Your partner for domestic and international travel, offering curated packages, booking assistance, and travel management services.",
+        features: [
+          "Flight and hotel bookings",
+          "Custom travel packages",
+          "Visa & documentation help",
+          "Corporate travel solutions"
+        ]
+      }
+    },
+    {
+      title: "Green Light Rent A Car",
+      description: "Reliable and affordable car rentals.",
+      logo: "{% static 'public/logo/Rentcar.png'%}",
+      pageUrl: "{% url 'rent_a_car'%}",
+      detailedContent: {
+        image: "{% static 'public/car/bg.png'%}",
+        title: "Green Light Rent A Car",
+        description: "A trusted provider of short- and long-term car rentals, offering a wide range of vehicles for all types of travelers.",
+        features: [
+          "Modern fleet of cars",
+          "Daily, weekly & monthly rentals",
+          "Airport pickup & delivery",
+          "24/7 customer support"
+        ]
+      }
+    },
+     {
+    //   icon: Target,
+      title: "Seven Solution",
+      description: "Technology & digital transformation services.",
+    //   color: "bg-primary",
+      logo: "{% static 'public/logo/Seven.png'%}",
+      pageUrl: "{% url 'seven_solution'%}",
+      detailedContent: {
+        image: "{% static 'public/service/greenlight.png'%}",
+        title: "Seven Solution WLL",
+        description:
+          "Delivering innovative IT solutions, from software development to digital transformation strategies for businesses in every industry.",
+        features: [
+          "Custom software development",
+          "Web & mobile applications",
+          "Cloud integration services",
+          "IT consulting & support"
+        ]
+      }
+    },
+    {
+    //   icon: Award,
+      title: "Green Route",
+      description: "Efficient logistics and transportation services.",
+    //   color: "bg-primary",
+      logo: "{% static 'public/logo/GreenRoute.png'%}",
+      pageUrl: "{% url 'green_route'%}",
+      detailedContent: {
+        image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=400&h=300&fit=crop",
+        title: "Green Route WLL",
+        description:
+          "Providing end-to-end logistics and transportation solutions to streamline your supply chain and ensure timely delivery.",
+        features: [
+          "Last-mile delivery",
+          "Fleet management",
+          "Cargo tracking systems",
+          "Cross-border logistics"
+        ]
+      }
+    }
+  ];
+
+  let selected = 0;
+  let interval;
+
+  function renderServiceList() {
+    const list = document.getElementById("service-list");
+    list.innerHTML = "";
+    services.forEach((service, index) => {
+      const card = document.createElement("div");
+      card.className = `p-4 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 hover:bg-white/20 cursor-pointer transition-transform transform hover:scale-105 ${selected === index ? 'bg-white/20 scale-105 border-yellow-500' : ''}`;
+      card.innerHTML = `
+        <div class="flex justify-between items-center">
+          <div>
+            <h4 class="font-semibold text-lg">${service.title}</h4>
+            <p class="text-sm text-gray-300">${service.description}</p>
+          </div>
+          <span class="text-xl">→</span>
+        </div>
+      `;
+      card.onclick = () => {
+        clearInterval(interval);
+        selected = index;
+        renderServiceList();
+        renderServiceDetail();
+        startAutoRotate();
+      };
+      list.appendChild(card);
+    });
+  }
+
+  function renderServiceDetail() {
+    const detail = document.getElementById("service-detail");
+    const service = services[selected];
+    detail.innerHTML = `
+      <div class="relative">
+        <img src="${service.detailedContent.image}" class="w-full h-56 object-cover opacity-70 rounded-lg mb-6"/>
+        <div class="absolute left-4 top-4 bg-white rounded-lg p-2 shadow">
+          <img src="${service.logo}" class="h-16" alt="${service.title}" />
+        </div>
+      </div>
+      <h3 class="text-3xl font-bold text-blue-700 mb-4">${service.detailedContent.title}</h3>
+      <p class="text-gray-700 text-lg leading-relaxed mb-6">${service.detailedContent.description}</p>
+      <div class="space-y-2 mb-6">
+        ${service.detailedContent.features.map(f => `<div class="flex items-center space-x-3"><div class="w-2 h-2 bg-yellow-500 rounded-full"></div><span>${f}</span></div>`).join("")}
+      </div>
+      <a href="${service.pageUrl}" class="bg-black px-5 py-3 text-white rounded-lg inline-block w-fit">Get Started</a>
+    `;
+    detail.classList.add("fade-enter");
+    requestAnimationFrame(() => {
+      detail.classList.add("fade-active");
+    });
+  }
+
+  function startAutoRotate() {
+    interval = setInterval(() => {
+      selected = (selected + 1) % services.length;
+      renderServiceList();
+      renderServiceDetail();
+    }, 10000);
+  }
+
+  renderServiceList();
+  renderServiceDetail();
+  startAutoRotate();
+</script>
+
+
+
+
+<section id="contact" class="py-20 bg-sky-50 from-primary/5 to-accent/5">
+  <div class="container mx-auto px-4">
+    <div class="text-center text-blue-950 mb-16">
+      <span class="text-accent font-semibold text-lg tracking-wide">
+        GET IN TOUCH
+      </span>
+      <h2 class="text-4xl lg:text-5xl font-bold mt-4 mb-6 text-primary">
+        Contact Smart Way
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Ready to start your next project? Get in touch with our team for a consultation.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Contact Info -->
+      <div class="space-y-8">
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <h3 class="text-2xl font-bold text-blue-900 mb-6">
+            Contact Information
+          </h3>
+          <div class="space-y-6">
+            <div class="flex items-center space-x-4">
+              <div class="bg-blue-100 p-3 rounded-full">
+                📞
+              </div>
+              <div>
+                <p class="font-semibold text-blue-900">Phone</p>
+                <p class="text-gray-600">+973 77903284</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="bg-blue-100 p-3 rounded-full">
+                ✉️
+              </div>
+              <div>
+                <p class="font-semibold text-blue-900">Email</p>
+                <p class="text-gray-600">info@smartway.bh</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="bg-blue-100 p-3 rounded-full">
+                📍
+              </div>
+              <div>
+                <p class="font-semibold text-blue-900">Address</p>
+                <p class="text-gray-600">Manama, Bahrain</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <h3 class="text-2xl font-bold text-blue-900 mb-6">Send us a Message</h3>
+        <form id="contact-form" class="space-y-6">
+  {% csrf_token %}
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="flex flex-col">
+      <label for="full_name">Full Name *</label>
+      <input id="full_name" name="full_name" required placeholder="Name" class="mt-1 py-2 px-3 bg-slate-50/40 ring-1 ring-slate-400 rounded-md focus:outline-none" />
+    </div>
+    <div class="flex flex-col">
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" placeholder="Phone" class="mt-1 py-2 px-3 bg-slate-50/40 ring-1 ring-slate-400 rounded-md focus:outline-none" />
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="flex flex-col">
+      <label for="email">Email (optional)</label>
+      <input id="email" name="email" placeholder="Email" class="mt-1 py-2 px-3 bg-slate-50/40 ring-1 ring-slate-400 rounded-md focus:outline-none" />
+    </div>
+    <div class="flex flex-col">
+      <label for="cpr">CPR</label>
+      <input id="cpr" name="cpr" required placeholder="CPR" class="mt-1 py-2 px-3 bg-slate-50/40 ring-1 ring-slate-400 rounded-md focus:outline-none" />
+    </div>
+  </div>
+
+  <div class="flex flex-col">
+    <label for="type_of_request">Type of Request</label>
+    <select id="type_of_request" name="type_of_request" required
+  class="mt-1 py-2 px-3 w-full bg-white ring-1 ring-slate-400 rounded-md focus:outline-none">
+  <option value="">Select</option>
+  <option value="rent_car">Rent a car</option>
+  <option value="travel">Travel</option>
+  <option value="business_center">Business Center</option>
+</select>
+
+  </div>
+
+  <button type="submit" class="w-full bg-blue-950 text-white flex justify-center items-center py-2 rounded-lg">
+    ✉️ <span class="ml-2">Send Message</span>
+  </button>
+</form>
+
+<script>
+function getCSRFToken() {
+  const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
+  return csrfToken ? csrfToken.value : '';
+}
+
+document.getElementById('contact-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  const data = {
+    full_name: formData.get('full_name'),
+    phone: formData.get('phone'),
+    email: formData.get('email'),
+    cpr: formData.get('cpr'),
+    type_of_request: formData.get('type_of_request'),
+  };
+
+  try {
+    const response = await fetch('/api/contact/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCSRFToken(),
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert('✅ Message submitted successfully!');
+      form.reset();
+    } else {
+      alert('⚠️ Submission failed. Please check your input.');
+      console.log(result);
+    }
+  } catch (error) {
+    console.error(error);
+    alert('❌ Error submitting form.');
+  }
+});
+</script>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
