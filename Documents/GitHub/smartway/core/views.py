@@ -5,7 +5,8 @@ from rest_framework import status
 from .models import ContactMessage
 from .serializers import ContactMessageSerializer
 from django.views.generic import ListView, DetailView, TemplateView
-from .models import BlogPost, BlogCategory, Tag, Author,Category, GalleryItem,Service
+from .models import (BlogPost, BlogCategory, Tag, Author,Category, GalleryItem,Service,
+                     CarCategory, VehicleFeature, Vehicle, SpecialOffer)
 
 class ContactMessageCreateAPIView(APIView):
     def post(self, request):
@@ -138,9 +139,13 @@ class TravelTourismView(TemplateView):
 class RentACarView(TemplateView):
     template_name = 'core/rent-a-car.html'
 
+  
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['service'] = Service.objects.get(service_type='rent_a_car')
+        context['categories'] = CarCategory.objects.filter(is_active=True).order_by('order')
+        context['trending_vehicles'] = Vehicle.objects.filter(is_trending=True).order_by('order')[:4]
+        context['special_offer'] = SpecialOffer.objects.filter(is_active=True).first()
         return context
 
 

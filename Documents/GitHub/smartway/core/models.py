@@ -2,7 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 from django.urls import reverse
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class ContactMessage(models.Model):
     full_name = models.CharField(max_length=100)
@@ -145,4 +145,77 @@ class Service(models.Model):
         }
         return reverse(url_map.get(self.service_type, 'services'))
     
- 
+
+class CarCategory(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
+    image = models.ImageField(upload_to='car_categories/')
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name
+
+class VehicleFeature(models.Model):
+    name = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
+
+class Vehicle(models.Model):
+    VEHICLE_TYPE_CHOICES = [
+        ('sedan', 'Sedan'),
+        ('suv', 'SUV'),
+        ('coupe', 'Coupe'),
+        ('hatchback', 'Hatchback'),
+        ('convertible', 'Convertible'),
+        ('truck', 'Truck'),
+        ('van', 'Van'),
+    ]
+    
+    TRANSMISSION_CHOICES = [
+        ('automatic', 'Automatic'),
+        ('manual', 'Manual'),
+        ('semi-automatic', 'Semi-Automatic'),
+    ]
+    
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
+    category = models.ForeignKey(CarCategory, on_delete=models.SET_NULL, null=True, related_name='vehicles')
+    vehicle_type = models.CharField(max_length=20, choices=VEHICLE_TYPE_CHOICES)
+    transmission = models.CharField(max_length=20, choices=TRANSMISSION_CHOICES)
+    seats = models.PositiveIntegerField()
+    image = models.ImageField(upload_to='vehicles/')
+    rating = models.DecimalField(
+        max_digits=2, 
+        decimal_places=1, 
+        validators=[MinValueValidator(0.0), MaxValueValidator(5.0)]
+    )
+    price_per_day = models.DecimalField(max_digits=8, decimal_places=2)
+    features = models.ManyToManyField(VehicleFeature, blank=True)
+    is_trending = models.BooleanField(default=False)
+    order = models.PositiveIntegerField(default=0)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name
+
+class SpecialOffer(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    background_image = models.ImageField(upload_to='special_offers/')
+    button_text = models.CharField(max_length=50, default='Book Now')
+    button_link = models.CharField(max_length=200, blank=True)
+    is_active = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.title

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import ContactMessage,Author, BlogCategory, Tag, BlogPost,Category, GalleryItem,Service
+from .models import (ContactMessage,Author, BlogCategory, Tag, BlogPost,Category, GalleryItem,Service,
+                     CarCategory, VehicleFeature, Vehicle, SpecialOffer)
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.utils.safestring import mark_safe
@@ -81,3 +82,26 @@ class ServiceAdmin(admin.ModelAdmin):
     list_filter = ('service_type', 'is_featured')
     search_fields = ('name', 'short_description')
     prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(CarCategory)
+class CarCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'order', 'is_active')
+    prepopulated_fields = {'slug': ('name',)}
+
+@admin.register(VehicleFeature)
+class VehicleFeatureAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+@admin.register(Vehicle)
+class VehicleAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'vehicle_type', 'price_per_day', 'is_trending')
+    list_filter = ('category', 'vehicle_type', 'is_trending')
+    filter_horizontal = ('features',)
+    prepopulated_fields = {'slug': ('name',)}
+
+@admin.register(SpecialOffer)
+class SpecialOfferAdmin(admin.ModelAdmin):
+    list_display = ('title', 'is_active', 'order')
+    prepopulated_fields = {'slug': ('title',)}
+
