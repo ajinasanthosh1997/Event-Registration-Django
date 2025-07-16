@@ -33,9 +33,9 @@
             >
               <a href="{% url 'home' %}" class="hover:text-emerald-600 transition-colors">Home</a>
               <a href="{% url 'about' %}" class="hover:text-emerald-600 transition-colors">About Us</a>
-              <a href="{% url 'services' %}" class="hover:text-emerald-600 transition-colors">Services</a>
+              <a href="{% url 'services:services' %}" class="hover:text-emerald-600 transition-colors">Services</a>
               <a href="{% url 'gallery' %}" class="hover:text-emerald-600 transition-colors">Gallery</a>
-              <a href="{% url 'blogs' %}" class="hover:text-emerald-600 transition-colors">Blog</a>
+              <a href="{% url 'blogs:blogs' %}" class="hover:text-emerald-600 transition-colors">Blog</a>
               <a href="{% url 'contact' %}" class="hover:text-emerald-600 transition-colors">Contact Us</a>
             </nav>
 
@@ -103,13 +103,13 @@
             <a href="{% url 'about' %}" class="hover:text-emerald-600 border-b py-2"
               >About Us</a
             >
-            <a href="{% url 'services' %}" class="hover:text-emerald-600 border-b py-2"
+            <a href="{% url 'services:services' %}" class="hover:text-emerald-600 border-b py-2"
               >Services</a
             >
             <a href="{% url 'gallery' %}/" class="hover:text-emerald-600 border-b py-2"
               >Gallery</a
             >
-            <a href="{% url 'blogs' %}" class="hover:text-emerald-600 border-b py-2">Blog</a>
+            <a href="{% url 'blogs:blogs' %}" class="hover:text-emerald-600 border-b py-2">Blog</a>
             <a href="{% url 'contact' %}" class="hover:text-emerald-600 border-b py-2"
               >Contact Us</a
             >
@@ -160,7 +160,7 @@
         <ul class="space-y-2">
           <li><a href="{% url 'home' %}" class="text-white/80 hover:text-yellow-400 transition-colors">Home</a></li>
           <li><a href="{% url 'about' %}" class="text-white/80 hover:text-yellow-400 transition-colors">About Us</a></li>
-          <li><a href="{% url 'services' %}" class="text-white/80 hover:text-yellow-400 transition-colors">Services</a></li>
+          <li><a href="{% url 'services:services' %}" class="text-white/80 hover:text-yellow-400 transition-colors">Services</a></li>
           <li><a href="{% url 'contact' %}" class="text-white/80 hover:text-yellow-400 transition-colors">Contact</a></li>
         </ul>
       </div>

@@ -1,4 +1,4 @@
-{% extends "core/service_base.html" %}
+{% extends "core/services/service_base.html" %}
 {% load static %}
 
 {% block content %}
@@ -36,52 +36,15 @@
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       <!-- Feature 1 -->
-      <div class="text-center group hover:scale-105 transition-transform duration-300">
-        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-600 transition-colors">
-          <!-- Plane Icon Placeholder -->
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><!-- Add icon here --></svg>
-        </div>
-        <h3 class="text-xl font-semibold text-emerald-900 mb-4">Flight Bookings</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Book domestic and international flights with competitive prices and flexible scheduling options.
-        </p>
-      </div>
-
-      <!-- Feature 2 -->
-      <div class="text-center group hover:scale-105 transition-transform duration-300">
-        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-600 transition-colors">
-          <!-- Hotel Icon Placeholder -->
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><!-- Add icon here --></svg>
-        </div>
-        <h3 class="text-xl font-semibold text-emerald-900 mb-4">Hotel Reservations</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Find and reserve the perfect accommodation from budget-friendly to luxury hotels worldwide.
-        </p>
-      </div>
-
-      <!-- Feature 3 -->
-      <div class="text-center group hover:scale-105 transition-transform duration-300">
-        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-600 transition-colors">
-          <!-- MapPin Icon Placeholder -->
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><!-- Add icon here --></svg>
-        </div>
-        <h3 class="text-xl font-semibold text-emerald-900 mb-4">Tour Packages</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Discover curated tour packages for destinations around the world with expert local guides.
-        </p>
-      </div>
-
-      <!-- Feature 4 -->
-      <div class="text-center group hover:scale-105 transition-transform duration-300">
-        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-600 transition-colors">
-          <!-- FileText Icon Placeholder -->
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><!-- Add icon here --></svg>
-        </div>
-        <h3 class="text-xl font-semibold text-emerald-900 mb-4">Visa Assistance</h3>
-        <p class="text-gray-600 leading-relaxed">
-          Get professional help with visa applications and travel documentation for hassle-free journeys.
-        </p>
-      </div>
+      {% for service in services %}
+  <div class="text-center group hover:scale-105 transition-transform duration-300">
+    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-{{ service.color }}-500 group-hover:bg-{{ service.color }}-600 transition-colors">
+      <img src="{{ service.icon_image.url }}" alt="{{ service.title }} icon" class="w-8 h-8 object-contain" />
+    </div>
+    <h3 class="text-xl font-semibold text-emerald-900 mb-4">{{ service.title }}</h3>
+    <p class="text-gray-600 leading-relaxed">{{ service.description }}</p>
+  </div>
+{% endfor %}
     </div>
   </div>
 </section>

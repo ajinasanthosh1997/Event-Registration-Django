@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import (ContactMessage,Author, BlogCategory, Tag, BlogPost,Category, GalleryItem,Service,
-                     CarCategory, VehicleFeature, Vehicle, SpecialOffer)
+from .models import ContactMessage,Category, GalleryItem
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.utils.safestring import mark_safe
@@ -10,23 +9,6 @@ from django.utils.html import format_html
 
 admin.site.register(ContactMessage)
 
-class BlogPostAdminForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
-    description = forms.CharField(widget=CKEditorWidget(), required=False)
-
-    class Meta:
-        model = BlogPost
-        fields = '__all__'
-
-class BlogPostAdmin(admin.ModelAdmin):
-    form = BlogPostAdminForm
-    list_display = ['title', 'author', 'category', 'featured', 'created_at']
-    prepopulated_fields = {'slug': ('title',)}
-
-admin.site.register(BlogPost, BlogPostAdmin)
-admin.site.register(Author)
-admin.site.register(BlogCategory)
-admin.site.register(Tag)
 
 
 
@@ -75,33 +57,3 @@ class GalleryItemAdmin(admin.ModelAdmin):
                 )
         return "No File"
     file_preview.short_description = 'Preview'
-
-@admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('name', 'service_type', 'is_featured', 'order')
-    list_filter = ('service_type', 'is_featured')
-    search_fields = ('name', 'short_description')
-    prepopulated_fields = {'slug': ('name',)}
-
-
-@admin.register(CarCategory)
-class CarCategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'order', 'is_active')
-    prepopulated_fields = {'slug': ('name',)}
-
-@admin.register(VehicleFeature)
-class VehicleFeatureAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-
-@admin.register(Vehicle)
-class VehicleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'vehicle_type', 'price_per_day', 'is_trending')
-    list_filter = ('category', 'vehicle_type', 'is_trending')
-    filter_horizontal = ('features',)
-    prepopulated_fields = {'slug': ('name',)}
-
-@admin.register(SpecialOffer)
-class SpecialOfferAdmin(admin.ModelAdmin):
-    list_display = ('title', 'is_active', 'order')
-    prepopulated_fields = {'slug': ('title',)}
-

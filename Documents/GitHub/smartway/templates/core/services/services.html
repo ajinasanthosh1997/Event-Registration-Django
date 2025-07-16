@@ -32,7 +32,8 @@
                 {{ service.short_description }}
             </p>
             <div class="space-y-3 mb-8">
-                {% for feature in service.features %}
+              
+                {% for feature in service.get_feature_list %}
                 <div class="flex items-center space-x-3">
                     <span class="text-green-500 font-bold">✓</span>
                     <span class="text-sm text-slate-600">{{ feature }}</span>

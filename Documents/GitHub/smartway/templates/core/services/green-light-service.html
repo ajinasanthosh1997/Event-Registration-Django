@@ -1,4 +1,4 @@
-{% extends "core/service_base.html" %}
+{% extends "core/services/service_base.html" %}
 {% load static %}
 
 {% block content %}
@@ -42,94 +42,24 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
       <!-- Service 1 -->
-      <div class="h-full hover:shadow-lg transition-shadow border-0 shadow-md rounded-xl p-6 bg-white">
-        <div class="w-16 h-16 mb-4 bg-gradient-to-br from-green-500 to-orange-500 rounded-full flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path d="M17 20h5v-2a4 4 0 00-4-4h-1"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M3 20h6v-2a4 4 0 00-3-3.87"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl text-gray-900 font-semibold mb-2">Business Consulting</h3>
-        <p class="text-gray-600 mb-4">
-          Expert guidance to help your business grow and thrive in today's competitive market.
-        </p>
-        <ul class="text-sm text-gray-500 space-y-1 mb-6">
-          <li>• Strategic planning</li>
-          <li>• Market analysis</li>
-          <li>• Growth strategies</li>
-        </ul>
-        <button class="w-full border-green-600 border py-2 rounded-lg text-green-600 hover:bg-green-50">
-          Learn More
-        </button>
-      </div>
+      {% for service in services %}
+  <div class="h-full hover:shadow-lg transition-shadow border-0 shadow-md rounded-xl p-6 bg-white">
+    <div class="w-16 h-16 mb-4 bg-gradient-to-br from-{{ service.gradient_from }} to-{{ service.gradient_to }} rounded-full flex items-center justify-center">
+      <img src="{{ service.icon_image.url }}" alt="{{ service.title }} Icon" class="w-8 h-8 object-contain">
+    </div>
+    <h3 class="text-xl text-gray-900 font-semibold mb-2">{{ service.title }}</h3>
+    <p class="text-gray-600 mb-4">{{ service.description }}</p>
+    <ul class="text-sm text-gray-500 space-y-1 mb-6">
+      {% for feature in service.get_feature_list %}
+        <li>• {{ feature }}</li>
+      {% endfor %}
+    </ul>
+    <button class="w-full border-green-600 border py-2 rounded-lg text-green-600 hover:bg-green-50">
+      {{ service.button_text }}
+    </button>
+  </div>
+{% endfor %}
 
-      <!-- Service 2 -->
-      <div class="h-full hover:shadow-lg transition-shadow border-0 shadow-md rounded-xl p-6 bg-white">
-        <div class="w-16 h-16 mb-4 bg-gradient-to-br from-green-500 to-orange-500 rounded-full flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path d="M12 22s8-4 8-10V5L12 2 4 5v7c0 6 8 10 8 10z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl text-gray-900 font-semibold mb-2">Compliance Management</h3>
-        <p class="text-gray-600 mb-4">
-          Ensure your business meets all regulatory requirements with our comprehensive compliance solutions.
-        </p>
-        <ul class="text-sm text-gray-500 space-y-1 mb-6">
-          <li>• Regulatory compliance</li>
-          <li>• Risk assessment</li>
-          <li>• Policy development</li>
-        </ul>
-        <button class="w-full border-green-600 border py-2 rounded-lg text-green-600 hover:bg-green-50">
-          Learn More
-        </button>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="h-full hover:shadow-lg transition-shadow border-0 shadow-md rounded-xl p-6 bg-white">
-        <div class="w-16 h-16 mb-4 bg-gradient-to-br from-green-500 to-orange-500 rounded-full flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path d="M10.325 4.317l.948 4.73a.75.75 0 00.732.608h6.46a.75.75 0 01.678 1.084l-6.46 13.03a.75.75 0 01-1.41-.004L5.54 13.76a.75.75 0 01.66-1.098h3.287l-.948-4.73a.75.75 0 011.486-.615z"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl text-gray-900 font-semibold mb-2">Process Optimization</h3>
-        <p class="text-gray-600 mb-4">
-          Streamline your operations and improve efficiency with our process optimization services.
-        </p>
-        <ul class="text-sm text-gray-500 space-y-1 mb-6">
-          <li>• Workflow analysis</li>
-          <li>• Automation solutions</li>
-          <li>• Performance metrics</li>
-        </ul>
-        <button class="w-full border-green-600 border py-2 rounded-lg text-green-600 hover:bg-green-50">
-          Learn More
-        </button>
-      </div>
-
-      <!-- Service 4 -->
-      <div class="h-full hover:shadow-lg transition-shadow border-0 shadow-md rounded-xl p-6 bg-white">
-        <div class="w-16 h-16 mb-4 bg-gradient-to-br from-green-500 to-orange-500 rounded-full flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path d="M12 4v16m8-8H4"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl text-gray-900 font-semibold mb-2">Strategic Planning</h3>
-        <p class="text-gray-600 mb-4">
-          Develop clear roadmaps for success with our strategic planning and implementation services.
-        </p>
-        <ul class="text-sm text-gray-500 space-y-1 mb-6">
-          <li>• Goal setting</li>
-          <li>• Action planning</li>
-          <li>• Progress tracking</li>
-        </ul>
-        <button class="w-full border-green-600 border py-2 rounded-lg text-green-600 hover:bg-green-50">
-          Learn More
-        </button>
-      </div>
 
     </div>
   </div>

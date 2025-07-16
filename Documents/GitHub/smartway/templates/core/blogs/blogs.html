@@ -29,7 +29,7 @@
 
     <!-- Dynamic Category Filters -->
     <div class="flex flex-wrap justify-center gap-2">
-      <a href="{% url 'blogs' %}" class="rounded-full px-6 py-2 text-sm {% if not request.GET.category %}bg-blue-700 text-white{% else %}text-gray-600 hover:text-blue-700{% endif %}">All</a>
+      <a href="{% url 'blogs:blogs' %}" class="rounded-full px-6 py-2 text-sm {% if not request.GET.category %}bg-blue-700 text-white{% else %}text-gray-600 hover:text-blue-700{% endif %}">All</a>
       {% for cat in categories %}
         <a href="?category={{ cat.slug }}" class="rounded-full px-6 py-2 text-sm {% if request.GET.category == cat.slug %}bg-blue-700 text-white{% else %}text-gray-600 hover:text-blue-700{% endif %}">
           {{ cat.name }}
