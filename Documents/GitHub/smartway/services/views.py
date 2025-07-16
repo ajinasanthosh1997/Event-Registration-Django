@@ -27,6 +27,7 @@ class BusinessCenterView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['footer'] = Service.objects.all().order_by('order')
         context['service'] = Service.objects.get(service_type='business_center')
         return context
 
@@ -38,6 +39,8 @@ class GreenLightServiceView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['service'] = Service.objects.get(service_type='green_light_service')
         context['services'] = GreenLightService.objects.all()
+        context['footer'] = Service.objects.all().order_by('order')
+
         return context
 
 
@@ -48,6 +51,7 @@ class TravelTourismView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['service'] = Service.objects.get(service_type='travel_tourism')
         context['services'] = TravelService.objects.all()
+        context['footer'] = Service.objects.all().order_by('order')
         return context
 
 
@@ -59,7 +63,7 @@ class RentACarView(TemplateView):
 
         # existing
         context["service"] = Service.objects.get(service_type="rent_a_car")
-
+        context['footer'] = Service.objects.all().order_by('order')
         # NEW ➜ all categories (use .prefetch_related for efficiency if you like)
         context["categories"] = CarCategory.objects.all()
 
@@ -88,6 +92,7 @@ class SevenSolutionView(TemplateView):
         context['service'] = Service.objects.get(service_type='seven_solution')  # Optional header section
         context['solutions'] = SolutionService.objects.all()  # All 7 solutions ordered by 'order'
         context['testimonials'] = Testimonial.objects.filter(is_active=True)[:3]
+        context['footer'] = Service.objects.all().order_by('order')
 
         return context
 
@@ -98,6 +103,7 @@ class GreenRouteView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['service'] = Service.objects.get(service_type='green_route')
         context['services'] = GreenRouteService.objects.all().order_by('order')
+        context['footer'] = Service.objects.all().order_by('order')
         return context
 
 @method_decorator(csrf_exempt, name='dispatch')

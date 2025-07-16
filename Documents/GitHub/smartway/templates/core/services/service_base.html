@@ -49,25 +49,26 @@
       <div>
         <h3 class="font-bold text-lg mb-4">Quick Links</h3>
         <ul class="space-y-2">
-          <li><a href="home" class="text-white/80 hover:text-yellow-400 transition-colors">Home</a></li>
-          <li><a href="./about" class="text-white/80 hover:text-yellow-400 transition-colors">About Us</a></li>
-          <li><a href="#services" class="text-white/80 hover:text-yellow-400 transition-colors">Services</a></li>
-          <li><a href="#contact" class="text-white/80 hover:text-yellow-400 transition-colors">Contact</a></li>
+          <li><a href="{% url 'home' %}" class="text-white/80 hover:text-yellow-400 transition-colors">Home</a></li>
+          <li><a href="{% url 'about' %}" class="text-white/80 hover:text-yellow-400 transition-colors">About Us</a></li>
+          <li><a href="{% url 'services:services' %}" class="text-white/80 hover:text-yellow-400 transition-colors">Services</a></li>
+          <li><a href="{% url 'contact' %}" class="text-white/80 hover:text-yellow-400 transition-colors">Contact</a></li>
         </ul>
       </div>
 
       <!-- Our Divisions -->
       <div>
-        <h3 class="font-bold text-lg mb-4">Our Divisions</h3>
-        <ul class="space-y-2">
-          <li><a href="#smartway-business" class="text-white/80 hover:text-yellow-400 transition-colors">Smartway Business Center</a></li>
-          <li><a href="#green-light-service" class="text-white/80 hover:text-yellow-400 transition-colors">Green Light Service</a></li>
-          <li><a href="#green-light-travel" class="text-white/80 hover:text-yellow-400 transition-colors">Green Light Travel & Tourism</a></li>
-          <li><a href="#green-light-rent" class="text-white/80 hover:text-yellow-400 transition-colors">Green Light Rent A Car</a></li>
-          <li><a href="#seven-solution" class="text-white/80 hover:text-yellow-400 transition-colors">Seven Solution</a></li>
-          <li><a href="#green-route" class="text-white/80 hover:text-yellow-400 transition-colors">Green Route</a></li>
-        </ul>
-      </div>
+  <h3 class="font-bold text-lg mb-4">Our Divisions</h3>
+  <ul class="space-y-2">
+    {% for service in footer %}
+    <li>
+      <a href="{% url 'services:'|add:service.service_type %}" class="text-white/80 hover:text-yellow-400 transition-colors">
+        {{ service.name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
 
       <!-- Contact Info -->
       <div>
