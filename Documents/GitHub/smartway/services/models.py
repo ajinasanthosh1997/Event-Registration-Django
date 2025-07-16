@@ -17,7 +17,10 @@ class Service(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     service_type = models.CharField(max_length=50, choices=SERVICE_CHOICES)
-    logo = models.ImageField(upload_to='services/logos/')
+    
+    logo = models.ImageField(upload_to='services/logos/', help_text="Upload the service logo (icon style).")
+    image = models.ImageField(upload_to='services/images/', blank=True, null=True, help_text="Upload a banner/cover image.")
+
     short_description = models.TextField()
     features = models.TextField(help_text="Enter features separated by line breaks")
     
@@ -36,7 +39,6 @@ class Service(models.Model):
         return [feature.strip() for feature in self.features.splitlines() if feature.strip()]
     
     def get_absolute_url(self):
-        # Map service types to their URL names
         url_map = {
             'business_center': 'services:business_center',
             'green_light_service': 'services:green_light_service',

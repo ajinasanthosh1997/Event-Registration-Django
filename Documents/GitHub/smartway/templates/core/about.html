@@ -208,38 +208,15 @@
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Division 1 -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-110 cursor-pointer transition-all duration-500 text-center">
-        <img src="{% static 'public/logo/Samartway_01.png'%}" class="h-full mx-auto" alt="Smartway Business Center" />
-      </div>
-
-      <!-- Division 2 -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-110 cursor-pointer transition-all duration-500 text-center">
-        <img src="{% static 'public/logo/GreenLight.png'%}" class="h-full mx-auto" alt="Green Light Service" />
-      </div>
-
-      <!-- Division 3 -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-110 cursor-pointer transition-all duration-500 text-center">
-        <img src="{% static 'public/logo/TravelnTourism.png'%}" class="h-full mx-auto" alt="Green Light Travel & Tourism" />
-      </div>
-
-      <!-- Division 4 -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-110 cursor-pointer transition-all duration-500 text-center">
-        <img src="{% static 'public/logo/Rentcar.png'%}" class="h-full mx-auto" alt="Green Light Rent a Car" />
-      </div>
-
-      <!-- Division 5 -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-110 cursor-pointer transition-all duration-500 text-center">
-        <img src="{% static 'public/logo/Seven.png'%}" class="h-full mx-auto" alt="Seven Solution" />
-      </div>
-
-      <!-- Division 6 -->
-      <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-110 cursor-pointer transition-all duration-500 text-center">
-        <img src="{% static 'public/logo/GreenRoute.png'%}" class="h-full mx-auto" alt="Green Route" />
-      </div>
+      {% for service in services %}
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:scale-110 cursor-pointer transition-all duration-500 text-center">
+          <img src="{{ service.logo.url }}" alt="{{ service.name }}" class="h-full mx-auto" />
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+
 
 
 
@@ -304,7 +281,7 @@
       Discover how our comprehensive solutions can transform your business operations.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="{% url 'services' %}" class="bg-blue-600 hover:bg-blue-700 rounded-lg text-white px-8 py-3 text-lg">
+      <a href="{% url 'services:services' %}" class="bg-blue-600 hover:bg-blue-700 rounded-lg text-white px-8 py-3 text-lg">
         Explore Our Services
       </a>
       <a href="{% url 'contact' %}" class="border border-white text-white hover:bg-white hover:text-slate-800 rounded-lg px-8 py-3 text-lg">

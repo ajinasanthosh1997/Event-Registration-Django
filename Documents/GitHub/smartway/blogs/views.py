@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView
 from .models import BlogCategory,BlogPost
+from services.models import Service
 # Create your views here.
 
 
@@ -19,7 +20,7 @@ class BlogsView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+        context['services'] = Service.objects.all().order_by('order')
         context['categories'] = BlogCategory.objects.all()
         
         context['featured_article'] = BlogPost.objects.filter(featured=True).first()
@@ -49,8 +50,10 @@ class BlogDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['services'] = Service.objects.all().order_by('order')
         context['related_articles'] = BlogPost.objects.filter(
             category=self.object.category
         ).exclude(id=self.object.id)[:3]
         return context
+    
     

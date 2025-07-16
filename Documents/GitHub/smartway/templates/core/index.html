@@ -127,60 +127,27 @@
 </section>
 
 
-
 <section class="text-blue-950 pt-5 bg-gray-100">
   <div class="container mx-auto items-center px-4 overflow-hidden">
     <!-- Carousel Container -->
     <div class="relative overflow-hidden">
       <div id="partnersTrack" class="flex gap-4 transition-transform duration-700">
-        <!-- Partner Logos (duplicated for infinite loop effect) -->
+        
+        {% for _ in "12"|make_list %}  {# Duplicate logos for infinite loop effect (6 logos x 2) #}
         <div class="flex gap-4 shrink-0">
-          <!-- Repeat each logo as needed -->
+          {% for service in services %}
           <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/Samartway_01.png'%}" alt="Smartway Business Center" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
+            <img src="{{ service.logo.url }}" alt="{{ service.name }}" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
           </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/GreenLight.png'%}" alt="Green Light Service WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/TravelnTourism.png'%}" alt="Green Light Travel & Tourism WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/Rentcar.png'%}" alt="Green Light Rent A Car" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/Seven.png'%}" alt="Seven Solution WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/GreenRoute.png'%}" alt="Green Route WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
+          {% endfor %}
         </div>
-        <!-- Duplicate for infinite scroll -->
-        <div class="flex gap-4 shrink-0">
-          <!-- Same logos again -->
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/Samartway_01.png'%}" alt="Smartway Business Center" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/GreenLight.png'%}" alt="Green Light Service WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/TravelnTourism.png'%}" alt="Green Light Travel & Tourism WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/Rentcar.png'%}" alt="Green Light Rent A Car" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/Seven.png'%}" alt="Seven Solution WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-          <div class="h-40 flex items-center justify-center min-w-[150px]">
-            <img src="{% static 'public/logo/GreenRoute.png'%}" alt="Green Route WLL" class="max-h-36 max-w-full object-contain hover:scale-150 transition-transform duration-300" />
-          </div>
-        </div>
+        {% endfor %}
+        
       </div>
     </div>
   </div>
 </section>
+
 
 
 
@@ -321,119 +288,31 @@
     transform: translateY(0);
   }
 </style>
-
 <script>
   const services = [
+    {% for service in services %}
     {
-      title: "Smartway Business Center",
-      description: "Comprehensive corporate solutions and facilities in Bahrain.",
-      logo: "{% static 'public/logo/Samartway_01.png'%}",
-      pageUrl: "{% url 'business_center'%}",
+      title: "{{ service.name|escapejs }}",
+      description: "{{ service.short_description|truncatewords:12|escapejs }}",
+      logo: "{{ service.logo.url }}",
+      image: "{{ service.image.url|default:'' }}",
+      pageUrl: "{{ service.get_absolute_url }}",
       detailedContent: {
-        image: "{% static 'public/hero/meeting.jpg'%}",
-        title: "Smartway Business Center",
-        description: "Smartway Business Center is the flagship division, offering top-tier corporate services, office facilities, and end-to-end support for businesses operating in Bahrain.",
+        image: "{{ service.image.url|default:service.logo.url }}",  // fallback to logo
+        title: "{{ service.name|escapejs }}",
+        description: "{{ service.short_description|escapejs }}",
         features: [
-          "Fully equipped business center",
-          "Administrative and legal assistance",
-          "Premium location in Bahrain",
-          "Virtual office & co-working spaces"
+          {% for feature in service.get_feature_list %}
+          "{{ feature|escapejs }}",
+          {% endfor %}
         ]
       }
     },
-    {
-      title: "Green Light Service",
-      description: "Tailored professional service solutions.",
-      logo: "{% static 'public/logo/GreenLight.png'%}",
-      pageUrl: "{% url 'green_light_service'%}",
-      detailedContent: {
-        image: "{% static 'public/hero/public.jpg'%}",
-        title: "Green Light Service WLL",
-        description: "Green Light Service offers versatile business and operational services tailored for startups, SMEs, and enterprises needing efficient support structures.",
-        features: [
-          "Business support services",
-          "Operations outsourcing",
-          "Customer service solutions",
-          "Facilities management"
-        ]
-      }
-    },
-    {
-      title: "Green Light Travel & Tourism",
-      description: "Complete travel and tourism solutions.",
-      logo: "{% static 'public/logo/TravelnTourism.png'%}",
-      pageUrl: "{% url 'travel_tourism'%}",
-      detailedContent: {
-        image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2074&q=80",
-        title: "Green Light Travel & Tourism WLL",
-        description: "Your partner for domestic and international travel, offering curated packages, booking assistance, and travel management services.",
-        features: [
-          "Flight and hotel bookings",
-          "Custom travel packages",
-          "Visa & documentation help",
-          "Corporate travel solutions"
-        ]
-      }
-    },
-    {
-      title: "Green Light Rent A Car",
-      description: "Reliable and affordable car rentals.",
-      logo: "{% static 'public/logo/Rentcar.png'%}",
-      pageUrl: "{% url 'rent_a_car'%}",
-      detailedContent: {
-        image: "{% static 'public/car/bg.png'%}",
-        title: "Green Light Rent A Car",
-        description: "A trusted provider of short- and long-term car rentals, offering a wide range of vehicles for all types of travelers.",
-        features: [
-          "Modern fleet of cars",
-          "Daily, weekly & monthly rentals",
-          "Airport pickup & delivery",
-          "24/7 customer support"
-        ]
-      }
-    },
-     {
-    //   icon: Target,
-      title: "Seven Solution",
-      description: "Technology & digital transformation services.",
-    //   color: "bg-primary",
-      logo: "{% static 'public/logo/Seven.png'%}",
-      pageUrl: "{% url 'seven_solution'%}",
-      detailedContent: {
-        image: "{% static 'public/service/greenlight.png'%}",
-        title: "Seven Solution WLL",
-        description:
-          "Delivering innovative IT solutions, from software development to digital transformation strategies for businesses in every industry.",
-        features: [
-          "Custom software development",
-          "Web & mobile applications",
-          "Cloud integration services",
-          "IT consulting & support"
-        ]
-      }
-    },
-    {
-    //   icon: Award,
-      title: "Green Route",
-      description: "Efficient logistics and transportation services.",
-    //   color: "bg-primary",
-      logo: "{% static 'public/logo/GreenRoute.png'%}",
-      pageUrl: "{% url 'green_route'%}",
-      detailedContent: {
-        image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=400&h=300&fit=crop",
-        title: "Green Route WLL",
-        description:
-          "Providing end-to-end logistics and transportation solutions to streamline your supply chain and ensure timely delivery.",
-        features: [
-          "Last-mile delivery",
-          "Fleet management",
-          "Cargo tracking systems",
-          "Cross-border logistics"
-        ]
-      }
-    }
+    {% endfor %}
   ];
-
+</script>
+<script>
+  
   let selected = 0;
   let interval;
 
@@ -498,9 +377,6 @@
   renderServiceDetail();
   startAutoRotate();
 </script>
-
-
-
 
 <section id="contact" class="py-20 bg-sky-50 from-primary/5 to-accent/5">
   <div class="container mx-auto px-4">

@@ -6,6 +6,7 @@ from .models import ContactMessage
 from .serializers import ContactMessageSerializer
 from django.views.generic import ListView, DetailView, TemplateView
 from .models import Category, GalleryItem
+from services.models import Service
 
 
 class ContactMessageCreateAPIView(APIView):
@@ -19,10 +20,21 @@ class ContactMessageCreateAPIView(APIView):
 
 class HomeView(TemplateView):
     template_name = 'core/index.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services'] = Service.objects.all().order_by('order')
+        return context
+    
+    
 
 class AboutView(TemplateView):
     template_name = 'core/about.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services'] = Service.objects.all().order_by('order')
+        return context
 
 
 class GalleryView(TemplateView):
@@ -30,9 +42,10 @@ class GalleryView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+        context['services'] = Service.objects.all().order_by('order')
         # Get all categories
         context['categories'] = Category.objects.all()
+        
         
         # Filter gallery items by category if specified
         gallery_items = GalleryItem.objects.all()
@@ -48,4 +61,9 @@ class GalleryView(TemplateView):
 
 class ContactView(TemplateView):
     template_name = 'core/contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['services'] = Service.objects.all().order_by('order')
+        return context
 
