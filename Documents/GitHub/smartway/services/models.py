@@ -173,7 +173,7 @@ class GreenLightService(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     icon_image = models.ImageField(upload_to='greenlight/icons/')
-    button_text = models.CharField(max_length=50, default='Learn More')
+    
     features = models.TextField(help_text="Enter features separated by line breaks")
     gradient_from = models.CharField(max_length=30, default='green-500')
     gradient_to = models.CharField(max_length=30, default='orange-500')

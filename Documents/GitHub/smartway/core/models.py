@@ -61,3 +61,16 @@ class GalleryItem(models.Model):
 
 
 
+class TeamMember(models.Model):
+    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    bio = models.TextField()
+    image = models.ImageField(upload_to='team/')
+
+    class Meta:
+        verbose_name = "Team Member"
+        verbose_name_plural = "Team Members"
+        ordering = ['id']  # Customize ordering if needed
+
+    def __str__(self):
+        return f"{self.name} - {self.title}"

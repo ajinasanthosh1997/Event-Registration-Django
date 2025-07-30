@@ -221,6 +221,7 @@
 
 
 <!-- Leadership Team -->
+<!-- Leadership Team -->
 <section class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-16">
@@ -228,50 +229,18 @@
       <p class="text-xl text-slate-600">Meet the visionaries driving our success</p>
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      
-      <!-- Leader 1 -->
-      <div class="text-center bg-slate-50 rounded-lg overflow-hidden">
-        <img src="{% static 'public/team/RVS03174.jpg'%}" class="h-60 w-full object-cover" alt="Faizal Kandoth" />
-        <h3 class="px-3 text-xl font-bold text-slate-800 mb-2">Faizal Kandoth</h3>
-        <p class="px-3 text-blue-600 font-semibold mb-3">Managing Director</p>
-        <p class="px-3 text-sm text-slate-600">
-          Visionary leader driving Smart Way Facilities W.L.L's strategic growth and operational excellence across all business divisions.
-        </p>
-      </div>
-
-      <!-- Leader 2 -->
-      <div class="text-center bg-slate-50 rounded-lg overflow-hidden">
-        <img src="{% static 'public/team/fatima-placeholder.jpg'%}" class="h-60 w-full object-cover" alt="Fatima Al-Zahra" />
-        <h3 class="px-3 text-xl font-bold text-slate-800 mb-2">Fatima Al-Zahra</h3>
-        <p class="px-3 text-blue-600 font-semibold mb-3">Chief Operations Officer</p>
-        <p class="px-3 text-sm text-slate-600">
-          Expert in operational excellence and process optimization across multiple industries.
-        </p>
-      </div>
-
-      <!-- Leader 3 -->
-      <div class="text-center bg-slate-50 rounded-lg overflow-hidden">
-        <img src="{% static 'public/team/mohammed-placeholder.jpg'%}" class="h-60 w-full object-cover" alt="Mohammed Hassan" />
-        <h3 class="px-3 text-xl font-bold text-slate-800 mb-2">Mohammed Hassan</h3>
-        <p class="px-3 text-blue-600 font-semibold mb-3">Chief Financial Officer</p>
-        <p class="px-3 text-sm text-slate-600">
-          Financial strategist with extensive experience in corporate finance and growth planning.
-        </p>
-      </div>
-
-      <!-- Leader 4 -->
-      <div class="text-center bg-slate-50 rounded-lg overflow-hidden">
-        <img src="{% static 'public/team/layla-placeholder.jpg'%}" class="h-60 w-full object-cover" alt="Layla Al-Khalifa" />
-        <h3 class="px-3 text-xl font-bold text-slate-800 mb-2">Layla Al-Khalifa</h3>
-        <p class="px-3 text-blue-600 font-semibold mb-3">Director of Business Development</p>
-        <p class="px-3 text-sm text-slate-600">
-          Specialist in market expansion and client relationship management.
-        </p>
-      </div>
-
+      {% for member in team_members %}
+        <div class="text-center bg-slate-50 rounded-lg overflow-hidden">
+          <img src="{{ member.image.url }}" class="h-60 w-full object-cover" alt="{{ member.name }}" />
+          <h3 class="px-3 text-xl font-bold text-slate-800 mb-2">{{ member.name }}</h3>
+          <p class="px-3 text-blue-600 font-semibold mb-3">{{ member.title }}</p>
+          <p class="px-3 text-sm text-slate-600">{{ member.bio }}</p>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+
 
 <!-- CTA Section -->
 <section class="py-16 bg-gradient-to-r from-slate-800 to-slate-900 text-center">

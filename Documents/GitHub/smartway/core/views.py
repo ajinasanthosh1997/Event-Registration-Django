@@ -5,7 +5,7 @@ from rest_framework import status
 from .models import ContactMessage
 from .serializers import ContactMessageSerializer
 from django.views.generic import ListView, DetailView, TemplateView
-from .models import Category, GalleryItem
+from .models import Category, GalleryItem,TeamMember
 from services.models import Service
 
 
@@ -34,6 +34,7 @@ class AboutView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['services'] = Service.objects.all().order_by('order')
+        context['team_members'] = TeamMember.objects.all()
         return context
 
 

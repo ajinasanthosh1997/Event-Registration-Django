@@ -20,12 +20,15 @@
             <p class="text-xl font-semibold lg:text-2xl mb-8 leading-relaxed">
               Smartway simplifies your operations so you can focus on growth, innovation, and success.
             </p>
+            <a href="{% url 'about' %}" class="inline-block">
+              <a href="{% url 'about' %}" class="inline-block">
             <button class="bg-blue-900 text-white font-semibold px-8 py-4 rounded-lg transition-transform duration-300 hover:scale-105 flex items-center">
               Get Started
               <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </button>
+            </button></a>
+          </a>
           </div>
         </div>
 
@@ -322,14 +325,14 @@
     services.forEach((service, index) => {
       const card = document.createElement("div");
       card.className = `p-4 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20 hover:bg-white/20 cursor-pointer transition-transform transform hover:scale-105 ${selected === index ? 'bg-white/20 scale-105 border-yellow-500' : ''}`;
-      card.innerHTML = `
+      card.innerHTML = `<a href="${service.pageUrl}">
         <div class="flex justify-between items-center">
           <div>
             <h4 class="font-semibold text-lg">${service.title}</h4>
             <p class="text-sm text-gray-300">${service.description}</p>
           </div>
           <span class="text-xl">→</span>
-        </div>
+        </div></a>
       `;
       card.onclick = () => {
         clearInterval(interval);
@@ -521,7 +524,64 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 });
 </script>
 
+<script>
+  const slides = document.getElementById("carouselSlides");
+  let index = 0;
+  const totalSlides = slides.children.length;
+  
+  // Clone first and last slides for seamless looping
+  const firstSlideClone = slides.children[0].cloneNode(true);
+  const lastSlideClone = slides.children[totalSlides - 1].cloneNode(true);
+  
+  // Add clones to the ends
+  slides.appendChild(firstSlideClone);
+  slides.insertBefore(lastSlideClone, slides.firstChild);
+  
+  // Update total slides count
+  const newTotalSlides = slides.children.length;
+  
+  // Set initial position to show first "real" slide
+  index = 1;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+  
+  // Adjust for the clones we added
+  function scrollCarousel(direction) {
+    index += direction;
+    
+    // Handle looping at boundaries
+    if (index <= 0) {
+      // When going left from first slide, jump to last real slide
+      slides.style.transition = "none";
+      slides.style.transform = `translateX(-${newTotalSlides - 1}00%)`;
+      index = newTotalSlides - 1;
+      
+      // Force reflow to apply the jump
+      void slides.offsetWidth;
+      slides.style.transition = "transform 0.7s ease";
+    } else if (index >= newTotalSlides - 1) {
+      // When going right from last slide, jump to first real slide
+      slides.style.transition = "none";
+      slides.style.transform = `translateX(0%)`;
+      index = 1;
+      
+      // Force reflow to apply the jump
+      void slides.offsetWidth;
+      slides.style.transition = "transform 0.7s ease";
+    }
+    
+    // Apply the slide movement
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }
 
+  function updateCarousel() {
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  // Auto-scroll with looping
+  setInterval(() => {
+    scrollCarousel(1);
+  }, 5000);
+</script>
 
 
       </div>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactMessage,Category, GalleryItem
+from .models import ContactMessage,Category, GalleryItem,TeamMember
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from django.utils.safestring import mark_safe
@@ -57,3 +57,5 @@ class GalleryItemAdmin(admin.ModelAdmin):
                 )
         return "No File"
     file_preview.short_description = 'Preview'
+
+admin.site.register(TeamMember)

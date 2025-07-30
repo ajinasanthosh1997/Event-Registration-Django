@@ -3,6 +3,13 @@
 
 {% block content %}
 
+<!-- Add smooth scrolling behavior -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
 <!-- Hero Section -->
 <section 
   class="relative py-40 flex items-center justify-start bg-cover bg-center"
@@ -17,9 +24,12 @@
       <p class="text-xl text-white/90 mb-8 leading-relaxed">
         Complete travel services for business and leisure with personalized experiences that create unforgettable memories.
       </p>
-      <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105">
-        Start Adventure
-      </button>
+      <!-- Add anchor link to adventure section -->
+      <a href="#adventures">
+        <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105">
+          Start Adventure
+        </button>
+      </a>
     </div>
   </div>
 </section>
@@ -97,9 +107,10 @@
 
         <!-- CTA Button -->
         <div class="pt-4">
-          <button class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+          <a href="tel:+97377903284" class="text-white/80 hover:text-yellow-300 transition-colors"><button class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
             Contact Us
-          </button>
+          </button></a>
+          
         </div>
       </div>
 
@@ -159,7 +170,7 @@
 </section>
 
 
-<section class="py-20 bg-white">
+<section id="adventures" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold text-emerald-900 mb-4">DUBAWS</h2>

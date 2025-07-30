@@ -2,6 +2,11 @@
 {% load static %}
 
 {% block content %}
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
 <!-- Hero Section -->
 <section id="home" class="relative min-h-screen flex items-center bg-lime-600/10">
   <div class="container mx-auto px-4">
@@ -16,15 +21,16 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <a href="#services-section">
         <button class="bg-green-600 rounded-lg hover:bg-green-700 text-white px-8 py-4 text-lg flex items-center justify-center">
           Get Started
           <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7" />
           </svg>
-        </button>
-        <button class="border-green-600 border rounded-lg text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 text-lg">
+        </button></a>
+        <!-- <button class="border-green-600 border rounded-lg text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 text-lg">
           Learn More
-        </button>
+        </button> -->
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 text-gray-700">
@@ -67,7 +73,7 @@
   </div>
 </section>
 <!-- core/green-route.html -->
-<section id="services" class="py-20 bg-white">
+<section id="services" class="py-20 bg-white" >
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -184,7 +190,7 @@
 </section>
 
 <!-- About Green Route -->
-<section id="about" class="py-20 bg-gradient-to-br from-lime-700/6 to-yellow-100/5">
+<section id="about" class="py-20 bg-gradient-to-br from-lime-700/6 to-yellow-100/5" id="services-section">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <!-- About Text -->
@@ -298,8 +304,7 @@
               </div>
               <h3 class="text-lg font-semibold">Phone</h3>
             </div>
-            <p class="text-gray-600">+1 (555) 123-4567</p>
-            <p class="text-gray-600">+1 (555) 987-6543</p>
+             <a href="tel:+97377903284" class="text-gray-600">+973 77903284</a>
           </div>
         </div>
 
@@ -311,8 +316,9 @@
               </div>
               <h3 class="text-lg font-semibold">Email</h3>
             </div>
-            <p class="text-gray-600">info@greenroute.com</p>
-            <p class="text-gray-600">sales@greenroute.com</p>
+            <a href="mailto:info@greenroute.com" class="text-gray-600">info@greenroute.com</a>
+            <a href="mailto:sales@greenroute.com" class="text-gray-600">sales@greenroute.com</a>
+            
           </div>
         </div>
 

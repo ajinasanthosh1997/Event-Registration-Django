@@ -5,7 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Smartway{% endblock %}</title>
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon/apple-touch-icon.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon/favicon-16x16.png'%}">
+    <link rel="manifest" href="favicon//site.webmanifest">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
@@ -16,7 +19,7 @@
         <div class="flex items-center justify-between py-2">
           <!-- Logo -->
           <div class="flex items-center space-x-2">
-            <a href="/" class="text-2xl font-bold text-primary">
+            <a href="{% url 'home' %}" class="text-2xl font-bold text-primary">
               <img
                 src="{% static 'public/logo/samartway_1.png'%}"
                 class="h-12 sm:h-16"
@@ -58,7 +61,11 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-                <span>+973 77903284</span>
+                <!-- Change this button to an anchor -->
+<a href="tel:+97377903284" class="bg-blue-800 hover:bg-blue-700 py-2 px-4 rounded-xl text-white hidden md:flex items-center space-x-2">
+  
+  <span>+973 77903284</span>
+</a>
               </button>
 
               <!-- Mobile Menu Toggle -->
@@ -88,7 +95,7 @@
         class="fixed top-0 right-0 w-[300px] sm:w-[400px] h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300"
       >
         <div class="p-6">
-          <a href="/">
+          <a href="{% url 'home' %}">
             <img
               src="{% static 'public/logo/samartway_1.png'%}"
               class="h-12"
@@ -106,7 +113,7 @@
             <a href="{% url 'services:services' %}" class="hover:text-emerald-600 border-b py-2"
               >Services</a
             >
-            <a href="{% url 'gallery' %}/" class="hover:text-emerald-600 border-b py-2"
+            <a href="{% url 'gallery' %}" class="hover:text-emerald-600 border-b py-2"
               >Gallery</a
             >
             <a href="{% url 'blogs:blogs' %}" class="hover:text-emerald-600 border-b py-2">Blog</a>
@@ -132,7 +139,10 @@
                   stroke-linejoin="round"
                 />
               </svg>
-              <span>+973 1234 5678</span>
+              <a href="tel:+973 33033255" class="w-full bg-blue-800 hover:bg-blue-700 py-3 px-4 rounded-xl text-white flex items-center justify-center space-x-2">
+  
+  <span>+973 33033255</span>
+</a>
             </button>
           </div>
         </div>
@@ -185,11 +195,11 @@
         <div class="space-y-3">
           <div class="flex items-center space-x-3">
             <span class="text-yellow-400">📞</span>
-            <span class="text-white/80">+973 77903284</span>
+            <a href="tel:+97377903284" class="text-white/80 hover:text-yellow-300 transition-colors">+973 77903284</a>
           </div>
           <div class="flex items-center space-x-3">
             <span class="text-yellow-400">✉️</span>
-            <span class="text-white/80">info@smartway.bh</span>
+            <a href="mailto:info@smartway.bh" class="text-white/80 hover:text-yellow-300 transition-colors">info@smartway.bh</a>
           </div>
           <div class="flex items-center space-x-3">
             <span class="text-yellow-400">📍</span>

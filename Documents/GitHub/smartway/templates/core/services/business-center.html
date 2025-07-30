@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block content %}
-
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
 
  <!-- Hero Section -->
 <section class="relative min-h-[90vh] flex items-center justify-center">
@@ -17,9 +21,15 @@
     <p class="text-lg text-white mb-12 max-w-2xl mx-auto leading-relaxed">
       Premium office spaces designed for modern professionals. Everything you need to succeed, all in one sophisticated location.
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <button class="bg-blue-900 hover:bg-blue-900 text-white px-8 py-3 text-lg">Explore Spaces</button>
-      <button class="border border-gray-300 text-gray-700 px-8 py-3 text-lg bg-gray-50">Schedule Tour</button>
+   <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <!-- Updated Explore Spaces button -->
+      <a href="#room-spaces">
+        <button class="bg-blue-900 hover:bg-blue-900 text-white px-8 py-3 text-lg">Explore Spaces</button>
+      </a>
+      <!-- Updated Schedule Tour button -->
+      <a href="mailto:info@smartway.bh" class="border border-gray-300 text-gray-700 px-8 py-3 text-lg bg-gray-50">Schedule Tour</a>
+        
+      </a>
     </div>
   </div>
 </section>
@@ -39,7 +49,7 @@
               <p class="text-gray-600 sm:text-lg leading-relaxed mb-8">
                 Creating spaces that blend timeless elegance with the natural beauty of modern design. Our carefully curated environments inspire productivity while maintaining sophistication.
               </p>
-              <button class="bg-gray-800 text-white px-8 py-3 rounded-full hover:bg-gray-700 transition-colors duration-300">Explore More</button>
+              <!-- <button class="bg-gray-800 text-white px-8 py-3 rounded-full hover:bg-gray-700 transition-colors duration-300">Explore More</button> -->
             </div>
           </div>
         </div>
@@ -169,7 +179,7 @@
 
 
 <!-- Room Spaces Section -->
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-gray-50" id="room-spaces">
   <div class="container mx-auto px-6">
     <div class="max-w-6xl mx-auto">
       
