@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /search/
+Sitemap: https://www.pro4.in/sitemap.xml

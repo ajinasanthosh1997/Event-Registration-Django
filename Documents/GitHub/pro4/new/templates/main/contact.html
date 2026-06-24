@@ -1,0 +1,377 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Pro 4 | Contact Us{% endblock %}
+
+{% block content %}
+<style>
+    .contact-cards h3 {
+    color: var(--solar-gold);
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+    .contact-card1{
+        border: 1px solid var(--neon-teal);
+    border-radius: 1rem;
+    padding: .6rem;
+}
+    .recent-blog img {
+        max-width: 100%;
+        height: 10rem;
+        border-radius: .5rem;
+    }
+    .carousel-slide {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    .carousel-slide.active {
+        display: block;
+        opacity: 1;
+    }
+    
+    #im1{
+        display: block;
+    }
+    #im2{
+        display: none;
+    }
+    @media only screen and (max-width: 740px) {
+       
+        body{
+          
+            overflow-x:hidden;
+        }
+        #im1{
+        display: none;
+    }
+    #im2{
+        display: block;
+    }
+    .contact-flex1{
+        flex-direction: column-reverse;
+    }
+    .contact-sec1 {
+        padding: 2rem 1rem;
+    }
+    .contact-cards {
+        display: block;
+        padding: 1rem;
+    }
+    .contact-sec1 h1 {
+        font-size: 2rem;
+    }
+    .contact-sec1 p {
+        font-size: 1rem;
+    }
+    .contact-sec1 form button {
+        width: 21rem;
+    }
+    .contact-sec1 form textarea {
+        width: 19rem;
+    }
+    .contact-sec1 form input {
+        width: 8rem;
+    }
+    .sec-7 {
+        padding: 2rem 1.5rem;
+    }
+    .contact-sec2 {
+    padding: 2rem 1.5rem;
+    }
+    .sec-7 h1 {
+        font-size: 2rem;
+    }
+    .sec7-p {
+    font-size: 1.2rem;
+    }
+    .sec7-p1 {
+        font-size: 1rem;
+    }
+    .contact-sec2 h1 {
+        font-size: 2rem;
+        margin-top: 0;
+    }
+    .faq-answer {
+        padding: 1rem 1rem;
+    }
+    .faq-item.open .faq-answer {
+    display: block;
+    max-height: max-content;
+    
+    }
+    @media only screen and (max-width: 700px) {
+        .contact-card {
+    width: 22rem;
+        .contact-sec1 form input {
+        width: 20rem;
+    }
+        .contact-flex1 {
+           
+            align-items: center; 
+               gap: 1.5rem;
+           }
+           .contact-card1:nth-child(2),
+        .contact-card1:nth-child(3),
+        .contact-card1:nth-child(4) {
+            margin-top: .8rem;
+        }
+        
+    }
+}
+    @media (min-width: 760px) and (max-width: 1440px) {
+       
+        #im1{
+        display: none;
+        }
+        #im2{
+            display: block;
+        }
+        .contact-sec1 {
+            padding: 1rem 2rem;
+        }
+        
+ 
+    }
+     @media (min-width: 820px) and (max-width: 1100px) {
+        
+        
+       
+    }
+    @media only screen and (max-width: 740px) {
+    .contact-flex1 {
+    display: flex
+;
+    justify-content: left;
+    align-items: center;
+    gap: .5rem;
+}
+}
+</style>
+
+<section class="contact-sec1">
+    <div class="contact-flex1">
+        <div>
+            <h1 class="fade-in-up">Let's Connect</h1>
+            <p style="margin-bottom: 2rem;" class="fade-in-up">Your Brand Journey Starts<br> Here!</p>
+            <form id="contactForm1" method="post" action="{% url 'main:customer_message_list_create' %}">
+                {% csrf_token %}
+                <div class="contact-flex fade-in-up">
+                    <input type="text" id="name" name="name" placeholder="Name"><br>
+                    <input type="email" id="email" name="email" placeholder="Email"><br>
+                </div><br>
+                <textarea id="project" name="message" placeholder="About your project" rows="10" class="fade-in-up"></textarea><br><br>
+                <button type="submit" id="submitButton" class="fade-in-up">Send a message </button>
+            </form>
+            
+        </div>
+        <div>
+            <div class="contact-card fade-in-up">
+                <div style="display: flex;justify-content: center;">
+                    <img src="{% static 'assets/img/contact-banner.jpg' %}" id="im1" alt="Pro4 team collaborating in modern office">
+                    <img src="{% static 'assets/img/contact-banner.jpg' %}" id="im2" alt="Pro4 team collaboration">
+                </div>
+                <div class="contact-cards fade-in-up">
+                    <div class="contact-card1 fade-in-up">
+                        <h3>Address</h3>
+                        <div class="flex11" style="gap:1rem;">
+                            <p>Al  Seef , Bahrain</p>
+                           
+                        </div>
+                    </div>
+                    <div class="contact-card1 fade-in-up">
+                        <h3>Follow</h3>
+                        <div class="flex11" style="margin-top: 1rem;">
+                            <a href="https://www.instagram.com/pro4.in/" style="text-decoration:none;color:  var(--electric-blue);"  aria-label="Pro4 Instagram"><i class="fab fa-instagram fa-xl"></i></a>
+                            <a href="https://www.linkedin.com/company/pro4branding/about/?viewAsMember=true" aria-label="Pro4 LinkedIn" style="text-decoration:none;color:  var(--electric-blue);"><i class="fab fa-linkedin fa-xl"></i></a>
+                            <a href="https://wa.me/+973 3394 9648" style="text-decoration:none;color:  var(--electric-blue);" aria-label="Pro4 WhatsApp"><i class="fab fa-whatsapp fa-xl"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-card1 fade-in-up">
+                        <h3>Phone</h3>
+                        <p>+973 3394 9648,+973 33861121</p>
+                    </div>
+                    <div class="contact-card1 fade-in-up">
+                        <h3>Email</h3>
+                        <p>info@pro4.in</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</section>
+<section class="testimonial-section"> 
+    <h2 class="testimonial-heading fade-in-up">TESTIMONIALS & FEEDBACK</h2>
+    <p class="testimonial-subtitle fade-in-up">TRUSTED BY BRANDS WHO BELIEVE IN GROWTH</p>
+
+    <div class="testimonial-wrapper">
+        <!-- Left Column -->
+        <div class="testimonial-left">
+            <div class="quote-symbol fade-in-up">“</div>
+            <p class="testimonial-intro fade-in-up">What our customers are saying</p>
+            <div class="separator-line fade-in-up"></div>
+        </div>
+
+        <!-- Static Cards Grid -->
+        <div class="testimonial-slider-container">
+  <div class="testimonial-cards-grid" id="testimonialSlider">
+    {% for testimonial in testimonials %}
+    <div class="testimonial-card">
+      <div class="b">
+        <div class="testimonial-text">{{ testimonial.text|safe }}</div>
+        <div>
+          <div class="testimonial-name">{{ testimonial.name }}</div>
+          <div class="testimonial-brand">{{ testimonial.brand }}</div>
+        </div>
+      </div>
+      <div class="brand-logo">
+        <img src="{{ testimonial.logo.url }}" alt="{{ testimonial.brand }} logo">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+</div>
+<script>
+let index = 0;
+const interval = 5000;
+
+function showSlide() {
+  const slider = document.getElementById('testimonialSlider');
+  const cards = document.querySelectorAll('.testimonial-card');
+  const totalGroups = Math.ceil(cards.length / 3);
+
+  slider.style.transform = `translateX(-${index * 100}%)`;
+
+  index = (index + 1) % totalGroups;
+}
+
+setInterval(showSlide, interval);
+</script>
+
+</section>
+<section class="contact-sec2">
+    <h2>FAQ</h2>
+    {% for faq in faqs %}
+    <div class="faq-item">
+        <div class="faq-question">
+            <i class="fas fa-plus" style="color:var(--solar-gold); font-weight: 300;"></i>{{ faq.question }}
+        </div>
+        <div class="faq-answer">
+            {{ faq.answer|safe }}
+        </div>
+    </div>
+    {% endfor %}
+    {% comment %} <div class="faq-item">
+        <div class="faq-question">
+            <i class="fas fa-plus" style="color: rgb(180, 180, 179);font-weight: 300;"></i> How can I ensure my project stays on budget?
+        </div>
+        <div class="faq-answer">
+            We prioritize open communication and transparent budgeting throughout the project. We involve you in the decision-making process and provide regular updates on costs and progress. Additionally, we offer flexible payment options to help manage your budget effectively.
+        </div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">
+            <i class="fas fa-plus" style="color: rgb(180, 180, 179);font-weight: 300;"></i> Do you offer any discounts for new clients?
+        </div>
+        <div class="faq-answer">
+            We are always happy to offer competitive pricing and special promotions to new clients. Please mention this offer when you contact us to inquire about current discounts.
+        </div>
+    </div> {% endcomment %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+    
+            faqQuestions.forEach(function(question) {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    const faqItem = this.parentElement;
+    
+                    if (faqItem.classList.contains('open')) {
+                        faqItem.classList.remove('open');
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        faqItem.classList.add('open');
+                        icon.style.transform = 'rotate(45deg)';
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm1');
+    
+            if (!form) {
+                console.error('Form with id "contactForm" not found.');
+                return;
+            }
+    
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+    
+                // Serialize form data
+                const formData = new FormData(form);
+    
+                // Send AJAX request
+                fetch('{% url "main:customer_message_list_create" %}', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        return response.json().then(data => {
+                            throw new Error(data.detail || 'Form submission failed.');
+                        });
+                    }
+                })
+                .then(data => {
+                    // Success: Display green message
+                    showAlertMessage('Your message has been sent!', '#F4CE14');
+                    console.log('Form submitted successfully.');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showAlertMessage(error.message || 'An error occurred. Please try again.', 'red');
+                });
+            });
+    
+            function showAlertMessage(message, backgroundColor) {
+                const alertElement = document.createElement('div');
+                alertElement.textContent = message;
+                alertElement.style.backgroundColor = backgroundColor;
+                alertElement.style.color = 'black';
+                alertElement.style.fontWeight = 'bold';
+                alertElement.style.position = 'fixed';
+                alertElement.style.bottom = '20px';
+                alertElement.style.right = '20px';
+                alertElement.style.padding = '20px';
+                alertElement.style.borderRadius = '5px';
+                alertElement.style.boxShadow = '0 2px 5px rgba(0,0,0,0.3)';
+                alertElement.style.zIndex = '1000';
+                alertElement.classList.add('notification-animation');
+                document.body.appendChild(alertElement);
+    
+                // Automatically remove after 5 seconds
+                setTimeout(() => {
+                    alertElement.style.opacity = '0';
+                    setTimeout(() => {
+                        alertElement.remove();
+                    }, 1000); // Match the duration of the fade-out animation
+                }, 5000);
+            }
+        });
+    </script>
+</section>
+
+{% endblock %}

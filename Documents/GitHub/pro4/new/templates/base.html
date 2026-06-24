@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ canonical_url|default:request.build_absolute_uri }}">
+    
+    <!-- Primary H1 Tag Optimization -->
+    {% if seo and seo.h1_tag %}
+        <meta name="primary-h1" content="{{ seo.h1_tag }}">
+    {% endif %}
+    
+    <!-- Title Tag -->
+    <title>
+        {% if seo and seo.title %}
+            {{ seo.title }}
+        {% else %}
+            Pro4
+        {% endif %}
+    </title>
+    
+    <!-- Meta Description -->
+    <meta name="description" content="
+        {% if seo and seo.meta_description %}
+            {{ seo.meta_description }}
+        {% else %}
+            Bahrain's top digital marketing agency offering SEO, social media marketing, web development, and branding services. Grow your business with Pro4.
+        {% endif %}
+    ">
+    
+    <!-- Robots Control -->
+    <meta name="robots" content="{% if seo and seo.robots %}{{ seo.robots }}{% else %}index, follow{% endif %}">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="{% if seo and seo.og_title %}{{ seo.og_title }}{% else %}Best Digital Marketing Agency in Bahrain | Pro4{% endif %}">
+    <meta property="og:description" content="{% if seo and seo.og_description %}{{ seo.og_description }}{% else %}Bahrain's top digital marketing agency offering comprehensive online solutions{% endif %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Pro4",
+        "url": "https://pro4.in",
+        "logo": "{% static 'assets/img/PRO-4.png' %}",
+        "description": "Bahrain's leading digital marketing agency providing SEO, social media marketing, web development, and branding services",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bahrain Financial Harbour",
+            "addressLocality": "Manama",
+            "postalCode": "944",
+            "addressCountry": "BH"
+        },
+        "telephone": "+973 3394 9648",
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "image": "{% static 'assets/img/PRO-4.png' %}",
+        "priceRange": "$$$",
+        "sameAs": [
+            "https://www.instagram.com/pro4.in/",
+            "https://www.linkedin.com/company/pro4branding/"
+        ]
+    }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    
+    <!-- Cache-busted CSS files -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}?v=1.0.5">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}?v=1.0.5">
+    <link rel="stylesheet" href="{% static 'assets/css/services.css' %}?v=1.0.5">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}?v=1.0.5">
+    <link rel="stylesheet" href="{% static 'assets/css/home.css' %}?v=1.0.5">
+    
+    <!-- Optimized font loading -->
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400&f[]=satoshi@500,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/57c218bfa9.js" crossorigin="anonymous"></script>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- Favicons -->
+     <link rel="icon" href="{% static 'assets/img/favicon/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/favicon/apple-touch-icon.png' %}" alt="Pro4 apple touch icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/img/favicon/favicon-32x32.png' %}?v=2" alt="Pro4 favicon 32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/img/favicon/favicon-16x16.png' %}" alt="Pro4 favicon 16x16">
+    <link rel="manifest" href="{% static 'assets/img/favicon/site.webmanifest' %}">
+    
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+   
+</head>
+<style>
+   
+   
+    
+    @font-face {
+        font-family: 'Norvester';
+        src: url("{% static 'assets\\font\\norwester\\norwester-v1.2\\webfonts\\norwester.woff' %}") format('woff'),
+             url("{% static 'assets\\font\\norwester\\norwester-v1.2\\webfonts\\norwester.eot' %}") format('eot'),
+             url("{% static 'assets\\font\\norwester\\norwester-v1.2\\webfonts\\norwester.ttf' %}") format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    #h1 {
+    font-family: 'Norvester', sans-serif;
+    font-size: 3.5rem;
+    margin: 0;
+    padding: 1.2rem 0;
+    background: linear-gradient(90deg, var(--electric-blue), var(--neon-teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+    
+    @media (min-width: 700px) and (max-width: 1440px) {
+            header img {
+        height: 3rem;
+    }
+        nav {
+   
+    gap: 1rem;
+}
+nav a{
+   
+   gap: 1rem;
+}
+    }
+    .notification-animation {
+        animation: slide-in 0.5s, fade-out 1s 4.5s;
+        opacity: 1;
+    }
+    
+    @keyframes slide-in {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fade-out {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+    /* Optional: smooth background change */
+#hd1 {
+    transition: background-color 0.3s, color 0.3s;
+}
+h2{
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+        padding: 0rem;
+       
+}
+.header-white {
+    background-color: white !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* optional */
+}
+
+.header-white nav a,
+.header-white h1 {
+    color: #111 !important; /* Dark text */
+}
+@media (max-width: 1024px) {
+    #ftr1{
+        display:none;
+    }
+    .p1 {
+    padding: 0px 0rem;
+}
+}
+@media only screen and (max-width: 700px) {
+        header img {
+            height: 1.2rem;
+        }
+        
+    }
+</style>
+<style>
+.testimonial-slider-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.testimonial-cards-grid {
+  display: grid;
+  transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-card {
+  
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+
+</style>
+
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="webp-support-notice" id="webpNotice">
+       
+    </div>
+   <header id="hd1" class="{% if is_home_page %}transparent{% else %}solid{% endif %}">
+        <div>
+            <a href="{% url 'main:index' %}"><img src="{% static 'assets/img/PRO-4.png' %}" style="padding:.8rem 0;filter:drop-shadow(1px 1px 20px white);" class="transparent1" alt="Pro4 Logo - Bahrain's leading digital marketing agency"></a>
+            {% if is_home_page %}
+            <a href="{% url 'main:index' %}" style="text-decoration:none;"><h1 id="h1">Pro4</h1></a>
+            {% endif %}
+        </div>
+        
+        <nav class="transparent1">
+           
+                {% if navbar_items %}
+                    {% for item in navbar_items %}
+                        <a href="{{ item.get_url }}">{{ item.label }}</a>
+                    {% endfor %}
+                {% else %}
+                    <p>No navbar items found.</p>
+                {% endif %}
+            
+        </nav>
+    
+        
+
+        
+    </header>
+    <header id="hd2">
+       <div id="flex1">
+    
+            <a href="{% url 'main:index' %}" id="logo-link" style="filter:drop-shadow(1px 1px 20px white);">
+                <img src="{% static 'assets/img/PRO-4.png' %}" class="lg" alt="Pro4 Mobile Logo">
+            </a>
+
+            <img src="{% static 'assets/img/download.svg' %}" onclick="toggleNav()" alt="" style="padding-right: .7rem;" alt="Mobile Menu Icon">
+       </div>
+        
+        <div id="mySidenav" class="sidenav">
+            <div class="sdnv">
+                <a href="{% url 'main:index' %}" id="logo-link">
+                    <img src="{% static 'assets/img/PRO-4.png' %}" class="lg" alt="Pro4 Logo">
+                </a>
+                
+            </div>
+            <ul>
+                {% if navbar_items %}
+                    {% for item in navbar_items %}
+                <li><a href="{{ item.get_url }}">{{ item.label }}</a></li>
+                {% endfor %}
+                {% else %}
+                    <p>No navbar items found.</p>
+                {% endif %}
+            
+            </ul>
+            <a href="javascript:void(0)" style="font-size: 2rem;" class="closebtn" onclick="closeNav()">&times;</a>
+            <footer class="team-sec3">
+                <div  class="ftr-p" style="text-align: center;">
+                    <div class="icon">
+                        <p>© Pro4. Allright reserved</p>
+                        <div class="icon1">
+                            <a href="https://www.instagram.com/pro4.in/ " target="_blank" class="icn" aria-label="Pro4 Instagram"><i class="fab fa-instagram fa-x"></i></a>
+                            <a href="https://www.linkedin.com/company/pro4branding/about/?viewAsMember=true" target="_blank" class="icn" aria-label="Pro4 LinkedIn"><i class="fab fa-linkedin fa-x"></i></a>
+                            <a href="https://wa.me/+973 3394 9648" target="_blank" class="icn" aria-label="Pro4 WhatsApp"><i class="fab fa-whatsapp fa-x"></i></a>
+        
+                          
+                        </div>
+                    </div>
+                    <p>Terms & Conditions</p>
+                    <p>Privacy Policy</p>
+                </div>
+            </footer>
+            
+        </div>
+        <script>
+        function toggleNav() {
+            document.getElementById("mySidenav").style.width = "300px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    </header>
+
+    
+    
+    
+    {% block content %}{% endblock %}
+    
+    <footer class="team-sec3">
+        <p class="p1">HOW CAN WE HELP?</p>
+        <div class="ftr-flex">
+            <ul id='ftr1'>
+                <li><a href="{% url 'main:about' %}">About</a></li>
+                <li><a href="{% url 'main:index' %}#service">Service</a></li>
+                <li><a href="{% url 'main:team' %}">Team</a></li>
+                <li><a href="{% url 'main:blog' %}">Blog</a></li>
+                <li><a href="{% url 'main:work' %}">Work</a></li>
+                <li><a href="{% url 'main:contact' %}">Contact</a></li>
+            </ul>
+            <div class="ftr2">
+                <p class="p">Ready to discuss<br> your project with us?</p>
+                <form id="contactForm" method="post" action="{% url 'main:customer_message_list_create' %}">
+                    {% csrf_token %}
+                    <div class="ftr-flex1">
+                        <div>
+                            <label for="name">Full Name</label><br>
+                            <input type="text" id="name" name="name"><br><br>
+                        </div>
+                        <div>
+                            <label for="email">Email</label><br>
+                            <input type="email" id="email" name="email"><br><br>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="about_project">About Project</label><br>
+                        <input id="message" name="message" class="in"><br><br>
+                    </div>
+                    <button type="submit" id="submitButton">Send a message&nbsp;&nbsp;<i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div  class="ftr-p">
+            <div class="icon">
+                <p>© Pro4. Allright reserved</p>
+                <div class="icon1">
+                    <a href="https://www.instagram.com/pro4.in/ " target="_blank" class="icn" aria-label="Pro4 Instagram"><i class="fab fa-instagram fa-x" style="color:var(--electric-blue);"></i></a>
+                    <a href="https://www.linkedin.com/company/pro4branding/about/?viewAsMember=true" target="_blank" class="icn" aria-label="Pro4 LinkedIn"><i class="fab fa-linkedin fa-x" style="color: var(--electric-blue);"></i></a>
+                    <a href="https://wa.me/+919567535448" target="_blank" class="icn" aria-label="Pro4 WhatsApp"><i class="fab fa-whatsapp fa-x" style="color: var(--electric-blue);"></i></a>
+
+                    {% comment %} <i class="fa-brands fa-instagram fa-2x" class="icn"></i>
+                    <i class="fa-brands fa-linkedin fa-2x" class="icn"></i>
+                    <i class="fa-brands fa-whatsapp fa-2x" class="icn"></i> {% endcomment %}
+                </div>
+            </div>
+            <p>Terms & Conditions</p>
+            <p>Privacy Policy</p>
+        </div>
+    </footer>
+    <script>
+        // Check for WebP support
+        function checkWebPSupport() {
+            return new Promise(res => {
+                const webP = new Image();
+                webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+                webP.onload = webP.onerror = () => {
+                    if (webP.height === 2) {
+                        document.getElementById('webpNotice').style.display = 'block';
+                        setTimeout(() => {
+                            document.getElementById('webpNotice').style.display = 'none';
+                        }, 5000);
+                    }
+                };
+            });
+        }
+        
+        // Run WebP check on page load
+        document.addEventListener('DOMContentLoaded', checkWebPSupport);
+    </script>
+   <script>
+window.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('#hd1');
+    const logo = header.querySelector('h1');
+    const navLinks = header.querySelectorAll('nav a');
+    const headerImg = header.querySelector('img');
+
+    const sec1 = document.querySelector('.sec1');
+    const sectionsToWhite = [
+        document.querySelector('.sec2'),
+        document.querySelector('.sec3'),
+        document.querySelector('.sec-4'),
+        document.querySelector('.why-choose-section'),
+        document.querySelector('.method-section'),
+        document.querySelector('.section')
+        // .sec-6 removed from here
+    ];
+
+    const sec1Top = sec1.offsetTop;
+    const sec1Height = sec1.offsetHeight;
+    const sec5 = document.querySelector('.sec-6');
+    const sec5Top = sec5.offsetTop;
+
+    logo.style.display = 'none';
+
+    window.addEventListener('scroll', () => {
+        const scroll = window.scrollY;
+
+        // ✅ Check if we are inside any of the white-background sections (excluding .sec-6)
+        let inWhiteSection = false;
+        for (let sec of sectionsToWhite) {
+            if (!sec) continue;
+            const top = sec.offsetTop;
+            const height = sec.offsetHeight;
+            if (scroll >= top && scroll < top + height) {
+                inWhiteSection = true;
+                break;
+            }
+        }
+
+        if (inWhiteSection) {
+            header.classList.add('header-white');
+        } else {
+            header.classList.remove('header-white');
+        }
+
+        // ✅ .sec-6 logic (logo swap + blue links, no white background)
+        if (scroll >= sec5Top) {
+            if (headerImg) headerImg.style.display = 'none';
+            logo.textContent = 'PRO-4';
+            logo.style.display = 'block';
+            logo.style.color = '#007CFF';
+            navLinks.forEach(link => link.style.color = '#0A192F');
+            header.classList.add('scrolled');
+        } else {
+            if (headerImg) headerImg.style.display = 'block';
+            logo.style.display = 'none';
+            logo.textContent = '';
+            logo.style.color = '';
+            navLinks.forEach(link => link.style.color = '');
+            header.classList.remove('scrolled');
+        }
+
+        // ✅ White text for .sec1 h1
+        const sec1H1 = sec1.querySelector('h1');
+        if (scroll >= sec1Top && scroll < sec1Top + sec1Height) {
+            if (sec1H1) sec1H1.style.color = '#F8F9FA';
+        } else {
+            if (sec1H1) sec1H1.style.color = '';
+        }
+    });
+});
+</script>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    
+    if (!form) {
+        console.error('Form with id "contactForm" not found.');
+        return;
+    }
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Show immediate loading indicator
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
+
+        // Serialize form data
+        const formData = new FormData(form);
+
+        // Faster AJAX request with timeout
+        const controller = new AbortController();
+        const signal = controller.signal;
+        
+        // Set timeout for 7 seconds (adjust as needed)
+        const timeoutId = setTimeout(() => {
+            controller.abort();
+            showAlertMessage('Request timed out. Please try again.', false);
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        }, 7000);
+
+        fetch('{% url "main:customer_message_list_create" %}', {
+            method: 'POST',
+            body: formData,
+            signal: signal
+        })
+        .then(response => {
+            clearTimeout(timeoutId);
+            if (response.ok) return response.json();
+            return response.json().then(data => {
+                throw new Error(data.detail || 'Submission failed');
+            });
+        })
+        .then(data => {
+            showAlertMessage('Sent!', true);
+            form.reset();  // Clear form on success
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showAlertMessage(error.message || 'Error sending message', false);
+        })
+        .finally(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    });
+
+    function showAlertMessage(message, isSuccess) {
+        const alertElement = document.createElement('div');
+        alertElement.textContent = message;
+        
+        // Minimal gradient styling
+        alertElement.style.position = 'fixed';
+        alertElement.style.bottom = '20px';
+        alertElement.style.right = '20px';
+        alertElement.style.padding = '12px 20px';
+        alertElement.style.borderRadius = '6px';
+        alertElement.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+        alertElement.style.zIndex = '10000';
+        alertElement.style.fontWeight = '500';
+        alertElement.style.fontSize = '0.9rem';
+        alertElement.style.color = 'white';
+        alertElement.style.opacity = '0';
+        alertElement.style.transform = 'translateY(10px)';
+        alertElement.style.transition = 'all 0.25s ease-out';
+        
+        // Minimal gradient for success
+        if (isSuccess) {
+            alertElement.style.background = 
+                'linear-gradient(95deg, var(--medium-azure), var(--vibrant-cobalt))';
+        } else {
+            alertElement.style.background = '#e53e3e';
+        }
+
+        document.body.appendChild(alertElement);
+        
+        // Immediate animation
+        requestAnimationFrame(() => {
+            alertElement.style.opacity = '1';
+            alertElement.style.transform = 'translateY(0)';
+        });
+
+        // Fast auto-remove (2.5 seconds total)
+        setTimeout(() => {
+            alertElement.style.opacity = '0';
+            setTimeout(() => {
+                alertElement.remove();
+            }, 250); // Fast removal
+        }, 2200); // Display duration
+    }
+});
+</script>
+   <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active'); // Re-trigger animation on re-enter
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>
+
+</body>
+</html>

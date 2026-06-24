@@ -1,0 +1,413 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Pro 4 | About Us{% endblock %}
+
+{% block content %}
+<style>
+    .timeline-section h2{
+        text-align:center;margin-bottom:1rem;}
+    .sec3 h2{
+        padding:2rem;
+    }
+    @media only screen and (max-width: 700px) {
+    .sec3 h2 {
+        font-size: 1.8rem;
+        padding: 2rem 2rem;
+        padding-left: 1.5rem;
+    }
+}
+    .about-flex {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+}
+.about-card {
+    background: linear-gradient(135deg, #012f4a, #011627);
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box
+    border-radius: 10px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.about-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, #013b5f, #022b42);
+}
+.about-sec4 p{
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--cyber-gray);}
+@media (min-width: 700px) and (max-width: 1440px) {
+    .about-sec1 {
+    padding: 2rem 2rem;
+}
+.about-sec1 h2 {
+    font-size: 2rem;
+}
+.about-sec1 p {
+    font-size: 1.5rem;
+}
+.about-sec3 {
+    padding: 2rem 2rem;
+}
+.about-sec2 {
+    padding: 2rem 2rem;
+}
+.about-sec4 h2 {
+    font-size: 1.5rem;
+}
+.about-sec4 {
+    padding: 2rem 2rem;
+}
+.about-card1 {
+    padding: 1rem 1rem;
+}
+.sec3 h2 {
+    font-size: 2rem;
+}
+.about-card h2 {
+    font-size: 2rem;
+}
+.about-card p {
+    font-size: 1rem;
+}
+.about-card1 p {
+    font-size: 1rem;
+}
+.about-card1 h2 {
+    font-size: 1.5rem;
+}
+.sec3{
+            margin-right: 6rem;
+        }
+}
+@media only screen and (max-width: 700px) {
+    
+    .service-sec3 {
+        
+        grid-template-columns: repeat(1, 1fr);
+      
+    }
+}
+@media only screen and (max-width: 700px) {
+    
+    .about-sec1 {
+        padding: 4rem 1.5rem;
+    }
+    .about-sec1 h2 {
+        font-size: 4rem;
+    }
+    .about-sec1 p {
+        font-size: 1.2rem;
+    }
+    .about-sec2 {
+        padding: .5rem 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    .about-flex {
+        display: block;
+    }
+    .about-card{
+        margin-top: 2rem;
+;
+    }
+    .about-card h2 {
+        font-size: 1.5rem;
+    }
+    .about-card p {
+        font-size: 1rem;
+    }
+    .about-card img {
+        height: 3.5rem;
+    }
+    .sec3 h2 {
+        font-size: 1.8rem;
+        padding: 0;
+        padding-left: 1.5rem;
+    }
+    .sec3{
+            margin-right: 6rem;
+        }
+    .logo-container img {
+        margin-right: 20px;
+        height: 2rem;
+        width: 5rem;
+            
+    }
+    .about-sec3 {
+        padding: 2rem 1.5rem;
+    }
+    .about-flex2 {
+        display: block;
+    }
+    .about-card1 {
+        padding: 1rem 1.5rem;
+        margin-top: 1rem;
+
+    }
+    .about-card1 h2 {
+        font-size: 1.5rem;
+    }
+    .about-card1 p {
+        font-size: 1rem;
+    }
+    .about-sec4 {
+        padding: 1rem 1.5rem;
+    }
+    .about-sec4 h2 {
+        font-size: 1.4rem;
+    }
+
+
+}
+.about-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+
+}
+
+.about-card:hover {
+    
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+</style>
+
+<section class="about-sec1">
+    <h2 class="fade-in-up">About Pro-4</h2>
+    <p class="fade-in-up">At PRO-4 INNOVATIONS, we don’t just provide services—we build success stories. Based in Bahrain and India, with a growing footprint across the Middle East, we are your all-in-one growth partner, dedicated to transforming businesses from a seed of an idea into thriving enterprises.
+
+We understand the challenges businesses face in today’s fast-paced, digitally-driven world. From marketing, sales, operations, accounts, HR, R&D, to strategy & management, managing it all can be overwhelming. That’s where we step in. With a team of seasoned professionals and a passion for innovation, we offer end-to-end solutions that simplify your journey and accelerate your growth.
+
+Our tagline, "From Seed to Success: Your All-in-One Growth Engine," reflects our commitment to being with you at every step—whether you’re a startup with bold ambitions or an established business looking to scale. We won’t give up on our growth partners, no matter the challenges they face. We act as an extension of your team, tackling problems and unlocking opportunities to ensure your success.</p>
+</section>
+
+<section class="about-sec2">
+    <div class="about-flex">
+        <div class="about-card fade-in-up">
+            <img src="{% static 'assets/img/T6HpFAte14KdyxR5VmBve3LSFI.webp' %}" alt="Mission icon - Target with arrow">
+            <h2 class="fade-in-up">Mission</h2>
+            <p class="fade-in-up">Our mission is to empower businesses with <strong>comprehensive, future-ready solutions</strong> that drive measurable results. We are committed to simplifying growth, delivering excellence, and building trust through transparency, innovation, and a client-first approach. At PRO-4 INNOVATIONS, we don’t just help businesses grow—we help them <strong>succeed sustainably</strong>.</p>
+        </div>
+        <div class="about-card fade-in-up">
+            <img src="{% static 'assets/img/5HGH6zKL3KM38YrXGYhXvD1btC4.webp' %}" alt="Vision icon - Eye looking at future">
+            <h2 class="fade-in-up">Vision</h2>
+            <p class="fade-in-up">To be the most <strong>trusted and reliable growth partner</strong> for businesses across the Middle East and beyond. We envision a future where every business, regardless of size or industry, can achieve sustainable growth with our innovative solutions and unwavering support.</p>
+        </div>
+    </div>
+</section>
+<section class="timeline-section">
+  <div class="timeline-line"></div>
+<h2 class="testimonial-heading fade-in-up" style="">Our Journey</h2>
+  <!-- Card 1 -->
+  <div class="timeline-card left">
+    <div class="timeline-content fade-in-up">
+      <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2017</div>
+      <h4 class="timeline-title">Offerpedia</h4>
+      <p>Started in Kerala (Referral bank)</p>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="timeline-card right">
+    <div class="timeline-content ">
+      <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2018</div>
+      <h4 class="timeline-title">Offerpedia</h4>
+      <p>Started in Bahrain (Referral bank)</p>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="timeline-card left">
+    <div class="timeline-content fade-in-up">
+      <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2019</div>
+      <h4 class="timeline-title">Offerpedia</h4>
+      <p>Started marketing + IT projects in Bahrain</p>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="timeline-card right">
+    <div class="timeline-content fade-in-up">
+      <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2023</div>
+      <h4 class="timeline-title">PRO-4</h4>
+      <p>Launched PRO-4 in Kerala, India as a marketing agency</p>
+    </div>
+  </div>
+  <div class="timeline-card left">
+    <div class="timeline-content fade-in-up">
+      <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2023</div>
+      <h4 class="timeline-title">PRO-4</h4>
+      <p>Scaled to Bahrain as a one stop solution
+of business, IT projects, marketing
+projects, video production, etc.</p>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="timeline-card right">
+    <div class="timeline-content fade-in-up">
+      <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2024</div>
+      <h4 class="timeline-title">PRO-4</h4>
+      <p>Scaled to Bahrain, Saudi & UAE</p>
+    </div>
+  </div>
+  <div class="timeline-card left">
+    <div class="timeline-content fade-in-up">
+      <div class="timeline-date"><i class="fas fa-calendar-alt"></i> 2025</div>
+      <h4 class="timeline-title">PRO-4 3.O</h4>
+      <p>Scaled to all GCC region's as
+Business Growth Engine.
+</p>
+    </div>
+  </div>
+
+  <!-- Continue adding cards... -->
+</section>
+
+
+
+<section class="sec3">
+     <h2 style="color: var(--midnight-navy);" class="fade-in-up">Connected Companies</h2>
+    
+    <!-- Carousel 1 (Backward) -->
+    <div class="logo-container fade-in-up" id="logoContainer1">
+        {% for logo in logo_group1 %}
+        <img src="{{ logo.logo.url }}" alt="{{ logo.name }} - Pro4 client">
+        {% endfor %}
+    </div>
+    
+    <!-- Carousel 2 (Forward) -->
+    <div class="logo-container fade-in-up" id="logoContainer2" style="margin-top:2rem;">
+        {% for logo in logo_group2 %}
+        <img src="{{ logo.logo.url }}" alt="{{ logo.name }} - Pro4 client">
+        {% endfor %}
+    </div>
+    
+    <!-- Carousel 3 (Backward) -->
+    <div class="logo-container fade-in-up" id="logoContainer3" style="margin-top:2rem;">
+        {% for logo in logo_group3 %}
+        <img src="{{ logo.logo.url }}" alt="{{ logo.name }} - Pro4 client">
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+function initCarousels() {
+    const carousels = [
+        ['logoContainer1', -1, 1], // Backward
+        ['logoContainer2',  1, 1], // Forward
+        ['logoContainer3', -1, 1]  // Backward
+    ];
+
+    carousels.forEach(([containerId, direction, speed]) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const originalLogos = container.innerHTML;
+        container.innerHTML = originalLogos.repeat(5);
+
+        const sectionWidth = container.scrollWidth / 3;
+
+        // Start positions: backward starts in middle, forward starts at 0
+        container.scrollLeft = (direction === -1) ? sectionWidth : 0;
+
+        let isDragging = false;
+        let startX = 0;
+        let startScroll = 0;
+
+        function autoScroll() {
+            if (!isDragging) {
+                container.scrollLeft += speed * direction;
+
+                if (direction === 1 && container.scrollLeft >= sectionWidth * 2) {
+                    container.scrollLeft -= sectionWidth;
+                } 
+                else if (direction === -1 && container.scrollLeft <= 0) {
+                    container.scrollLeft += sectionWidth;
+                }
+            }
+        }
+
+        setInterval(autoScroll, 50);
+
+        // Drag start
+        container.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startScroll = container.scrollLeft;
+        });
+
+        container.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            startScroll = container.scrollLeft;
+        });
+
+        // Drag move
+        container.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - startX;
+                container.scrollLeft = startScroll - deltaX;
+            }
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                const deltaX = e.touches[0].clientX - startX;
+                container.scrollLeft = startScroll - deltaX;
+                e.preventDefault();
+            }
+        });
+
+        // Drag end
+        function endDrag() {
+            isDragging = false;
+        }
+
+        window.addEventListener('mouseup', endDrag);
+        window.addEventListener('touchend', endDrag);
+        window.addEventListener('touchcancel', endDrag);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', initCarousels);
+</script>
+<section class="about-sec3">
+    <div class="about-flex2 ">
+        {% for card in aboutcards %}
+        <div class="about-card1">
+            <h2>{{ card.title }}</h2>
+            <div>{{ card.description|safe }}</div>
+        </div>
+        {% endfor %}
+        {% comment %} <h2>Collabration</h2>
+            <p>We believe in the power of teamwork, blending diverse expertise to create unified brand experiences.</p> {% endcomment %}
+        {% comment %} <div class="about-card1">
+            <h2>Innovation</h2>
+            <p>We're never content with the status quo, constantly pushing boundaries and exploring new frontiers to deliver cutting-edge solutions.</p>
+        </div>
+        <div class="about-card1">
+            <h2>Integrity</h2>
+            <p>We build trust with transparency and ethical practices, ensuring every step of your journey is grounded in honesty and respect.</p>
+        </div>
+        <div class="about-card1">
+            <h2>Results</h2>
+            <p>We're driven by measurable outcomes, focusing on strategies that deliver tangible impact and propel your brand forward.</p>
+        </div>
+        <div class="about-card1">
+            <h2>Passion</h2>
+            <p>We bring infectious enthusiasm and dedication to every project, ensuring your brand's story is told with contagious energy.</p>
+        </div> {% endcomment %}
+    </div>
+</section>
+<section class="about-sec4 fade-in-up">
+    <p>Join us on the path to brand transformation. Let PRO-4 be your guide to a future where possibilities are boundless.</p>
+</section>
+
+
+{% endblock %}

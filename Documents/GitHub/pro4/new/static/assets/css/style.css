@@ -1,0 +1,563 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Satoshi', sans-serif;
+    background-color: var(--platinum-white);
+    overflow-x: hidden;
+    letter-spacing: .03rem;
+
+}
+
+header {
+    display: none;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 3.5rem;
+    position: fixed; /* Added to make it sticky */
+    top: 0; /* Added to make it sticky */
+    width: 95%; /* Added to make it span the full width */
+    background-color:var(--platinum-white) ;
+    z-index: 1000; /* Added z-index */
+}
+
+header img {
+    height: 4.3rem;
+}
+header {
+    transition: background-color 0.5s ease; /* Add transition effect */
+}
+
+/* Style for scrolled state */
+header.scrolled {
+    background-color: #0A192F; /* Change background color on scroll */
+}
+header.scrolled h1 {
+    display: block;
+}
+.hidden {
+    display: none;
+}
+
+
+#hd1 {
+    transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease;
+}
+.transparent {
+    background-color: transparent;
+    
+}
+.transparent1{
+    text-shadow: 1px 1px 10px white; /* White shadow when transparent */
+}
+.white-bg {
+    background-color: rgb(245, 245, 245);
+    color: black; /* Text color when header has a white background */
+    text-shadow: none; /* Remove text shadow when background is white */
+}
+#hd12 {
+    transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    padding-right: 3rem;
+}
+
+/* Additional CSS styles for the nav links */
+nav a {
+    text-decoration: none; /* Remove underline from links */
+    color: var(--midnight-navy);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+nav a {
+    transition: transform 0.2s ease-in-out; /* Apply transition effect */
+}
+
+nav a:hover {
+    transform: translateY(-2px); /* Move the element 1px up when hovered */
+    color: var(--solar-gold);
+}
+
+.ftr-flex{
+    display: flex;
+    justify-content: left;
+    gap:24rem;
+    align-items: center;
+    margin :4rem 0;
+
+}
+
+ul{
+   list-style: none;
+   padding: 0;
+  
+   
+
+}
+li {
+    line-height: 1.5; /* Adjust as needed */
+}
+footer{
+    background-color: #0A192F;
+    color: white;
+    padding: 2rem 4rem;
+}
+footer p{
+    color: white;
+    
+}
+.p{
+    margin-top: 0px;
+    font-size: 3rem;
+    font-weight: 600;
+}
+.p1{
+    font-size: 1rem;
+    font-weight: 500;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+#ftr1 a{
+    text-decoration: none;
+    color: var(--electric-blue);
+    font-size: 2.5rem;
+}
+.ftr2{
+    border-left: 1px solid var(--neon-teal);
+    padding: 0 3rem;
+}
+.ftr2 p{
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--electric-blue);
+}
+
+.ftr-p p{
+    color: rgb(180, 180, 179);
+    font-size: 14px;
+    
+}
+footer form input{
+    color:rgb(180, 180, 179) ;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--neon-teal);
+    width: 22rem;
+    padding: .5rem;
+}
+footer form textarea{
+    color:rgb(180, 180, 179) ;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+footer form label{
+    color:rgb(180, 180, 179) ;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.ftr-flex1{
+    display: flex;
+    justify-content: left;
+    gap: 2rem;
+}
+/* Default button styles */
+footer button {
+    border: none;
+    background-color: rgb(196, 144, 30);
+    padding: .7rem 2rem;
+    border-radius: 2rem;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+footer button:hover {
+    transform: scale(1.1); /* Scale up the button */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Add a shadow */
+}
+
+
+.ftr-p{
+    display: flex;
+    justify-content: space-between;
+}
+.icon{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    
+}
+.icon1{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: .5rem;
+   
+}
+
+.icn{
+    font-size: 2rem;
+}
+.in{
+    width: 47rem;
+}
+.sec11{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20rem;
+    /* background-color: rgb(245, 245, 245); */
+}
+.sec11 h1{
+    font-size: 3rem;
+    font-weight: 600;
+}
+.sec2{
+    padding: 4rem;
+    padding-bottom: 2rem;
+   
+}
+.sec2 p{
+    color: var(--cyber-gray);
+   font-size: 1.5rem;
+   padding-top:1rem ;
+   padding-bottom: 2rem;
+
+}
+.sec2 span{
+    color: var(--midnight-navy);
+}
+.sec3 {
+    position: relative;
+    background-color: var(--platinum-white);
+    
+}
+
+.logo-container {
+    white-space: nowrap;
+    overflow-x: hidden;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    padding: 0 50px;
+    background-color: var(--platinum-white); /* Lighter background color */
+}
+
+.sec3::before,
+.sec3::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px; /* Adjust the width of the shadow */
+    height: 100%;
+    background: linear-gradient(to right, rgba(245, 245, 245, 0), var(--platinum-white)); /* Left shadow */
+    background: linear-gradient(to left, rgba(245, 245, 245, 0), var(--platinum-white)); /* Left shadow */
+}
+
+
+.logo-container img {
+    margin-right: 20px; 
+    
+}
+.sec3{
+    padding: 2rem 0;
+    background-color:var(--platinum-white);
+}
+
+.sec3 h1 {
+    font-size: 3rem;
+    font-weight:600;
+   
+    padding: 4rem;
+    padding-top: 0;
+    margin: 0;
+}
+.sec-4 h1{
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--midnight-navy);
+   
+
+}
+.sec-4 h3{
+    font-weight: 500;
+    font-size: 2rem;
+    
+}
+.sec-4{
+    padding: 4rem;
+    background-color: var(--platinum-white);
+
+}
+
+
+.card:hover h3 {
+    color: var(--solar-gold); /* Change h2 color on hover */
+}
+
+.card:hover p {
+    color: white; /* Change p color on hover */
+}
+.card-flex{
+   
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+.sec4-p{
+    font-size: 1.5rem;
+    font-weight: lighter;
+    color: var(--platinum-white);
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Adjust the gap between images */
+}
+
+.image-grid img {
+    width: 100%; /* Make images fill the grid cells */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Add border radius for rounded corners */
+}
+.sec-5{
+    padding:4.5rem 1rem;
+    background-color: var(--midnight-navy);
+   
+}
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Adjust the gap between images */
+}
+
+.image-grid img {
+    width: 100%; /* Make images fill the grid cells */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Add border radius for rounded corners */
+}
+
+/* Set specific width for the second and fourth images */
+.image-grid img:nth-child(2){
+    
+    height: 25rem; /* Maintain aspect ratio */
+}
+.image-grid img:nth-child(5) {
+    height: 21rem;
+
+}
+
+.image-grid1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 1rem; /* Adjust gap between images */
+}
+
+.image-grid1 img {
+    width: 100%; /* Ensure images take full width of their container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+.sec-6{
+        padding: 1rem 4rem;
+   background: radial-gradient(circle at top right, #003366, var(--midnight-navy));
+    color: var(--neon-teal);
+
+}
+.sec-6 p{
+    margin:0;
+    margin-bottom: 1rem;
+}
+.sec-6 h2{
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--solar-gold);
+    /* margin: 0; */
+
+}
+.sec6-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sec6-p{
+    color: rgb(206, 163, 68);
+    font-size: 1.5rem;
+}
+/* .sec-6 a{
+    color: black;
+    text-decoration: none;
+    padding: .4rem 1rem;
+    background-color:  rgb(245, 245, 245);
+    border-radius: 2rem;
+} */
+.sec6-flex1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* margin-top: 2rem; */
+}
+.sec6-1{
+    text-align: center;
+}
+.sec6-1 p{
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+.sec-7{
+    padding: 4rem;
+    background-color: rgb(245, 245, 245);
+
+}
+.sec-7 h1{
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--midnight-navy);
+
+}
+.sec7-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sec7-p{
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--cyber-gray);
+}
+.sec-7 h2{
+    font-weight: 400;
+}
+.sec7-p1{
+    font-weight: 200;
+    font-size: 1.4rem;
+}
+.video-container {
+   
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  
+}
+
+#video-bg {
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* about us */
+
+.about-sec1{
+    padding: 6rem 4rem ;
+    
+
+}
+.about-sec1 h1{
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--midnight-navy);
+
+}
+.about-sec1 p{
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--cyber-gray);
+
+}
+.about-sec2{
+    padding: 4rem 4rem ;
+    background-color: var(--midnight-navy);
+    color: var(--platinum-white);
+}
+.about-flex{
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+
+}
+.about-card{
+    border-radius: 1rem;
+    border:1px solid var(--neon-teal) ;
+    padding: 1.3rem;
+}
+.about-card img{
+    height: 6.5rem;
+    color:rgb(95, 95, 94) ;
+}
+
+.about-card h2{
+    font-size: 2.5rem;
+    letter-spacing: .04rem;
+}
+.about-card p{
+    font-size:1.2rem ;
+}
+
+.about-sec3{
+    padding: 4rem 4rem ;
+
+}
+
+.about-flex2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    gap: 20px; /* Gap between grid items */
+}
+
+.about-card1 {
+    
+    padding:1rem 2.5rem ; /* Padding around each card */
+    border:1px solid black ;
+    border-radius: 1.5rem; /* Border radius for rounded corners */
+}
+
+/* Additional styling for headings */
+.about-card1 h1 {
+    font-size: 2rem; /* Adjust font size as needed */
+    
+}
+.about-card1 p {
+    font-size: 1.2rem; /* Adjust font size as needed */
+    font-weight: 400;
+    
+}
+.about-sec4{
+    padding: 4rem 4rem ;
+
+}
+.about-sec4 h1{
+    font-weight: 200;
+    font-size: 2.4rem;
+    color: var(--cyber-gray);
+}
+
+
+
+

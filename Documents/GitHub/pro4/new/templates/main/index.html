@@ -1,0 +1,1022 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Pro4 | Home Page{% endblock %}
+
+{% block content %}
+
+<style>
+    
+    section{
+        overflow:hidden;
+    }
+    nav a {
+    color:var(--electric-blue);}
+
+   .action-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  position: relative;
+  border-left: 1px solid var(--electric-blue);
+  border-right: 1px solid var(--electric-blue);
+  padding: 0.6rem 1rem;
+  color: var(--platinum-white);
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.action-step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, var(--electric-blue), var(--midnight-navy));
+  z-index: 2;
+}
+
+.action-step::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, var(--electric-blue), var(--midnight-navy));
+  z-index: 2;
+}
+
+.step-number {
+  color: var(--platinum-white);
+  font-weight: bold;
+}
+
+.step-title {
+  color: var(--platinum-white);
+  font-weight: bold;
+  margin: 0;
+}
+
+     .method-section {
+        margin-top:4rem;
+      padding: 4rem 4rem;
+      background: radial-gradient(circle at top right, #003366, var(--midnight-navy));
+  color: var(--platinum-white);
+    
+    }
+
+    
+
+    .method-section p.subtitle {
+    
+      font-size: 1rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+     
+     
+    }
+
+    .step-box {
+     
+      border-radius: 8px;
+      padding: 2rem 1rem;
+      position: relative;
+      text-align: left;
+    }
+.step-box img{
+    height:4.2rem;
+        padding: 0 0rem;
+        padding-bottom:1rem;
+}
+    .step-box i {
+      font-size: 2rem;
+      color: var(--electric-blue);
+      background: white;
+      padding: 0.8rem;
+      border-radius: 0.4rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .step-box .step-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    
+      color: var(--platinum-white);
+    }
+
+    .step-box .step-title span.number {
+      background-color: var(--electric-blue);
+      color: var(--platinum-white);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.9rem;
+      border-radius: 3px;
+    }
+
+    .step-box p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+     
+    }
+.p1{
+    padding:0 2rem;
+}
+    @media (max-width: 768px) {
+      .method-section h2 {
+        font-size: 2rem;
+      }
+    }
+    /* Common transition class */
+.fade-transition {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.fade-transition.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Already existing */
+.media-container.left,
+.media-container.right {
+  transition: all 0.5s ease;
+}
+
+ .animate-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.media-container.left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1s ease;
+}
+
+.media-container.right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1s ease;
+}
+
+/* When active */
+.animate-element.active,
+.media-container.left.active,
+.media-container.right.active {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}   
+@font-face {
+    font-family: 'BankGothic';
+    src: url("{% static 'assets/font/BankGothic/BankGothic Regular/BankGothic Regular.ttf' %}") format('truetype');
+}
+@media only screen and (max-width: 700px) {
+        .steps-grid {
+    
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+.method-section {
+   
+    padding: 2rem 2rem;
+    }
+    .stats-container {
+    display: grid
+;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    margin-left: 4rem;
+}
+.section {
+    padding: 2rem 2rem;
+}
+
+
+    }
+
+</style>
+<section id="vd">
+    <div class="video-wrapper">
+        {% if latest_video %}
+            <h1 class="border-text ">THE GROWTH ENGINE</h1>
+            <div class="video-loading">
+                <div class="spinner"></div>
+            </div>
+            <video autoplay muted playsinline loop id="fullscreen-video" preload="metadata" style="">
+                <source src="{{ latest_video.video.url }}" type="video/mp4">
+            </video>
+        {% else %}
+            <div class="center-container">
+                <p class="centered-text">No video available</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="s1">
+    <div id="video" class="video-container">
+        {% if latest_video %}
+            <h1 class="border-text">THE GROWTH ENGINE</h1>
+            <div class="video-loading">
+                <div class="spinner"></div>
+            </div>
+            <video autoplay playsinline muted loop id="video-bg" preload="metadata" style="">
+                <source src="{{ latest_video.video.url }}" type="video/mp4">
+            </video>
+        {% else %}
+            <div class="center-container">
+                <p class="centered-text">No video available</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% block scripts %}
+{% comment %} <script>
+    // Video loading optimization
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to handle video loading
+        function loadVideo(videoElement) {
+            const loadingElement = videoElement.parentElement.querySelector('.video-loading');
+            
+            // Show loading indicator
+            if (loadingElement) loadingElement.style.display = 'flex';
+            
+            // Set video to display when ready
+            videoElement.addEventListener('loadeddata', function() {
+                videoElement.style.display = 'block';
+                if (loadingElement) loadingElement.style.display = 'none';
+            });
+            
+            // Handle errors
+            videoElement.addEventListener('error', function() {
+                console.error('Error loading video');
+                if (loadingElement) loadingElement.style.display = 'none';
+            });
+            
+            // Start loading
+            videoElement.load();
+        }
+        
+        // Load videos if they exist
+        const mobileVideo = document.getElementById('fullscreen-video');
+        const desktopVideo = document.getElementById('video-bg');
+        
+        if (mobileVideo) loadVideo(mobileVideo);
+        if (desktopVideo) loadVideo(desktopVideo);
+        
+        // Scroll effect optimization
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            const percentage = Math.min(100, (100 * scrollTop) / viewportHeight);
+            const video = document.getElementById('video');
+            const bg_text = document.getElementById('bg-text');
+            
+            if (!video) return;
+            
+            // Always keep video visible until 95% scroll
+            video.style.display = 'block';
+            
+            if (percentage <= 95) {
+                const transform = (percentage * 30) / 100;
+                video.style.left = `${percentage / 2}%`;
+                video.style.top = `${percentage / 2}%`;
+                video.style.height = `${100 - percentage}%`;
+                video.style.width = `${100 - percentage}%`;
+                video.style.transform = `rotate(${transform}deg)`;
+                
+                // Handle text animation
+                if (bg_text) {
+                    if (percentage > 90) {
+                        bg_text.style.display = 'block';
+                        bg_text.style.opacity = '1';
+                        bg_text.classList.add('zoom-in-animation');
+                    } else {
+                        bg_text.style.opacity = '0';
+                        bg_text.classList.remove('zoom-in-animation');
+                        setTimeout(() => {
+                            bg_text.style.display = 'none';
+                        }, 1000); // Match transition duration
+                    }
+                }
+            } else {
+                video.style.display = 'none';
+            }
+        });
+        
+        // Header scroll effect
+        var header = document.querySelector('#hd1');
+        var sec2 = document.querySelector('.sec11');
+        
+        if (header && sec2) {
+            var sec2Position = sec2.offsetTop;
+            
+            window.addEventListener('scroll', function() {
+                var scroll = window.pageYOffset;
+                
+                if (scroll >= sec2Position) {
+                    header.classList.remove('transparent');
+                    header.classList.add('white-bg');
+                } else {
+                    header.classList.remove('white-bg');
+                    header.classList.add('transparent');
+                }
+            });
+        }
+    });
+</script> {% endcomment %}
+
+{% endblock %}
+
+
+<section class="sec1" id="c1"
+    style="height: 100vh;width: 100%;">
+
+</section>
+{% comment %} <section class="sec11 " id="c2">
+    <h1 id="bg-text" style="font-family: 'BankGothic',sans-serif;">Introducing Pro4 3.0 – Your Growth Engine
+</h1>
+</section> {% endcomment %}
+<section class="sec2" id="sec2">
+    <p class="zoomable-text"><span>Pro4 3.0 – From Agency to Growth Engine</span>
+        What started as a digital marketing agency has now transformed into a full-stack growth engine.Pro4 3.0 unites strategy,
+         creativity, technology, and automation to deliver end-to-end business growth — not just leads, but lifetime customer value.
+        From branding and digital marketing to CRM systems and CFO insights, we power every stage of your business journey with smart, scalable solutions.</p>
+</section>
+
+<script>
+    // Function to handle the zoom animation
+    function handleZoomAnimation(entries2, observer2) {
+        entries2.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('zoom-out-in');
+            } else {
+                entry.target.classList.remove('zoom-out-in');
+            }
+        });
+    }
+
+    // Create an intersection observer
+    const zoomObserver2 = new IntersectionObserver(handleZoomAnimation, {
+        threshold: 0.5 // Trigger when half or more of the text is in view
+    });
+
+    // Start observing each zoomable text
+    document.querySelectorAll('.zoomable-text').forEach(text => {
+        zoomObserver2.observe(text);
+    });
+</script>
+
+<section class="section" id="stats">
+  {% comment %} <h1 class="fade-in-up">PROJECTS</h1> {% endcomment %}
+  <div class="stats-container">
+    <div class="stat-box fade-in-up">
+      <h2 class="counter" data-target="40" >0</h2>
+      <small>Growth Partners</small>
+    </div>
+    <div class="stat-box fade-in-up">
+      <h2 class="counter" data-target="200">0</h2>
+      <small>Tech Projects</small>
+    </div>
+    <div class="stat-box fade-in-up">
+      <h2 class="counter" data-target="35">0</h2>
+      <small>Media Projects</small>
+    </div>
+    <div class="stat-box fade-in-up">
+      <h2 class="counter" data-target="10">0</h2>
+      <small>Cyber Sec. Projects</small>
+    </div>
+    <div class="stat-box fade-in-up">
+      <h2 class="counter" data-target="3000000">0</h2>
+      <small>Designs</small>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Function to animate counters
+  function animateCounter(element, target, duration) {
+    let start = 0;
+    const increment = target / (duration / 16); // 16ms per frame ≈ 60fps
+    element.innerText = "0"; // Reset counter to 0 before animation
+    
+    const updateCounter = () => {
+      start += increment;
+      if (start >= target) {
+        element.innerText = target.toLocaleString();
+      } else {
+        element.innerText = Math.ceil(start).toLocaleString();
+        requestAnimationFrame(updateCounter);
+      }
+    };
+    requestAnimationFrame(updateCounter);
+  }
+
+  // Intersection Observer setup
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counterElements = document.querySelectorAll('.counter');
+        counterElements.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'));
+          animateCounter(counter, target, 1500); // 1.5 second animation
+        });
+      } else {
+        // Reset counters when section leaves viewport
+        const counterElements = document.querySelectorAll('.counter');
+        counterElements.forEach(counter => {
+          counter.innerText = "0";
+        });
+      }
+    });
+  }, { threshold: 0.3 }); // Trigger when 30% visible
+
+  // Start observing the stats section
+  const statsSection = document.querySelector('#stats');
+  if (statsSection) {
+    observer.observe(statsSection);
+  }
+</script>
+<section class="sec3">
+    <h2 style="color: var(--midnight-navy); margin-left: 2rem;" class="fade-in-up">Trusted by</h2>
+    
+    <!-- Carousel 1 (Backward) -->
+    <div class="logo-container fade-in-up" id="logoContainer1">
+        {% for logo in logo_group1 %}
+        <img src="{{ logo.logo.url }}" alt="{{ logo.name }} - Pro4 client">
+        {% endfor %}
+    </div>
+    
+    <!-- Carousel 2 (Forward) -->
+    <div class="logo-container fade-in-up" id="logoContainer2" style="margin-top:2rem;">
+        {% for logo in logo_group2 %}
+        <img src="{{ logo.logo.url }}" alt="{{ logo.name }} - Pro4 client">
+        {% endfor %}
+    </div>
+    
+    <!-- Carousel 3 (Backward) -->
+    <div class="logo-container fade-in-up" id="logoContainer3" style="margin-top:2rem;">
+        {% for logo in logo_group3 %}
+        <img src="{{ logo.logo.url }}" alt="{{ logo.name }} - Pro4 client">
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+function initCarousels() {
+    const carousels = [
+        ['logoContainer1', -1, 1], // Backward
+        ['logoContainer2',  1, 1], // Forward
+        ['logoContainer3', -1, 1]  // Backward
+    ];
+
+    carousels.forEach(([containerId, direction, speed]) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const originalLogos = container.innerHTML;
+        container.innerHTML = originalLogos.repeat(5);
+
+        const sectionWidth = container.scrollWidth / 3;
+
+        // Start positions: backward starts in middle, forward starts at 0
+        container.scrollLeft = (direction === -1) ? sectionWidth : 0;
+
+        let isDragging = false;
+        let startX = 0;
+        let startScroll = 0;
+
+        function autoScroll() {
+            if (!isDragging) {
+                container.scrollLeft += speed * direction;
+
+                if (direction === 1 && container.scrollLeft >= sectionWidth * 2) {
+                    container.scrollLeft -= sectionWidth;
+                } 
+                else if (direction === -1 && container.scrollLeft <= 0) {
+                    container.scrollLeft += sectionWidth;
+                }
+            }
+        }
+
+        setInterval(autoScroll, 50);
+
+        // Drag start
+        container.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startScroll = container.scrollLeft;
+        });
+
+        container.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            startScroll = container.scrollLeft;
+        });
+
+        // Drag move
+        container.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - startX;
+                container.scrollLeft = startScroll - deltaX;
+            }
+        });
+
+        container.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                const deltaX = e.touches[0].clientX - startX;
+                container.scrollLeft = startScroll - deltaX;
+                e.preventDefault();
+            }
+        });
+
+        // Drag end
+        function endDrag() {
+            isDragging = false;
+        }
+
+        window.addEventListener('mouseup', endDrag);
+        window.addEventListener('touchend', endDrag);
+        window.addEventListener('touchcancel', endDrag);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', initCarousels);
+</script>
+
+
+<section class="method-section">
+  <h2 class="fade-in-up">Our Method of Action</h2>
+  
+  <div class="steps-grid">
+    {% for step in method_steps %}
+    <div class="step-box fade-in-up">
+      <img src="{{ step.image.url }}" alt="{{ step.title }} icon">
+      <div class="action-step">
+        <span class="step-number">{{ step.step_number }}.</span>
+        <p class="step-title">{{ step.title }}</p>
+      </div>
+      <div class="p1">{{ step.description|safe }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<section class="sec-4" id="ser1">
+    <h2 id="service" class="fade-in-up">Discover how we can help</h2>
+    <div style="margin-top: 3rem;">
+        <div class="card-flex">
+            <div class="card-flex1 mobile-order-1">
+                {% for service in services|slice:":1" %}
+                    <a href="{% url 'main:service_details' service.slug %}" style="text-decoration:none;color:black">
+                        <div class="card fade-in-up">
+                            <p>{{ service.number|stringformat:"02d" }}</p>
+                            <h3>{{ service.name }}</h3>
+                            <div class="sec4-p">{{ service.content|safe }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+                {% for service in services|slice:"1:2" %}
+                    <a href="{% url 'main:service_details' service.slug %}" style="text-decoration:none;color:black">
+                        <div class="card fade-in-up" style="margin-top: 2rem;">
+                            <p>{{ service.number|stringformat:"02d" }}</p>
+                            <h3>{{ service.name }}</h3>
+                            <div class="sec4-p">{{ service.content|safe }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="card-flex1 mobile-order-2">
+                {% for service in services|slice:"2:3" %}
+                    <a href="{% url 'main:service_details' service.slug %}" style="text-decoration:none;color:black">
+                        <div class="card fade-in-up" style="margin-top: 2rem;">
+                            <p>{{ service.number|stringformat:"02d" }}</p>
+                            <h3>{{ service.name }}</h3>
+                            <div class="sec4-p">{{ service.content|safe }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+                {% for service in services|slice:"3:4" %}
+                    <a href="{% url 'main:service_details' service.slug %}" style="text-decoration:none;color:black">
+                        <div class="card fade-in-up" style="margin-top: 2rem;">
+                            <p>{{ service.number|stringformat:"02d" }}</p>
+                            <h3>{{ service.name }}</h3>
+                            <div class="sec4-p">{{ service.content|safe }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Desktop Gallery Section -->
+{% comment %} <section class="sec-5 zoomable-image" id="m1">
+    <div class="image-grid">
+        {% for screenshot in homepage_screenshots|slice:":6" %}
+            {% with counter=forloop.counter %}
+            {% if counter == 1 or counter == 3 or counter == 5 or counter == 2 or counter == 4 or counter == 6 %}
+            <div class="grid-item item-{{ counter }}">
+                <img src="{{ screenshot.image.url }}" alt="Screenshot {{ counter }}">
+            </div>
+            {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+</section>
+
+<section class="sec-5 zoomable-image" id="m2">
+    <div class="image-grid">
+        {% for screenshot in homepage_screenshots|slice:"2:6" %}
+            {% with counter=forloop.counter|add:2 %}
+            {% if counter == 3 or counter == 5 or counter == 4 or counter == 6 %}
+            <div class="grid-item">
+                <img src="{{ screenshot.image.url }}" alt="Screenshot {{ counter }}">
+            </div>
+            {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    // Function to handle the zoom animation
+    function handleZoomAnimation(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('zoom-in');
+            } else {
+                entry.target.classList.remove('zoom-in');
+            }
+        });
+    }
+
+    // Create an intersection observer
+    const zoomObserver = new IntersectionObserver(handleZoomAnimation, {
+        threshold: 0.5 // Trigger when half or more of the image is in view
+    });
+
+    // Start observing each zoomable image
+    document.querySelectorAll('.zoomable-image').forEach(image => {
+        zoomObserver.observe(image);
+    });
+</script> {% endcomment %}
+<section class="why-choose-section">
+  <h2 class="choose-heading fade-in-up">WHY TO CHOOSE US ?</h2>
+
+  <div class="choose-grid">
+    <div class="choose-card fade-in-up">
+      <div class="choose-icon">
+        <img src="static/assets/img/w1.png" alt="Holistic Approach icon">
+      </div>
+      <h3>HOLISTIC APPROACH</h3>
+      <p>We don’t just offer services; we provide a 360-degree growth ecosystem that covers all 6 critical segments of your business.</p>
+    </div>
+
+    <div class="choose-card fade-in-up">
+      <div class="choose-icon">
+        <img src="static/assets/img/w3.png" alt="Futuristic Solutions icon">
+      </div>
+      <h3>FUTURISTIC SOLUTIONS</h3>
+      <p>We leverage cutting-edge technology, AI, and data-driven strategies to deliver results that are not just effective but also future-proof.</p>
+    </div>
+
+    <div class="choose-card fade-in-up">
+      <div class="choose-icon">
+        <img src="static/assets/img/w2.png" alt="Client-Centric Philosophy icon">
+      </div>
+      <h3>CLIENT-CENTRIC PHILOSOPHY</h3>
+      <p>Your success is our success. We treat your business as our own, ensuring personalized solutions tailored to your unique needs.</p>
+    </div>
+
+    <div class="choose-card fade-in-up">
+      <div class="choose-icon">
+        <img src="static/assets/img/w4.png" alt="Local Understanding icon">
+      </div>
+      <h3>LOCAL UNDERSTANDING</h3>
+      <p>With a presence in Bahrain, India, Saudi Arabia, and the UAE, we combine global best practices with deep local insights to deliver unmatched value.</p>
+    </div>
+
+    <div class="choose-card fade-in-up">
+      <div class="choose-icon">
+        <img src="static/assets/img/w5.png" alt="Proven Track Record icon">
+      </div>
+      <h3>PROVEN TRACK RECORD</h3>
+      <p>Our portfolio of successful projects and satisfied clients speaks volumes about our commitment to excellence.</p>
+    </div>
+
+    <div class="choose-card fade-in-up">
+      <div class="choose-icon">
+        <img src="static/assets/img/w6.png" alt="Scalable Approach icon">
+      </div>
+      <h3>SCALABLE APPROACH</h3>
+      <p>Built to grow with your business.</p>
+    </div>
+  </div>
+</section>
+<style>
+   .media-container {
+    opacity: 0;
+    transition: all 0.8s ease;
+    will-change: transform, opacity;
+}
+
+.media-container.left {
+    transform: translateX(-100%) rotate(-25deg);
+}
+
+.media-container.right {
+    transform: translateX(100%) rotate(25deg);
+}
+
+.media-container.active {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+}
+
+/* Optional: fade + slide-up for titles, categories, etc. */
+.animate-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.animate-element.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+</style>
+
+<section class="sec-6">
+    <div class="sec6-flex">
+        <div class="a1 animate-element">
+            <h2 class="fade-in-up">Our best work</h2>
+            <a href="{% url 'main:work' %}"><p class="sec6-p">
+                All work &nbsp;&nbsp;<i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+        </div>
+        <div class="a2 animate-element">
+            <p id="featured-counter">1/{{ featured_works|length }}</p>
+        </div>
+    </div>
+    
+    <div class="image-grid2">
+        {% for featured in featured_works|slice:":1" %}
+        <div class="media-container left animate-element">
+            {% if featured.work.media.name|lower|slice:'-4:' in '.mp4,.mov,.avi' %}
+            <video autoplay muted playsinline loop>
+                <source src="{{ featured.work.media.url }}" type="video/{{ featured.work.media.name|lower|slice:'-3:' }}">
+            </video>
+            {% else %}
+            <img src="{{ featured.work.media.url }}" alt="{{ featured.work.title }}">
+            {% endif %}
+        </div>
+        
+        <div class="media-container right animate-element">
+            {% if featured.additional_media %}
+                {% if featured.additional_media.name|lower|slice:'-4:' in '.mp4,.mov,.avi' %}
+                <video autoplay muted playsinline loop>
+                    <source src="{{ featured.additional_media.url }}" type="video/{{ featured.additional_media.name|lower|slice:'-3:' }}">
+                </video>
+                {% else %}
+                <img src="{{ featured.additional_media.url }}" alt="{{ featured.work.title }}">
+                {% endif %}
+            {% else %}
+                {% if featured.work.media.name|lower|slice:'-4:' in '.mp4,.mov,.avi' %}
+                <video autoplay muted playsinline loop>
+                    <source src="{{ featured.work.media.url }}" type="video/{{ featured.work.media.name|lower|slice:'-3:' }}">
+                </video>
+                {% else %}
+                <img src="{{ featured.work.media.url }}" alt="{{ featured.work.title }}">
+                {% endif %}
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="sample">
+        <div class="sec6-flex1 animate-element">
+            {% for featured in featured_works|slice:":1" %}
+                {% if featured.work.division %}
+                    <a href="{% url 'main:work' %}?division={{ featured.work.division.slug|urlencode }}">
+                        {{ featured.work.division.name }}
+                    </a>
+                {% else %}
+                    <a href="{% url 'main:work' %}">Design</a>
+                    <a href="{% url 'main:work' %}">Development</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        
+        <div class="sec6-1 animate-element">
+            {% for featured in featured_works|slice:":1" %}
+            <h2>{{ featured.work.title }}</h2>
+            <p>{{ featured.work.description|striptags|truncatechars:150 }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('.sec-6');
+    const animatedElements = section.querySelectorAll('.animate-element');
+    const leftMedia = section.querySelector('.media-container.left');
+    const rightMedia = section.querySelector('.media-container.right');
+    const sample = section.querySelector('.sample');
+
+    // === INTERSECTION OBSERVER: Animate on scroll ===
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Stagger animation for general elements
+                animatedElements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('active');
+                    }, index * 150);
+                });
+
+                // Animate media containers
+                leftMedia?.classList.add('active');
+                rightMedia?.classList.add('active');
+
+                // Animate sample section
+                sample?.querySelectorAll('.sec6-1, .sec6-flex1').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateX(0)';
+                    }, index * 200);
+                });
+
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    if (section) {
+        observer.observe(section);
+    }
+
+    // === FEATURED WORKS CAROUSEL ===
+    if ({{ featured_works|length }} > 1) {
+        let currentIndex = 0;
+        const featuredWorks = [
+            {% for featured in featured_works %}
+            {
+                title: "{{ featured.work.title|escapejs }}",
+                description: "{{ featured.work.description|striptags|escapejs }}",
+                mediaUrl: "{{ featured.work.media.url }}",
+                mediaType: "{% if featured.work.media.name|lower|slice:'-4:' in '.mp4,.mov,.avi' %}video{% else %}image{% endif %}",
+                additionalMediaUrl: "{% if featured.additional_media %}{{ featured.additional_media.url }}{% endif %}",
+                additionalMediaType: "{% if featured.additional_media %}{% if featured.additional_media.name|lower|slice:'-4:' in '.mp4,.mov,.avi' %}video{% else %}image{% endif %}{% endif %}",
+                categories: [
+                    {% for category in featured.work.get_categories_list %}
+                    "{{ category|escapejs }}"{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                ]
+            }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        const counterElement = document.getElementById('featured-counter');
+        const categoriesContainer = document.querySelector('.sec6-flex1');
+        const titleElement = document.querySelector('.sec6-1 h2');
+        const descriptionElement = document.querySelector('.sec6-1 p');
+
+        function updateMediaContainer(container, url, type) {
+            container.classList.remove('active');
+
+            setTimeout(() => {
+                container.innerHTML = '';
+
+                if (type === 'video') {
+                    const video = document.createElement('video');
+                    video.autoplay = true;
+                    video.muted = true;
+                    video.playsInline = true;
+                    video.loop = true;
+                    const source = document.createElement('source');
+                    source.src = url;
+                    source.type = `video/${url.split('.').pop().toLowerCase()}`;
+                    video.appendChild(source);
+                    container.appendChild(video);
+                } else {
+                    const img = document.createElement('img');
+                    img.src = url;
+                    img.alt = "Featured work";
+                    container.appendChild(img);
+                }
+
+                setTimeout(() => {
+                    container.classList.add('active');
+                }, 50);
+            }, 100);
+        }
+
+        function updateFeaturedWork(index) {
+            const work = featuredWorks[index];
+
+            // Fade out elements
+            [leftMedia, rightMedia, titleElement, descriptionElement, categoriesContainer].forEach(el => {
+                el.classList.remove('active');
+            });
+
+            setTimeout(() => {
+                counterElement.textContent = `${index + 1}/${featuredWorks.length}`;
+
+                updateMediaContainer(leftMedia, work.mediaUrl, work.mediaType);
+
+                if (work.additionalMediaUrl && work.additionalMediaType) {
+                    updateMediaContainer(rightMedia, work.additionalMediaUrl, work.additionalMediaType);
+                } else {
+                    updateMediaContainer(rightMedia, work.mediaUrl, work.mediaType);
+                }
+
+                // Update categories
+                categoriesContainer.innerHTML = '';
+                work.categories.forEach(category => {
+                    const link = document.createElement('a');
+                    link.href = `{% url 'main:work' %}?category=${encodeURIComponent(category)}`;
+                    link.textContent = category;
+                    categoriesContainer.appendChild(link);
+                });
+
+                // Update title & description
+                titleElement.textContent = work.title;
+                descriptionElement.textContent = work.description.substring(0, 150) + (work.description.length > 150 ? '...' : '');
+
+                // Re-activate for fade-in effect
+                [leftMedia, rightMedia, titleElement, descriptionElement, categoriesContainer].forEach(el => {
+                    setTimeout(() => {
+                        el.classList.add('active');
+                    }, 100);
+                });
+
+            }, 300);
+        }
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % featuredWorks.length;
+            updateFeaturedWork(currentIndex);
+        }, 5000);
+    }
+});
+</script>
+
+<section class="testimonial-section"> 
+    <h2 class="testimonial-heading fade-in-up">TESTIMONIALS & FEEDBACK</h2>
+    <p class="testimonial-subtitle fade-in-up">TRUSTED BY BRANDS WHO BELIEVE IN GROWTH</p>
+
+    <div class="testimonial-wrapper">
+        <!-- Left Column -->
+        <div class="testimonial-left">
+            <div class="quote-symbol fade-in-up">“</div>
+            <p class="testimonial-intro fade-in-up">What our customers are saying</p>
+            <div class="separator-line fade-in-up"></div>
+        </div>
+
+        <!-- Static Cards Grid -->
+        <div class="testimonial-slider-container">
+  <div class="testimonial-cards-grid" id="testimonialSlider">
+    {% for testimonial in testimonials %}
+    <div class="testimonial-card">
+      <div class="b">
+        <div class="testimonial-text">{{ testimonial.text|safe }}</div>
+        <div>
+          <div class="testimonial-name">{{ testimonial.name }}</div>
+          <div class="testimonial-brand">{{ testimonial.brand }}</div>
+        </div>
+      </div>
+      <div class="brand-logo">
+        <img src="{{ testimonial.logo.url }}" alt="{{ testimonial.brand }} Logo">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+</div>
+
+</section>
+
+
+{% endblock %}

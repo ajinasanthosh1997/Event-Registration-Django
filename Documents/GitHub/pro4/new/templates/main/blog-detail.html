@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Pro 4 | Blog{% endblock %}
+
+{% block content %}
+<style>
+    
+    
+.content {
+    line-height: 1.6;
+    padding-right: 6rem;
+    font-weight:300;
+    animation: slideInRight 0.5s ease forwards;
+    color:var(--cyber-gray);
+}
+    .blog-image img {
+        margin-top:2rem;
+        width:30rem;
+        animation: slideInLeft 0.5s ease forwards;
+        position: sticky; /* Make the image sticky */
+        top: 5rem; /* Adjust as needed */
+    }
+    .blog-detail h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        animation: fadeInUp 0.5s ease forwards;
+        color:var(--midnight-navy);
+    }
+    
+    .meta-info {
+        font-style: italic;
+        color: #888;
+        animation: fadeInUp 0.5s ease forwards;
+        animation-delay: 0.2s;
+    }
+    
+    /* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@media only screen and (max-width: 700px) {
+       
+    .blog-image img {
+       
+        width:20rem;
+        
+    }
+
+    .content {
+        line-height: 1.6;
+        padding-right: 0;
+    }
+}
+@media (min-width: 700px) and (max-width: 1440px) {
+    .blog-image img {
+       
+        width:20rem;
+        
+    }
+    .content {
+
+        padding-right:0;
+    }
+}
+</style>
+
+<div class="container">
+    <div class="blog-detail">
+        <h1>{{ blog.title }}</h1>
+        <p class="meta-info">Author: {{ blog.author }}</p>
+        <p class="meta-info">Date: {{ blog.date }}</p>
+        <div class="blog-flex">
+            <div class="blog-image">
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+            </div>
+            <div class="content">
+                {{ blog.content | safe }}
+            </div>
+        </div>
+        
+    </div>
+    {% comment %} <a href="{% url 'home' %}">Back to Home</a> {% endcomment %}
+</div>
+<script>
+    // JavaScript to make the image stick after scrolling for a certain distance
+    window.addEventListener('scroll', function() {
+        const image = document.querySelector('.blog-image img');
+        const content = document.querySelector('.content');
+        
+        // Get the bottom position of the content
+        const contentBottom = content.getBoundingClientRect().bottom;
+        
+        // Get the bottom position of the viewport
+        const viewportBottom = window.innerHeight;
+        
+        // Calculate the distance from the bottom of the content to the bottom of the viewport
+        const distanceToBottom = contentBottom - viewportBottom;
+        
+        // Adjust this value to specify the distance before the image sticks (in pixels)
+        const distanceThreshold = 200;
+        
+        if (distanceToBottom <= distanceThreshold) {
+            // If distance is less than or equal to the threshold, make image sticky
+            image.style.position = 'sticky';
+            image.style.top = '6rem'; // Adjust as needed
+        } else {
+            // Otherwise, make image static
+            image.style.position = 'static';
+        }
+    });
+</script>
+
+
+{% endblock %}

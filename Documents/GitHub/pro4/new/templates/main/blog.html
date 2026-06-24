@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Pro 4 | Blog{% endblock %}
+
+{% block content %}
+<style>
+    
+    @media only screen and (max-width: 700px) {
+        .recent-blogs {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+        }
+    }
+    @media (min-width: 700px) and (max-width: 1440px) {
+        .recent-blogs {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .featured-blog {
+            padding: 2rem 2rem;
+        }
+    }
+    
+</style>
+
+
+
+<section class="container">
+    <div class="featured-blog">
+        <!-- <div class="overlay"></div> -->
+        <div class="content">
+            <h2>Featured Blog</h2>
+            {% if featured_blogs %}
+                <div class="featured">
+                    <img src="{{ featured_blogs.0.image.url }}" alt="Blog Image 4"> <!-- Access the first featured blog -->
+                    <div>    
+                        <h3>{{ featured_blogs.0.title }}</h3> <!-- Access the title of the first featured blog -->
+                        <p>{{ featured_blogs.0.content|striptags|truncatechars:700 }}</p> <!-- Access the content of the first featured blog -->
+                        <a href="{% url 'main:blog-detail' featured_blogs.0.slug %}" class="as">Read More</a> <!-- Access the primary key of the first featured blog -->
+                    </div>
+                </div>
+            {% else %}
+                <p>No featured blog available.</p>
+            {% endif %}
+
+        </div>
+    </div>
+    
+    <div>
+        <h1 style="font-size: 2rem;">Recent Blogs</h1>
+    </div>
+    <div class="recent-blogs">
+        {% if blogs %}
+            {% for blog in blogs %}
+            
+                <div class="recent-blog">
+                    <a href="{% url 'main:blog-detail' blog.pk %}" class="as1">
+                        <img src="{{ blog.image.url }}" alt="Blog Image 4">
+                        <h3>{{ blog.title }}</h3>
+                        <p>{{ blog.content|striptags|truncatechars:155 }}</p>
+                        <a href="{% url 'main:blog-detail' blog.slug %}" class="as">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="date">{{ blog.date }}</span>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+                <p>No recent blogs available.</p>
+        {% endif %} 
+        </div>
+    
+</section>
+<section class="load">
+    <a class="a-button" href="{% url 'main:blogs' %}">
+        <span class="yellow-text">Load more...</span>
+        <span class="white-text">Load more...</span>
+    </a>
+</section>
+
+{% endblock %}

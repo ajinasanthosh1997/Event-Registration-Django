@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Pro 4 | Blog{% endblock %}
+
+{% block content %}
+<style>
+    .container {
+        margin: -1rem 4rem;
+    }
+    .container {
+        padding: 5rem 0rem;
+        position: relative;
+    }
+    .as1{
+        text-decoration:none;
+        color:var(--midnight-navy);
+    }
+    /* Slide-in from top animation */
+    @keyframes slideInFromTop {
+        0% { transform: translateY(-50px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Slide-in from bottom animation */
+    @keyframes slideInFromBottom {
+        0% { transform: translateY(50px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--midnight-navy);; /* Semi-transparent black overlay */
+    }
+    @media (min-width: 700px) and (max-width: 1440px) {
+        .recent-blogs {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .container {
+            padding: 4rem 2rem;
+        }
+        .container {
+            margin: -1rem 1rem;
+        }
+    
+    }
+    @media only screen and (max-width: 700px) {
+        .recent-blogs {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+        }
+        .container {
+            margin: 4rem 1rem;
+        }
+        
+        .load {
+            padding: 0rem 1rem;
+            
+        }
+        .container {
+            margin: -1rem 2rem;
+        }
+        .container {
+            padding: 2rem 0rem;
+            position: relative;
+        }
+    
+    }
+    
+</style>
+<div class="container">
+    <section class="recent-blogs">
+        {% if blogs %}
+            {% for blog in blogs %}
+            
+                <div class="recent-blog">
+                    <a href="{% url 'main:blog-detail' blog.slug %}" class="as1">
+                        <img src="{{ blog.image.url }}" alt="Blog Image 4">
+                        <h3>{{ blog.title }}</h3>
+                        <p>{{ blog.content|striptags|truncatechars:155 }}</p>
+                        <a href="{% url 'main:blog-detail' blog.slug %}" class="as">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="date">{{ blog.date }}</span>
+                    </a>
+                </div>
+        
+            {% endfor %}
+        {% else %}
+                <p>No blogs available.</p>
+        {% endif %}    
+        
+    </section>
+    
+</div>
+
+
+{% endblock %}

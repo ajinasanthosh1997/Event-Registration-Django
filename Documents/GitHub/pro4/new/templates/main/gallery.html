@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pro 4 | Gallery{% endblock %}
+
+{% block content %}
+
+<!-- LightGallery CSS -->
+<link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet" />
+
+<!-- LightGallery JS -->
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+
+<style>
+:root {
+  --midnight-navy: #0A192F;
+  --electric-blue: #007CFF;
+  --platinum-white: #F8F9FA;
+  --neon-teal: #00F6ED;
+  --cyber-gray: #343A40;
+  --solar-gold: #FFD700;
+}
+
+body {
+  background-color: var(--platinum-white);
+  color: var(--cyber-gray);
+}
+
+.gallery-sec {
+  padding: 6rem 2rem;
+  background-color: var(--platinum-white);
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-card {
+  background: var(--platinum-white);
+  /* border: 1px solid var(--midnight-navy); */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 124, 255, 0.1); /* subtle blue shadow */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  /* border-color: var(--electric-blue); */
+}
+
+.gallery-header h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  color: var(--midnight-navy);
+}
+
+.gallery-header p {
+  font-size: 0.95rem;
+  color: var(--cyber-gray);
+  margin-bottom: 1rem;
+}
+
+.gallery-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.gallery-images a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-images a:hover img {
+  transform: scale(1.05);
+}
+
+/* LightGallery fullscreen overlay styling */
+.lg-backdrop {
+  background-color: var(--midnight-navy) !important;
+}
+
+.lg-outer, .lg-outer .lg-thumb-outer {
+  background-color: var(--midnight-navy) !important;
+}
+
+@media only screen and (max-width: 700px) {
+    .gallery-sec {
+        padding: 3rem 1rem;
+    }
+}
+</style>
+
+<section class="gallery-sec">
+  <div class="gallery-container fade-in-up">
+  {% for group in gallery_groups %}
+    <div class="gallery-card">
+      <div class="gallery-header fade-in-up">
+        <h2>{{ group.title }}</h2>
+        {% if group.description %}
+          <div class="fade-in-up">{{ group.description|safe }}</div>
+        {% endif %}
+      </div>
+      <div class="gallery-images" id="gallery-{{ group.id }}" data-lg-parent>
+        {% for image in group.images.all %}
+          <a href="{{ image.image.url }}" data-lg-size="1400-900">
+            <img src="{{ image.image.url }}" alt="{{ group.title }}">
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('[id^="gallery-"]').forEach(gallery => {
+      lightGallery(gallery, {
+        plugins: [lgZoom, lgThumbnail],
+        thumbnail: true,
+        zoom: true,
+        actualSize: false
+      });
+    });
+  });
+</script>
+
+{% endblock %}

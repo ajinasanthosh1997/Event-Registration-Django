@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Pro 4 | Work{% endblock %}
+{% block content %}
+<style>
+    @media (min-width: 820px) and (max-width: 1100px) {
+        
+        .work-flex h1 {
+    margin-top: 4rem;
+    width: 29rem;
+    
+}
+
+       .work-flex {
+    
+    display: block;
+       }
+    .work-flex img {
+        height: 18rem;
+        width: 60rem;
+    }
+}
+    a{
+        text-decoration: none;
+    color: white;
+    }
+    .counter::after {
+    content: '+';
+    margin-left: 4px;
+    font-weight: bold;
+    font-size: inherit;
+}
+
+</style>
+
+<section class="work-sec1">
+    <div class="work-flex">
+        <div>
+            <h1 class="fade-in-up">OUR BEST WORKS</h1>
+            <div class="work-flex1">
+                {% if projectsdone %}
+                <h2 class="counter" data-target="{{ projectsdone.number }}">0 </h2>
+                {% else %}
+                <p>No data available</p>
+                {% endif %}
+                <p >PROJECTS <br>DONE</p>
+            </div>
+        </div>
+
+        <div class="work-carousel fade-in-up">
+            {% for project in projects %}
+            <div class="work-card">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                <div class="card1">
+                    <p class="p">{{ project.category }}</p>
+                    <h3 style="color:var(--solar-gold);">{{ project.title }}</h3>
+                    <div class="work-flex2">
+                        {% for i in projects %}
+                            <p class="{% if forloop.counter == forloop.parentloop.counter %}current-order{% endif %}">{{ forloop.counter }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- Add more work cards for additional slides if needed -->
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const counters = document.querySelectorAll('.counter');
+    let hasAnimated = false;
+
+    function animateCounters() {
+        if (hasAnimated) return;
+        hasAnimated = true;
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const speed = 500;
+            const increment = Math.max(1, target / speed);
+
+            function update() {
+                const current = +counter.innerText;
+                if (current < target) {
+                    counter.innerText = Math.ceil(current + increment);
+                    setTimeout(update, 20);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            }
+
+            update();
+        });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+});
+</script>
+
+<script>
+    const workCards = document.querySelectorAll('.work-card');
+    const indicators = document.querySelectorAll('.work-flex2 p');
+
+    let currentIndex = 0;
+    let intervalId = null;
+
+    function showSlide(index) {
+        workCards.forEach(card => {
+            card.style.display = 'none';
+        });
+
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active');
+            indicator.style.animation = 'none';
+        });
+
+        workCards[index].style.display = 'block';
+        indicators[index].classList.add('active');
+        
+        indicators[index].offsetHeight;
+        indicators[index].style.animation = 'progress 5s linear infinite';
+    }
+
+    function nextSlide() {
+        const nextIndex = currentIndex + 1 < workCards.length ? currentIndex + 1 : 0;
+        showSlide(nextIndex);
+        currentIndex = nextIndex;
+    }
+
+    // Start the carousel
+    intervalId = setInterval(nextSlide, 5000);
+
+    // Pause carousel on indicator click
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            clearInterval(intervalId);
+            showSlide(index);
+            currentIndex = index;
+            intervalId = setInterval(nextSlide, 5000);
+        });
+    });
+</script>
+
+<section style="padding: 1rem 1.5rem;" id="drp">
+    <div style="display: flex;justify-content: center;gap: 1.5rem;align-items: center;">
+        <div class="toggle-container1 fade-in-up">
+            <button id="toggle-button1">DIVISIONS &nbsp;<i id="toggle-icon1" class="fas fa-caret-down toggle-icon"></i></button>
+            <div id="toggle-content1" class="toggle-content1">
+                <ul style="padding-bottom: 1.5rem;">
+                    <li><a href="?division=all" class="{% if not request.GET.division or request.GET.division == 'all' %}active-filter{% endif %}">All Divisions</a></li>
+                    {% for division in divisions %}
+                    <li><a href="?division={{ division.slug }}" class="{% if request.GET.division == division.slug %}active-filter{% endif %}">{{ division.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+         <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const toggleButton = document.getElementById('toggle-button1');
+                    const toggleIcon = document.getElementById('toggle-icon1');
+                    const toggleContent = document.getElementById('toggle-content1');
+                    
+                    toggleButton.addEventListener('click', function() {
+                        if (toggleContent.classList.contains('open')) {
+                            toggleContent.classList.remove('open');
+                            toggleIcon.classList.remove('fa-caret-up');
+                            toggleIcon.classList.add('fa-caret-down');
+                        } else {
+                            toggleContent.classList.add('open');
+                            toggleIcon.classList.remove('fa-caret-down');
+                            toggleIcon.classList.add('fa-caret-up');
+                        }
+                    });
+                });
+            </script> 
+    </div>
+</section> 
+
+<section class="work-sec2">
+    <div class="work-flex3">
+        <div class="toggle-card fade-in-up" id="drop1">
+            <div class="toggle-container fade-in-up">
+                <button id="toggle-button">DIVISIONS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i id="toggle-icon" class="fas fa-caret-down toggle-icon"></i></button>
+                <div id="toggle-content" class="toggle-content open">
+                    <ul style="border-bottom: 1px solid rgb(95, 95, 94);padding-bottom: 1.5rem;">
+                        <li><a href="?division=all" class="{% if not request.GET.division or request.GET.division == 'all' %}active-filter{% endif %}">All Divisions</a></li>
+                        {% for division in divisions %}
+                        <li><a href="?division={{ division.slug }}" class="{% if request.GET.division == division.slug %}active-filter{% endif %}">{{ division.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const toggleButton = document.getElementById('toggle-button');
+                    const toggleIcon = document.getElementById('toggle-icon');
+                    const toggleContent = document.getElementById('toggle-content');
+                    
+                    toggleButton.addEventListener('click', function() {
+                        if (toggleContent.classList.contains('open')) {
+                            toggleContent.classList.remove('open');
+                            toggleIcon.classList.remove('fa-caret-up');
+                            toggleIcon.classList.add('fa-caret-down');
+                        } else {
+                            toggleContent.classList.add('open');
+                            toggleIcon.classList.remove('fa-caret-down');
+                            toggleIcon.classList.add('fa-caret-up');
+                        }
+                    });
+                });
+            </script> 
+        </div>
+        <div>
+            <p class="work-p fade-in-up">We've helped over 100 firms reach their full potential, and we're happy to do the same for you! Find out how our skills can contribute to your success.</p>
+            
+            {% if works %}
+            <div class="work-flex4 fade-in-up">
+                {% for work in works %}
+                <div class="gridcard">
+                    {% if work.media %}
+                        {% if work.media.name|lower|slice:'-4:' == '.jpg' or work.media.name|lower|slice:'-5:' == '.jpeg' or work.media.name|lower|slice:'-4:' == '.png' or work.media.name|lower|slice:'-5:' == '.webp' %}
+                            <img src="{{ work.media.url }}" alt="{{ work.title }} Image">
+                        {% elif work.media.name|lower|slice:'-4:' == '.mp4' or work.media.name|lower|slice:'-4:' == '.mov' or work.media.name|lower|slice:'-4:' == '.avi' %}
+                            <video autoplay muted playsinline loop style="width: 100%;">
+                                <source src="{{ work.media.url }}" type="video/{{ work.media.name|lower|slice:'-3:' }}">
+                                Your browser does not support the video tag.
+                            </video>
+                        {% endif %}
+                    {% endif %}
+                    <h3>{{ work.title }}</h3>
+                    <div>{{ work.description|safe }}</div>
+                    <div class="division-tag">{{ work.division.name }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="no-works">
+                <p>No projects found for this division.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<script>
+    // Mobile toggle functionality
+    document.getElementById("toggle-button1").addEventListener("click", function() {
+        var content = document.getElementById("toggle-content1");
+        var icon = document.getElementById("toggle-icon1");
+        
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            icon.classList.remove('fa-caret-up');
+            icon.classList.add('fa-caret-down');
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.classList.remove('fa-caret-down');
+            icon.classList.add('fa-caret-up');
+        }
+    });
+
+    // Preselect active filter on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const divisionParam = urlParams.get('division');
+        
+        if (divisionParam) {
+            // Add active class to the selected filter
+            const links = document.querySelectorAll('.toggle-content ul li a');
+            links.forEach(link => {
+                if (link.getAttribute('href') === `?division=${divisionParam}`) {
+                    link.classList.add('active-filter');
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

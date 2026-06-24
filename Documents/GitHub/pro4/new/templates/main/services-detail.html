@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Pro4 | Services{% endblock %}
+
+{% block content %}
+<style>
+    .service-sec3 {
+    display: grid
+;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+    .product-cards-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 3rem;
+  background-color: var( --midnight-navy); /* dark background */
+}
+@media only screen and (max-width: 700px) {
+        .service-sec3 {
+   
+    grid-template-columns: repeat(1, 1fr);
+   
+}
+.product-cards-section {
+ 
+  grid-template-columns: repeat(1, 1fr);
+  
+}
+}
+.product-card {
+  background: linear-gradient(135deg, #012f4a, #011627);
+  border: 1px solid var(--neon-teal);
+  border-radius: 8px;
+  padding: 2rem;
+  color: var(--platinum-white);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card h3 {
+  font-size: 1.3rem;
+  color: var(--neon-teal);
+  margin-bottom: 1rem;
+}
+
+.product-card h5 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--platinum-white);
+}
+
+.product-card ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color:var(--platinum-white);
+}
+
+.qr-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.qr-section img {
+  width: 70px;
+  height: 70px;
+}
+
+.qr-section span {
+  font-size: 0.95rem;
+  color:var(--platinum-white);
+}
+
+    .carousel-slide {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    .carousel-slide.active {
+        display: block;
+        opacity: 1;
+    }
+    
+            
+@media (min-width: 700px) and (max-width: 1440px) {
+    
+    .service-sec2 img {
+        padding: 0 2rem;
+        height: 22rem;
+        width: 85%;
+        border-radius: .75rem;
+    }
+    .service-sec3 {
+        padding: 2rem;
+    }
+    
+
+}
+</style>
+
+<section class="service-sec1">
+    
+    <h1 class="servise-h1">{{service.name}}</h1>
+
+     <!-- <h1 class="">{{service.name}}</h1> -->
+
+</section>
+<section class="service-sec2">
+    <div class="services-flex">
+        <img src="{{service.image.url}}" style="border-radius: .5rem;" alt="{{ service.name }} service banner - Pro4">
+        <div>{{ service.content|safe }}</div>
+    </div>
+</section>
+<section class="service-sec3">
+    {% if service.slug != "innovation-division" %}
+    {% for subservice in subservices %}
+    <div class="product-card">
+        <img src="{{ subservice.icon.url }}" alt="{{ subservice.name }} icon - Pro4 service" style="height:4rem;width:4rem;">
+        <h3>{{ subservice.name }}</h3>
+        <div>{{ subservice.content|safe }}</div>
+    </div>
+    {% endfor %}
+ {% endif %}
+    {% if service.slug == "innovation-division" %}
+   <div class="product-card">
+            <h3>PRO-4 AI SALES AGENT</h3>
+            <p>
+                An intelligent digital assistant that empowers your sales team to work smarter, not harder.
+                The PRO-4 AI Sales Agent helps you automatically identify and reach potential customers
+                with personalized messages across channels like email, WhatsApp, and more.
+            </p>
+            <h5>Key Features</h5>
+            <ul>
+                <li>Integrated CRM & sales pipeline</li>
+                <li>Task and team management tools</li>
+                <li>Real-time reporting and analytics</li>
+                <li>Workflow automation</li>
+            </ul>
+            <div class="qr-section">
+                <img src="{% static 'assets/img/qr.png' %}" alt="QR Code for PRO-4 AI SALES AGENT demo" loading="lazy">
+                <span>Scan for demo</span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <h3>PRO-MAN</h3>
+            <p>
+                An all-in-one platform to manage your Sales, CRM, and Team Operations. PRO4-MAN streamlines workflows,
+                tracks leads, manages customer interactions, assigns tasks, and monitors performance.
+            </p>
+            <h5>Key Features</h5>
+            <ul>
+                <li>Integrated CRM & sales pipeline</li>
+                <li>Task and team management tools</li>
+                <li>Real-time reporting and analytics</li>
+                <li>Workflow automation</li>
+            </ul>
+            <div class="qr-section">
+                <img src="{% static 'assets/img/qr.png' %}" alt="QR Code for PRO-MAN demo" loading="lazy">
+                <span>Scan for demo</span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <h3>PRO-CARD</h3>
+            <p>
+                Say goodbye to paper business cards — PRO-CARD is a digital smart business card for sharing contact info,
+                company details, and social links in one tap. Ideal for modern, eco-conscious networking.
+            </p>
+            <h5>Key Features</h5>
+            <ul>
+                <li>NFC-enabled card sharing</li>
+                <li>Custom branding & profile links</li>
+                <li>Contactless exchange & analytics</li>
+                <li>Ideal for individuals and organizations</li>
+            </ul>
+            <div class="qr-section">
+                <img src="{% static 'assets/img/qr.png' %}" alt="QR Code for PRO-CARD demo" loading="lazy">
+                <span>Scan for demo</span>
+            </div>
+        </div>
+    {% endif %}
+</section>
+
+<section class="button-section">
+    <a href="https://wa.me/+973 3394 9648" class="grid-button">Talk to Experts <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+</section>
+<script>
+    document.addEventListener('scroll', function() {
+        var serviceSec3 = document.querySelector('.service-sec3');
+        var buttonSection = document.querySelector('.button-section');
+        var scrollPosition = window.scrollY;
+
+        var threshold = serviceSec3.offsetTop; // Set the threshold to the top position of service section 3
+
+        if (scrollPosition > threshold && scrollPosition < (serviceSec3.offsetTop + serviceSec3.offsetHeight - window.innerHeight)) {
+            buttonSection.style.right = '20px'; // Adjust the desired position
+        } else {
+            buttonSection.style.right = '-230px'; // Hide the button off-screen
+        }
+    });
+
+    // Scroll back to top when clicking on the button
+    // document.querySelector('.grid-button').addEventListener('click', function(event) {
+    //     event.preventDefault(); // Prevent default anchor behavior
+    //     window.scrollTo({
+    //         top: 0,
+    //         behavior: 'smooth'
+    //     });
+    // });
+
+</script>
+<section class="testimonial-section"> 
+    <h2 class="testimonial-heading fade-in-up">TESTIMONIALS & FEEDBACK</h2>
+    <p class="testimonial-subtitle fade-in-up">TRUSTED BY BRANDS WHO BELIEVE IN GROWTH</p>
+
+    <div class="testimonial-wrapper">
+        <!-- Left Column -->
+        <div class="testimonial-left">
+            <div class="quote-symbol fade-in-up">“</div>
+            <p class="testimonial-intro fade-in-up">What our customers are saying</p>
+            <div class="separator-line fade-in-up"></div>
+        </div>
+
+        <!-- Static Cards Grid -->
+        <div class="testimonial-slider-container">
+  <div class="testimonial-cards-grid" id="testimonialSlider">
+    {% for testimonial in testimonials %}
+    <div class="testimonial-card">
+      <div class="b">
+        <div class="testimonial-text">{{ testimonial.text|safe }}</div>
+        <div>
+          <div class="testimonial-name">{{ testimonial.name }}</div>
+          <div class="testimonial-brand">{{ testimonial.brand }}</div>
+        </div>
+      </div>
+      <div class="brand-logo">
+        <img src="{{ testimonial.logo.url }}" alt="{{ testimonial.brand }} logo" loading="lazy">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+</div>
+<script>
+let index = 0;
+const interval = 5000;
+
+function showSlide() {
+  const slider = document.getElementById('testimonialSlider');
+  const cards = document.querySelectorAll('.testimonial-card');
+  const totalGroups = Math.ceil(cards.length / 3);
+
+  slider.style.transform = `translateX(-${index * 100}%)`;
+
+  index = (index + 1) % totalGroups;
+}
+
+setInterval(showSlide, interval);
+</script>
+
+</section>
+<script>
+    const slides = document.querySelectorAll('.carousel-slide');
+    let slideIndex = 0;
+    const counter = document.querySelector('.carousel-counter');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.style.display = 'block';
+            } else {
+                slide.style.display = 'none';
+            }
+        });
+        // Update the counter
+        counter.textContent = `${index + 1}/${slides.length}`;
+    }
+
+    function nextSlide() {
+        slideIndex++;
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        }
+        showSlide(slideIndex);
+    }
+
+    setInterval(nextSlide, 5000); // Adjust the interval as needed (in milliseconds)
+
+    // Show the initial slide
+    showSlide(slideIndex);
+</script>
+<section class="service-sec4">
+    <div>{{ service.subcontent|safe }}</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+/* Force CKEditor editor area to be light */
+.ck-editor__editable,
+.ck-editor__editable_inline,
+.ck-content {
+    background-color: #fff !important;  /* white background */
+    color: #000 !important;             /* black text */
+}
+
+/* Optional: style placeholder text (e.g. "Start typing...") */
+.ck-placeholder {
+    color: #555 !important;
+}
